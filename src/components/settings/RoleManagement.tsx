@@ -49,44 +49,84 @@ export const RoleManagement: React.FC<RoleManagementProps> = ({ user }) => {
 
   return (
     <div className="max-w-3xl">
-      {/* Current Roles */}
-      <div className="mb-8">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">
+      {/* Header */}
+      <div className="mb-6">
+        <h2 className="text-xl font-semibold text-gray-100 mb-2">
           Your Current Role
         </h2>
-        {user.app_metadata.role && user.app_metadata.role.length > 0 ? (
-          <div className="space-y-3">
-            {/* {user.roles.map((role) => (
-              <div
-                key={role.id}
-                className="p-4 border border-indigo-200 bg-indigo-50 rounded-lg cursor-pointer hover:shadow-md transition-shadow"
-                onClick={() => setExpandedRole(expandedRole === role.id ? null : role.id)}
-              > */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <Shield className="w-5 h-5 text-indigo-600" />
-                <div>
-                  <h3 className="font-semibold text-gray-900 user-role">
-                    {user.app_metadata.role}
-                  </h3>
-                </div>
+        <p className="text-gray-400 text-sm">
+          Review your assigned access level and permissions.
+        </p>
+      </div>
+
+      {/* Role Card */}
+      {user.app_metadata.role && user.app_metadata.role.length > 0 ? (
+        <div className="bg-gray-800/70 border border-gray-700 rounded-xl p-5 shadow-md hover:shadow-lg transition-all duration-300">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-indigo-900/40 rounded-lg">
+                <Shield className="w-5 h-5 text-indigo-400" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-100 text-lg capitalize">
+                  {user.app_metadata.role}
+                </h3>
+                <p className="text-sm text-gray-400">
+                  {roleDescriptions[user.app_metadata.role]?.description ??
+                    "Custom user role"}
+                </p>
               </div>
             </div>
+
+            <button
+              onClick={() =>
+                setExpandedRole(
+                  expandedRole === user.app_metadata.role
+                    ? null
+                    : user.app_metadata.role
+                )
+              }
+              className="text-sm text-indigo-400 hover:text-indigo-300 font-medium transition"
+            >
+              {expandedRole === user.app_metadata.role ? "Hide" : "View"} details
+            </button>
           </div>
-        ) : (
-          <div className="p-4 bg-gray-50 border border-gray-200 rounded-lg text-center">
-            <p className="text-gray-600">No roles assigned</p>
-          </div>
-        )}
-      </div>
+
+          {/* Expanded Permissions */}
+          {expandedRole === user.app_metadata.role && (
+            <div className="mt-4 border-t border-gray-700 pt-4">
+              <h4 className="text-sm font-semibold text-gray-300 mb-2">
+                Permissions
+              </h4>
+              <ul className="space-y-1">
+                {roleDescriptions[user.app_metadata.role]?.permissions.map(
+                  (perm, index) => (
+                    <li
+                      key={index}
+                      className="text-sm text-gray-400 flex items-center gap-2"
+                    >
+                      <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></span>
+                      {perm}
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="p-5 bg-gray-800/60 border border-gray-700 rounded-lg text-center">
+          <p className="text-gray-400">No roles assigned</p>
+        </div>
+      )}
 
       {/* Info Box */}
       {user.app_metadata.role === "admin" && (
-        <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-start gap-3">
-          <Info className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-blue-700">
-            "Role assignments are managed by administrators. Contact your admin
-            to request role changes."
+        <div className="mt-8 p-4 bg-blue-900/40 border border-blue-800 rounded-lg flex items-start gap-3">
+          <Info className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-blue-300 leading-relaxed">
+            Role assignments are managed by administrators. Contact your admin
+            to request role changes.
           </p>
         </div>
       )}

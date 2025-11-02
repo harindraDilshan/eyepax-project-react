@@ -27,28 +27,13 @@ export const UserDetailModal: React.FC<UserDetailModalProps> = ({
   const [availableRoles] = useState<Role[]>([
     { id: "Admin", name: "Admin", description: "Full system access" },
     { id: "HR", name: "HR", description: "HR management access" },
-    {
-      id: "Management L1",
-      name: "Management L1",
-      description: "Management Level 1 access",
-    },
-    {
-      id: "Management L2",
-      name: "Management L2",
-      description: "Management Level 2 access",
-    },
-    {
-      id: "Management L3",
-      name: "Management L3",
-      description: "Management Level 3 access",
-    },
+    { id: "Management L1", name: "Management L1", description: "Management Level 1 access" },
+    { id: "Management L2", name: "Management L2", description: "Management Level 2 access" },
+    { id: "Management L3", name: "Management L3", description: "Management Level 3 access" },
   ]);
 
-  // Fetch user profile
   useEffect(() => {
-    if (isOpen && user) {
-      fetchUserProfile();
-    }
+    if (isOpen && user) fetchUserProfile();
   }, [isOpen, user]);
 
   const fetchUserProfile = async () => {
@@ -66,10 +51,7 @@ export const UserDetailModal: React.FC<UserDetailModalProps> = ({
     }
   };
 
-  const handleRoleToggle = (roleId: string) => {
-    // Set only the selected role
-    setSelectedRoles([roleId]);
-  };
+  const handleRoleToggle = (roleId: string) => setSelectedRoles([roleId]);
 
   const handleSaveRoles = async (roleName: string) => {
     setLoading(true);
@@ -92,157 +74,120 @@ export const UserDetailModal: React.FC<UserDetailModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+      <div className="bg-gray-900/95 border border-gray-800 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto backdrop-blur-md">
+        
         {/* Header */}
-        <div className="sticky top-0 flex items-center justify-between p-6 border-b border-gray-200 bg-white">
-          <h2 className="text-xl font-bold text-gray-900">User Details</h2>
+        <div className="sticky top-0 flex items-center justify-between p-6 border-b border-gray-800 bg-gray-900/90 backdrop-blur-sm">
+          <h2 className="text-xl font-semibold text-gray-100">User Details</h2>
           <button
             onClick={onClose}
-            className="p-1 hover:bg-gray-100 rounded transition-colors"
+            className="p-2 rounded-md hover:bg-gray-800 transition-colors"
           >
-            <X size={24} className="text-gray-600" />
+            <X size={22} className="text-gray-400 hover:text-gray-200" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          {/* Error Message */}
-          {/* {error && (
-            <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-              <X className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-red-700">{error}</p>
-            </div>
-          )} */}
-
-          {/* Success Message */}
+        <div className="p-6 space-y-8">
           {success && (
-            <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-              <p className="text-sm text-green-700">{success}</p>
+            <div className="flex items-start gap-3 p-4 rounded-lg border border-green-700 bg-green-900/40">
+              <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+              <p className="text-sm text-green-300">{success}</p>
             </div>
           )}
 
           {loading && !userProfile ? (
             <div className="flex items-center justify-center py-12">
-              <div className="w-8 h-8 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin" />
+              <div className="w-8 h-8 border-4 border-indigo-900 border-t-indigo-500 rounded-full animate-spin" />
             </div>
           ) : userProfile ? (
-            <div className="space-y-6">
-              {/* User Info */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  User Information
-                </h3>
+            <div className="space-y-8">
+              
+              {/* User Information */}
+              <section>
+                <h3 className="text-lg font-medium text-gray-200 mb-4">User Information</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <p className="text-sm text-gray-600">Name</p>
-                    <p className="text-gray-900 font-medium">
-                      {userProfile.user.username}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Email</p>
-                    <p className="text-gray-900 font-medium">
-                      {userProfile.user.email}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Created</p>
-                    <p className="text-gray-900 font-medium">
-                      {new Date(
-                        userProfile.user.createdAt
-                      ).toLocaleDateString()}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-600">Last Login</p>
-                    <p className="text-gray-900 font-medium">
-                      {
-                        userProfile?.recent_audits?.filter(
-                          (audit) => audit.eventType === "LOGIN"
-                        )[0].createdAt
-                      }
-                      {/* {userProfile.user?.lastLoginAt ? new Date(userProfile.user.lastLoginAt).toLocaleDateString() : "Never"} */}
-                    </p>
-                  </div>
+                  <InfoRow label="Name" value={userProfile.user.username} />
+                  <InfoRow label="Email" value={userProfile.user.email} />
+                  <InfoRow
+                    label="Created"
+                    value={new Date(userProfile.user.createdAt).toLocaleDateString()}
+                  />
+                  <InfoRow
+                    label="Last Login"
+                    value={
+                      userProfile?.recent_audits?.find((a) => a.eventType === "LOGIN")?.createdAt ||
+                      "Never"
+                    }
+                  />
                 </div>
-              </div>
+              </section>
 
-              {/* Audit Summary */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Activity Summary
-                </h3>
+              {/* Activity Summary */}
+              <section>
+                <h3 className="text-lg font-medium text-gray-200 mb-4">Activity Summary</h3>
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-sm text-gray-600">Total Logins</p>
-                    <p className="text-2xl font-bold text-gray-900">
-                      {userProfile.recent_audits?.filter(
-                        (audit) => audit.eventType === "LOGIN"
-                      ).length || 0}
-                    </p>
-                  </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-sm text-gray-600">Role Changes</p>
-                    {userProfile.recent_audits?.filter(
-                      (audit) => audit.eventType === "ROLE_CHANGE"
-                    ).length || 0}
-                  </div>
-                  <div className="p-4 bg-gray-50 rounded-lg">
-                    <p className="text-sm text-gray-600">Last Login Date</p>
-                    <p className="text-sm font-medium text-gray-900">
-                      {/* {userProfile.recent_audits?.filter(
-                        (audit) => audit.eventType === "LOGIN"
-                      ).length || 0} */}
-                      {userProfile.recent_audits[0] &&
-                      userProfile.recent_audits[0].eventType === "LOGIN"
-                        ? new Date(
-                            userProfile.recent_audits[0].details.timestamp
-                          ).toLocaleDateString()
-                        : "Never"}
-                    </p>
-                  </div>
+                  <SummaryCard
+                    label="Total Logins"
+                    value={
+                      userProfile.recent_audits?.filter((a) => a.eventType === "LOGIN").length || 0
+                    }
+                  />
+                  <SummaryCard
+                    label="Role Changes"
+                    value={
+                      userProfile.recent_audits?.filter((a) => a.eventType === "ROLE_CHANGE").length || 0
+                    }
+                  />
+                  <SummaryCard
+                    label="Last Login Date"
+                    value={
+                      userProfile.recent_audits[0]?.eventType === "LOGIN"
+                        ? new Date(userProfile.recent_audits[0].details.timestamp).toLocaleDateString()
+                        : "Never"
+                    }
+                  />
                 </div>
-              </div>
+              </section>
 
               {/* Role Management */}
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Assign Roles
-                </h3>
+              <section>
+                <h3 className="text-lg font-medium text-gray-200 mb-4">Assign Role</h3>
                 <div className="space-y-3">
                   {availableRoles.map((role) => (
                     <label
                       key={role.id}
-                      className="flex items-start gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
+                      className={`flex items-start gap-3 p-4 rounded-lg border ${
+                        selectedRoles.includes(role.id)
+                          ? "border-indigo-600 bg-indigo-900/40"
+                          : "border-gray-800 bg-gray-800/40 hover:bg-gray-800/70"
+                      } cursor-pointer transition-all duration-200`}
                     >
                       <input
                         type="radio"
                         name="role"
                         checked={selectedRoles.includes(role.id)}
                         onChange={() => handleRoleToggle(role.id)}
-                        className="mt-1 w-4 h-4 text-indigo-600 focus:ring-2 focus:ring-indigo-500"
+                        className="mt-1 w-4 h-4 text-indigo-500 focus:ring-indigo-500 accent-indigo-600"
                       />
-                      <div className="flex-1">
-                        <p className="font-medium text-gray-900">{role.name}</p>
-                        <p className="text-sm text-gray-600">
-                          {role.description}
-                        </p>
+                      <div>
+                        <p className="font-medium text-gray-100">{role.name}</p>
+                        <p className="text-sm text-gray-400">{role.description}</p>
                       </div>
                     </label>
                   ))}
                 </div>
-              </div>
+              </section>
             </div>
           ) : null}
         </div>
 
         {/* Footer */}
-        <div className="sticky bottom-0 flex items-center justify-end gap-3 p-6 border-t border-gray-200 bg-gray-50">
+        <div className="sticky bottom-0 flex items-center justify-end gap-3 p-6 border-t border-gray-800 bg-gray-900/90 backdrop-blur-sm">
           <button
             onClick={onClose}
-            className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+            className="px-4 py-2 border border-gray-700 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors"
           >
             Cancel
           </button>
@@ -251,10 +196,26 @@ export const UserDetailModal: React.FC<UserDetailModalProps> = ({
             disabled={loading || selectedRoles.length === 0}
             className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {loading ? "Saving..." : "Save Roles"}
+            {loading ? "Saving..." : "Save Role"}
           </button>
         </div>
       </div>
     </div>
   );
 };
+
+/* Subcomponents for cleaner structure */
+
+const InfoRow: React.FC<{ label: string; value: string | number }> = ({ label, value }) => (
+  <div>
+    <p className="text-xs text-gray-400 uppercase tracking-wide">{label}</p>
+    <p className="text-sm font-medium text-gray-100 mt-1">{value || "—"}</p>
+  </div>
+);
+
+const SummaryCard: React.FC<{ label: string; value: string | number }> = ({ label, value }) => (
+  <div className="p-4 rounded-lg border border-gray-800 bg-gray-800/40">
+    <p className="text-xs text-gray-400 uppercase tracking-wide">{label}</p>
+    <p className="text-xl font-semibold text-gray-100 mt-1">{value}</p>
+  </div>
+);

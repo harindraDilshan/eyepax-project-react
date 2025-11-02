@@ -12,13 +12,12 @@ export const AuditLogsPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState(0);
-  const [pageSize, setPageSize] = useState(20);
+  const [pageSize] = useState(20);
   const [totalPages, setTotalPages] = useState(0);
   const [userId, setUserId] = useState<string>("");
   const [dateRange, setDateRange] = useState<string>("");
   const [actionFilter, setActionFilter] = useState<string>("");
 
-  // Fetch audit logs
   const fetchAuditLogs = async (
     pageNum: number,
     userIdFilter?: string,
@@ -34,33 +33,24 @@ export const AuditLogsPage: React.FC = () => {
         dateRangeFilter
       );
 
-      // Handle case where response.data is an array
       if (Array.isArray(response.data)) {
         const totalItems = response.data.length;
         const start = pageNum * pageSize;
         const end = start + pageSize;
         const paginatedLogs = response.data.slice(start, end);
-
-        console.log("Array data detected, paginating:", paginatedLogs);
         setLogs(paginatedLogs);
         setTotalPages(Math.ceil(totalItems / pageSize));
         setPage(pageNum);
-      }
-      // Handle case where response.data is a paginated object
-      else if (
+      } else if (
         response.data &&
         typeof response.data === "object" &&
         "content" in response.data
       ) {
         const data = response.data as PaginatedResponse<AuditLog>;
-        console.log("Paginated data detected:", data.content);
         setLogs(data.content);
         setTotalPages(data.totalPages);
         setPage(data.currentPage);
-      }
-      // Handle unexpected data format
-      else {
-        console.error("Unexpected data format:", response.data);
+      } else {
         setError("Received unexpected data format from server");
         setLogs([]);
         setTotalPages(0);
@@ -73,12 +63,10 @@ export const AuditLogsPage: React.FC = () => {
     }
   };
 
-  // Initial load
   useEffect(() => {
     fetchAuditLogs(0);
   }, []);
 
-  // Handle filter changes
   const handleApplyFilters = (filters: {
     userId?: string;
     dateRange?: string;
@@ -91,7 +79,6 @@ export const AuditLogsPage: React.FC = () => {
     fetchAuditLogs(0, filters.userId, filters.dateRange);
   };
 
-  // Handle pagination
   const handleNextPage = () => {
     if (page < totalPages - 1) {
       fetchAuditLogs(page + 1, userId, dateRange);
@@ -106,11 +93,11 @@ export const AuditLogsPage: React.FC = () => {
 
   return (
     <MainLayout>
-      <div>
+      <div className="text-gray-100 bg-gray-900 min-h-screen p-6 rounded-xl">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Audit Logs</h1>
-          <p className="text-gray-600 mt-2">
+          <h1 className="text-3xl font-bold text-white">Audit Logs</h1>
+          <p className="text-gray-400 mt-2">
             View login and role change events
           </p>
         </div>
@@ -120,29 +107,31 @@ export const AuditLogsPage: React.FC = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-red-700">{error}</p>
+          <div className="mb-6 p-4 bg-red-900/40 border border-red-700 rounded-lg flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-red-300">{error}</p>
           </div>
         )}
 
         {/* Audit Logs List */}
-        <AuditLogsList
-          logs={logs}
-          loading={loading}
-          actionFilter={actionFilter}
-        />
+        <div className="bg-gray-800 rounded-xl p-4 shadow-md border border-gray-700">
+          <AuditLogsList
+            logs={logs}
+            loading={loading}
+            actionFilter={actionFilter}
+          />
+        </div>
 
         {/* Pagination */}
-        <div className="mt-6 flex items-center justify-between">
-          <p className="text-sm text-gray-600">
+        <div className="mt-6 flex items-center justify-between text-gray-300">
+          <p className="text-sm">
             Page {page + 1} of {totalPages} ({logs.length} events)
           </p>
           <div className="flex gap-2">
             <button
               onClick={handlePrevPage}
               disabled={page === 0 || loading}
-              className="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 border border-gray-700 rounded-lg text-gray-300 bg-gray-800 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               Previous
             </button>

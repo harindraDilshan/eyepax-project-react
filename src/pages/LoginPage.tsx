@@ -7,17 +7,21 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-      <div className="p-8 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold mb-6 text-center">Admin Login</h2>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-950 to-gray-900">
+      <div className="p-10 bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-700">
+        <h2 className="text-3xl font-bold text-white tracking-wide mb-8 text-center">
+          WELCOME TO <span className="text-indigo-400">ADMIN DASHBOARD</span>
+        </h2>
         <button
           onClick={handleLogin}
-          className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+          className="w-full px-6 py-3 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-500 hover:shadow-lg transition-all duration-300"
         >
-          Login with Cognito
+          Login
         </button>
       </div>
+      <p className="text-gray-500 text-sm mt-8">
+        Powered by <span className="text-indigo-400">AWS Cognito</span> & Spring Boot
+      </p>
     </div>
   );
 };
-

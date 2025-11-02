@@ -10,16 +10,13 @@ import {
   UserIcon,
   Calendar,
   Phone,
-  Home,
 } from "lucide-react";
-import { useAuth } from "@/context/AuthContext";
 
 interface ProfileSettingsProps {
   user: User;
 }
 
 export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
-  // const { user } = useAuth()
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     name: user.app_metadata.displayName ?? "",
@@ -41,18 +38,10 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
     setSuccess(null);
 
     try {
-      // Validate form
       if (!formData.name.trim()) {
         throw new Error("Name is required");
       }
-      // if (!formData.locale.trim()) {
-      //   throw new Error("Locale is required");
-      // }
-      // if (!formData.phone.trim()) {
-      //   throw new Error("Phone is required");
-      // }
 
-      // Call the API to update profile
       await apiClient.updateProfile({
         displayName: formData.name.trim(),
         locale: "",
@@ -61,8 +50,6 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
 
       setSuccess("Profile updated successfully");
       setIsEditing(false);
-
-      // Clear success message after 3 seconds
       setTimeout(() => setSuccess(null), 3000);
     } catch (err) {
       setError(apiClient.handleError(err));
@@ -82,51 +69,51 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
   };
 
   return (
-    <div className="max-w-2xl">
+    <div className="max-w-2xl text-gray-100">
       {/* Error Message */}
       {error && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-red-700">{error}</p>
+        <div className="mb-6 flex items-start gap-3 p-4 bg-red-900/30 border border-red-700 rounded-lg">
+          <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-red-300">{error}</p>
         </div>
       )}
 
       {/* Success Message */}
       {success && (
-        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
-          <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-green-700">{success}</p>
+        <div className="mb-6 flex items-start gap-3 p-4 bg-green-900/30 border border-green-700 rounded-lg">
+          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-green-300">{success}</p>
         </div>
       )}
 
       {/* Profile Card */}
-      <div className="bg-white rounded-lg shadow p-6">
-        {/* Avatar Section */}
-        <div className="mb-8 pb-8 border-b border-gray-200">
-          <div className="flex items-center gap-6">
-            <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white text-3xl font-bold">
-              {user.app_metadata.displayName?.charAt(0).toUpperCase()}
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900">
-                {user.app_metadata.displayName}
-              </h2>
-              <p className="text-gray-600">{user.profile.email}</p>
-              <p className="text-gray-700">Role: {user.app_metadata.role}</p>
-            </div>
+      <div className="bg-gray-900/80 backdrop-blur-lg rounded-xl border border-gray-800 shadow-lg p-8">
+        {/* Header */}
+        <div className="flex items-center gap-6 pb-6 border-b border-gray-800 mb-6">
+          <div className="w-20 h-20 rounded-full bg-indigo-600 flex items-center justify-center text-white text-3xl font-bold shadow-inner">
+            {user.app_metadata.displayName?.charAt(0).toUpperCase()}
+          </div>
+          <div>
+            <h2 className="text-2xl font-bold text-gray-100 tracking-wide">
+              {user.app_metadata.displayName}
+            </h2>
+            <p className="text-gray-400 text-sm">{user.profile.email}</p>
+            <p className="text-indigo-400 text-sm font-medium mt-1">
+              Role: {user.app_metadata.role}
+            </p>
           </div>
         </div>
 
         {/* Form Fields */}
         <div className="space-y-6 mb-8">
-          {/* Name Field */}
+          {/* Name */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-400 mb-2">
               Display Name
             </label>
             <div className="relative">
               <UserIcon
-                className="absolute left-3 top-3 text-gray-400"
+                className="absolute left-3 top-3 text-gray-500"
                 size={18}
               />
               <input
@@ -136,38 +123,19 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
                 value={formData.name}
                 onChange={handleInputChange}
                 disabled={!isEditing}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-50 disabled:text-gray-600"
+                className="w-full pl-10 pr-4 py-2 bg-gray-800/70 border border-gray-700 rounded-lg text-gray-100 focus:ring-2 focus:ring-indigo-500 outline-none disabled:opacity-60 transition"
               />
             </div>
           </div>
 
-          {/* Locale Field */}
-          {/* <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Locale
-            </label>
-            <div className="relative">
-              <Home className="absolute left-3 top-3 text-gray-400" size={18} />
-              <input
-                type="email"
-                name="locale"
-                placeholder="Locale"
-                value={formData.locale}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-50 disabled:text-gray-600"
-              />
-            </div>
-          </div> */}
-
-          {/* Phone Field */}
+          {/* Phone */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-400 mb-2">
               Phone Number
             </label>
             <div className="relative">
               <Phone
-                className="absolute left-3 top-3 text-gray-400"
+                className="absolute left-3 top-3 text-gray-500"
                 size={18}
               />
               <input
@@ -177,7 +145,7 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 disabled={!isEditing}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:bg-gray-50 disabled:text-gray-600"
+                className="w-full pl-10 pr-4 py-2 bg-gray-800/70 border border-gray-700 rounded-lg text-gray-100 focus:ring-2 focus:ring-indigo-500 outline-none disabled:opacity-60 transition"
               />
             </div>
           </div>
@@ -185,22 +153,21 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
           {/* Last Login */}
           {user.app_metadata.lastLoginAt && (
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-400 mb-2">
                 Last Login
               </label>
               <div className="relative">
                 <Calendar
-                  className="absolute left-3 top-3 text-gray-400"
+                  className="absolute left-3 top-3 text-gray-500"
                   size={18}
                 />
                 <input
                   type="text"
-                  placeholder="Last Login"
                   value={new Date(
                     user.app_metadata.lastLoginAt
                   ).toLocaleString()}
                   disabled
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-600"
+                  className="w-full pl-10 pr-4 py-2 bg-gray-800/70 border border-gray-700 rounded-lg text-gray-400"
                 />
               </div>
             </div>
@@ -208,19 +175,19 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3 justify-end">
+        <div className="flex justify-end gap-3">
           {isEditing ? (
             <>
               <button
                 onClick={handleCancel}
-                className="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+                className="px-5 py-2 border border-gray-700 rounded-lg text-gray-300 hover:bg-gray-800 transition"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSave}
                 disabled={isSaving}
-                className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg disabled:opacity-50 transition"
               >
                 {isSaving ? "Saving..." : "Save Changes"}
               </button>
@@ -228,7 +195,7 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
           ) : (
             <button
               onClick={() => setIsEditing(true)}
-              className="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+              className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition"
             >
               Edit Profile
             </button>
@@ -237,11 +204,9 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = ({ user }) => {
       </div>
 
       {/* Info Box */}
-      <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-        <p className="text-sm text-blue-700">
-          To change your password, please contact IT team..
-        </p>
-      </div>
+      {/* <div className="mt-6 p-4 bg-gray-900/70 border border-blue-800 rounded-lg text-blue-300 text-sm">
+        To change your password, please contact the IT team.
+      </div> */}
     </div>
   );
 };
