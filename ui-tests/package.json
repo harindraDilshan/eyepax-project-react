@@ -1,0 +1,25 @@
+{
+  "name": "ui-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register tests/**/*.test.ts --timeout 60000 --reporter mochawesome"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^24.9.1",
+    "chromedriver": "^141.0.4",
+    "selenium-webdriver": "^4.38.0",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/selenium-webdriver": "^4.35.2",
+    "mocha": "^11.7.4",
+    "mochawesome": "^7.1.4",
+    "ts-node": "^10.9.2"
+  }
+}

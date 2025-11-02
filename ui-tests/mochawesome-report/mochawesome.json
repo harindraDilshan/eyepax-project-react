@@ -1,0 +1,464 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 9,
+    "passes": 9,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-28T05:03:11.465Z",
+    "end": "2025-10-28T05:05:08.438Z",
+    "duration": 116973,
+    "testsRegistered": 9,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "644a6ae7-f419-4fa2-a038-58b1702c4afd",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "62678ef8-4744-47ce-9e23-844d4bf559e1",
+          "title": "Audit Logs Page UI Automation",
+          "fullFile": "C:\\Users\\YaselaDisanayaka\\Downloads\\admin-web-app\\ui-tests\\tests\\audit-logs-page.test.ts",
+          "file": "\\tests\\audit-logs-page.test.ts",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Audit Logs Page UI Automation\"",
+              "fullTitle": "Audit Logs Page UI Automation \"before all\" hook in \"Audit Logs Page UI Automation\"",
+              "timedOut": false,
+              "duration": 1346,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new selenium_webdriver_1.Builder().forBrowser(\"chrome\").build();",
+              "err": {},
+              "uuid": "c0312af9-c6c0-4f1d-95df-4cdf14ad36ca",
+              "parentUUID": "62678ef8-4744-47ce-9e23-844d4bf559e1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Audit Logs Page UI Automation\"",
+              "fullTitle": "Audit Logs Page UI Automation \"after all\" hook in \"Audit Logs Page UI Automation\"",
+              "timedOut": false,
+              "duration": 310,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "2ba4715d-6381-4c9b-8365-3c654c957c7e",
+              "parentUUID": "62678ef8-4744-47ce-9e23-844d4bf559e1",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should login successfully via Cognito",
+              "fullTitle": "Audit Logs Page UI Automation should login successfully via Cognito",
+              "timedOut": false,
+              "duration": 24999,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get(\"http://localhost:3000/login\");\nconst loginButton = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Login with Cognito')]\")), 10000);\nawait loginButton.click();\nconsole.log(\"✅ Clicked Login with Cognito\");\n// Wait for Cognito login page\nawait driver.wait(selenium_webdriver_1.until.urlContains(\"amazoncognito.com\"), 15000);\n// Step 1: Email\nawait driver\n    .findElement(selenium_webdriver_1.By.id(\"formField:R6dpf55:\"))\n    .sendKeys(\"admin@eyepax.com\");\nawait driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\nconsole.log(\"✅ Entered email\");\n// Step 2: Password\nawait driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(\"formField:r1:\")), 10000);\nawait driver\n    .findElement(selenium_webdriver_1.By.id(\"formField:r1:\"))\n    .sendKeys(\"@uBzWXQL7BwPXmWW\");\nawait driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\nconsole.log(\"✅ Entered password\");\n// Step 3: Optional MFA\ntry {\n    await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(\"formField:rb:\")), 5000);\n    console.log(\"⏸ MFA detected — please enter manually...\");\n    await driver.sleep(15000);\n    await driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\n}\ncatch {\n    console.log(\"✅ No MFA step detected\");\n}\n// Wait for dashboard redirect\nawait driver.wait(selenium_webdriver_1.until.urlContains(\"dashboard\"), 20000);\nconsole.log(\"✅ Login successful, redirected to dashboard\");",
+              "err": {},
+              "uuid": "d9ec18e1-5334-47aa-ac23-b636feb915cd",
+              "parentUUID": "62678ef8-4744-47ce-9e23-844d4bf559e1",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should verify Audit Logs Page UI elements",
+              "fullTitle": "Audit Logs Page UI Automation should verify Audit Logs Page UI elements",
+              "timedOut": false,
+              "duration": 272,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1️⃣ Navigate to /audit-logs\nawait driver.get(\"http://localhost:3000/audit-logs\");\n// 2️⃣ Verify the main heading\nconst heading = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//h1[contains(text(), 'Audit Logs')]\")), 10000);\nassert_1.strict.ok(await heading.isDisplayed(), \"Audit Logs heading visible\");\nconsole.log(\"✅ Found 'Audit Logs' heading\");\n// 3️⃣ Verify subtitle text\nconst subtitle = await driver.findElement(selenium_webdriver_1.By.xpath(\"//*[contains(text(), 'View login and role change events')]\"));\nassert_1.strict.ok(await subtitle.isDisplayed(), \"Subtitle visible\");\nconsole.log(\"✅ Found page subtitle text\");\n// 5️⃣ Verify pagination controls\nconst nextBtn = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Next')]\")), 10000);\nconst prevBtn = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Previous')]\")), 10000);\nassert_1.strict.ok(await nextBtn.isDisplayed(), \"Next button visible\");\nassert_1.strict.ok(await prevBtn.isDisplayed(), \"Previous button visible\");\nconsole.log(\"✅ Pagination buttons visible\");\n// 6️⃣ Verify page info text\nconst pageInfo = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//*[contains(text(), 'Page')]\")), 10000);\nassert_1.strict.ok(await pageInfo.isDisplayed(), \"Pagination info visible\");\nconsole.log(\"✅ Found pagination info:\", await pageInfo.getText());\n// 7️⃣ Verify audit logs list (or empty state)\nconst logsList = await driver.findElements(selenium_webdriver_1.By.css(\"[data-testid='audit-log-row'], .audit-log-row, .log-entry\"));\nconsole.log(`✅ Found ${logsList.length} audit log entries (or placeholders)`);\n// Optional: Click Next button (if available)\nif (await nextBtn.isEnabled()) {\n    await nextBtn.click();\n    console.log(\"✅ Clicked 'Next' pagination button\");\n    await driver.sleep(2000);\n}\nelse {\n    console.log(\"ℹ️ 'Next' button disabled — single page of results\");\n}",
+              "err": {},
+              "uuid": "7f1a3389-df1d-4034-90ac-ff4861482787",
+              "parentUUID": "62678ef8-4744-47ce-9e23-844d4bf559e1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d9ec18e1-5334-47aa-ac23-b636feb915cd",
+            "7f1a3389-df1d-4034-90ac-ff4861482787"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 25271,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 120000
+        },
+        {
+          "uuid": "777b05db-3938-4c5d-ac1b-77a7a9f8a4a0",
+          "title": "Cognito Login + Dashboard Content Test",
+          "fullFile": "C:\\Users\\YaselaDisanayaka\\Downloads\\admin-web-app\\ui-tests\\tests\\login-and-dashboard.test.ts",
+          "file": "\\tests\\login-and-dashboard.test.ts",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Cognito Login + Dashboard Content Test\"",
+              "fullTitle": "Cognito Login + Dashboard Content Test \"before all\" hook in \"Cognito Login + Dashboard Content Test\"",
+              "timedOut": false,
+              "duration": 1252,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new selenium_webdriver_1.Builder().forBrowser(\"chrome\").build();",
+              "err": {},
+              "uuid": "6f15ce87-0a43-4973-acad-0eb795d30b03",
+              "parentUUID": "777b05db-3938-4c5d-ac1b-77a7a9f8a4a0",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Cognito Login + Dashboard Content Test\"",
+              "fullTitle": "Cognito Login + Dashboard Content Test \"after all\" hook in \"Cognito Login + Dashboard Content Test\"",
+              "timedOut": false,
+              "duration": 109,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "15ad396c-1701-4abb-9ac7-1a0a5a2b3538",
+              "parentUUID": "777b05db-3938-4c5d-ac1b-77a7a9f8a4a0",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should login successfully via Cognito",
+              "fullTitle": "Cognito Login + Dashboard Content Test should login successfully via Cognito",
+              "timedOut": false,
+              "duration": 37155,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get(\"http://localhost:3000/login\");\nconst loginButton = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Login with Cognito')]\")), 10000);\nawait loginButton.click();\nawait driver.wait(selenium_webdriver_1.until.urlContains(\"amazoncognito.com\"), 10000);\n// Step 1: Email\nawait driver\n    .findElement(selenium_webdriver_1.By.id(\"formField:R6dpf55:\"))\n    .sendKeys(\"admin@eyepax.com\");\nawait driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\nconsole.log(\"✅ Entered email\");\n// Step 2: Password\nawait driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(\"formField:r1:\")), 10000);\nawait driver\n    .findElement(selenium_webdriver_1.By.id(\"formField:r1:\"))\n    .sendKeys(\"@uBzWXQL7BwPXmWW\");\nawait driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\nconsole.log(\"✅ Entered password\");\n// Step 3: Optional MFA\ntry {\n    await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(\"formField:rb:\")), 5000);\n    console.log(\"⏸ MFA detected — please enter manually...\");\n    await driver.sleep(15000);\n    await driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\n}\ncatch {\n    console.log(\"✅ No MFA step detected\");\n}\n// Wait for dashboard\nawait driver.wait(selenium_webdriver_1.until.urlContains(\"dashboard\"), 20000);\nconst currentUrl = await driver.getCurrentUrl();\nassert_1.strict.ok(currentUrl.includes(\"dashboard\"), \"Redirected to dashboard\");",
+              "err": {},
+              "uuid": "ddae13a4-955e-4f56-9707-51fe0e725818",
+              "parentUUID": "777b05db-3938-4c5d-ac1b-77a7a9f8a4a0",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should verify dashboard content elements",
+              "fullTitle": "Cognito Login + Dashboard Content Test should verify dashboard content elements",
+              "timedOut": false,
+              "duration": 146,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// --- Welcome message ---\nconst welcome = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//h1[contains(text(), 'Welcome back')]\")), 10000);\nconst welcomeText = await welcome.getText();\nconsole.log(\"✅ Found welcome message:\", welcomeText);\nassert_1.strict.ok(welcomeText.includes(\"Welcome back\"));\n// --- Stat cards ---\nconst stats = [\"Total Users\", \"Active Sessions\", \"Recent Audits\"];\nfor (const stat of stats) {\n    const element = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(`//*[contains(text(), '${stat}')]`)), 10000);\n    assert_1.strict.ok(await element.isDisplayed(), `${stat} should be visible`);\n}\n// --- Quick Actions ---\nconst actions = [\"Manage Users\", \"View Audit Logs\"];\nfor (const action of actions) {\n    const element = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(`//h3[contains(text(), '${action}')]`)), 10000);\n    assert_1.strict.ok(await element.isDisplayed(), `${action} should be visible`);\n}\nconsole.log(\"🎉 Dashboard content verification passed!\");",
+              "err": {},
+              "uuid": "ae9f1a6a-f88b-48e9-b342-9bae03aa2d8a",
+              "parentUUID": "777b05db-3938-4c5d-ac1b-77a7a9f8a4a0",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ddae13a4-955e-4f56-9707-51fe0e725818",
+            "ae9f1a6a-f88b-48e9-b342-9bae03aa2d8a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 37301,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 90000
+        },
+        {
+          "uuid": "9d525df4-06c6-4e0c-a1bf-c8c341eb7f5b",
+          "title": "Settings Page UI Automation (Profile & Role Management)",
+          "fullFile": "C:\\Users\\YaselaDisanayaka\\Downloads\\admin-web-app\\ui-tests\\tests\\settings-page.test.ts",
+          "file": "\\tests\\settings-page.test.ts",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Settings Page UI Automation (Profile & Role Management)\"",
+              "fullTitle": "Settings Page UI Automation (Profile & Role Management) \"before all\" hook in \"Settings Page UI Automation (Profile & Role Management)\"",
+              "timedOut": false,
+              "duration": 1494,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new selenium_webdriver_1.Builder().forBrowser(\"chrome\").build();",
+              "err": {},
+              "uuid": "305c26b3-664d-43c9-9ba2-6e1c9c9b336b",
+              "parentUUID": "9d525df4-06c6-4e0c-a1bf-c8c341eb7f5b",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Settings Page UI Automation (Profile & Role Management)\"",
+              "fullTitle": "Settings Page UI Automation (Profile & Role Management) \"after all\" hook in \"Settings Page UI Automation (Profile & Role Management)\"",
+              "timedOut": false,
+              "duration": 156,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "a3eb975d-2cd1-40e4-9ad3-ce22617f37c2",
+              "parentUUID": "9d525df4-06c6-4e0c-a1bf-c8c341eb7f5b",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should login successfully via Cognito",
+              "fullTitle": "Settings Page UI Automation (Profile & Role Management) should login successfully via Cognito",
+              "timedOut": false,
+              "duration": 20189,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get(\"http://localhost:3000/login\");\nconst loginButton = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Login with Cognito')]\")), 10000);\nawait loginButton.click();\nconsole.log(\"✅ Clicked Login with Cognito\");\n// Wait for Cognito login page\nawait driver.wait(selenium_webdriver_1.until.urlContains(\"amazoncognito.com\"), 15000);\n// Step 1: Email\nawait driver\n    .findElement(selenium_webdriver_1.By.id(\"formField:R6dpf55:\"))\n    .sendKeys(\"admin@eyepax.com\");\nawait driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\nconsole.log(\"✅ Entered email\");\n// Step 2: Password\nawait driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(\"formField:r1:\")), 10000);\nawait driver\n    .findElement(selenium_webdriver_1.By.id(\"formField:r1:\"))\n    .sendKeys(\"@uBzWXQL7BwPXmWW\");\nawait driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\nconsole.log(\"✅ Entered password\");\n// Step 3: Optional MFA\ntry {\n    await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(\"formField:rb:\")), 5000);\n    console.log(\"⏸ MFA detected — please enter manually...\");\n    await driver.sleep(15000);\n    await driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\n}\ncatch {\n    console.log(\"✅ No MFA step detected\");\n}\n// Wait for dashboard redirect\nawait driver.wait(selenium_webdriver_1.until.urlContains(\"dashboard\"), 20000);\nconsole.log(\"✅ Login successful, redirected to dashboard\");",
+              "err": {},
+              "uuid": "64f7c226-f8ce-4d5f-813b-604791b53a29",
+              "parentUUID": "9d525df4-06c6-4e0c-a1bf-c8c341eb7f5b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should verify Settings Page UI and Profile Edit functionality",
+              "fullTitle": "Settings Page UI Automation (Profile & Role Management) should verify Settings Page UI and Profile Edit functionality",
+              "timedOut": false,
+              "duration": 2425,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1️⃣ Navigate to Settings Page\nawait driver.get(\"http://localhost:3000/settings\");\n// 2️⃣ Verify heading\nconst heading = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//h1[contains(text(), 'Settings')]\")), 10000);\nassert_1.strict.ok(await heading.isDisplayed(), \"Settings heading visible\");\nconsole.log(\"✅ Found Settings heading\");\n// 3️⃣ Verify Profile Settings tab is active\nconst profileTab = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Profile Settings')]\")), 10000);\nconst profileTabClass = await profileTab.getAttribute(\"class\");\nassert_1.strict.ok(profileTabClass.includes(\"border-indigo-600\"), \"Profile tab active\");\nconsole.log(\"✅ Profile tab active by default\");\n// 4️⃣ Verify Edit Profile button exists\nconst editBtn = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Edit Profile')]\")), 10000);\nassert_1.strict.ok(await editBtn.isDisplayed(), \"Edit Profile button visible\");\nconsole.log(\"✅ Found Edit Profile button\");\n// 5️⃣ Click Edit Profile\nawait editBtn.click();\nconsole.log(\"✅ Clicked Edit Profile button\");\n// 6️⃣ Verify input fields become editable\nconst nameField = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.css(\"input[name='name'], [data-testid='profile-name']\")), 5000);\nconst nameDisabled = await nameField.getAttribute(\"disabled\");\nassert_1.strict.ok(nameDisabled === null, \"Name field is editable\");\nconsole.log(\"✅ Profile input fields are editable\");\n// 7️⃣ Click Save Changes\nconst saveBtn = await driver.findElement(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Save Changes')]\"));\nassert_1.strict.ok(await saveBtn.isDisplayed(), \"Save button visible\");\nawait saveBtn.click();\nconsole.log(\"✅ Clicked Save Changes\");\n// Wait briefly for save action\nawait driver.sleep(2000);",
+              "err": {},
+              "uuid": "8b91e9a0-1568-462e-8eff-6a3965e8e999",
+              "parentUUID": "9d525df4-06c6-4e0c-a1bf-c8c341eb7f5b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should verify Role Management tab and user role",
+              "fullTitle": "Settings Page UI Automation (Profile & Role Management) should verify Role Management tab and user role",
+              "timedOut": false,
+              "duration": 1135,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1️⃣ Switch to Role Management tab\nconst rolesTab = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Role Management')]\")), 10000);\nawait rolesTab.click();\nconsole.log(\"✅ Switched to Role Management tab\");\nawait driver.sleep(1000);\n// 2️⃣ Verify Role tab active\nconst rolesTabClass = await rolesTab.getAttribute(\"class\");\nassert_1.strict.ok(rolesTabClass.includes(\"border-indigo-600\"), \"Role Management tab active\");\nconsole.log(\"✅ Role Management tab active\");\n// 3️⃣ Verify user's role is displayed\nconst roleText = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.css(\"[data-testid='user-role'], .user-role\")), 10000);\nconst roleValue = await roleText.getText();\nassert_1.strict.ok(roleValue.length > 0, \"User role text present\");\nconsole.log(\"✅ User role visible:\", roleValue);",
+              "err": {},
+              "uuid": "0b0db7f1-ff19-48b4-adde-bb4f64dbd43b",
+              "parentUUID": "9d525df4-06c6-4e0c-a1bf-c8c341eb7f5b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "64f7c226-f8ce-4d5f-813b-604791b53a29",
+            "8b91e9a0-1568-462e-8eff-6a3965e8e999",
+            "0b0db7f1-ff19-48b4-adde-bb4f64dbd43b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 23749,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 150000
+        },
+        {
+          "uuid": "a32a50e3-8b7e-4a06-9415-34958bf067d4",
+          "title": "Users Page UI Automation",
+          "fullFile": "C:\\Users\\YaselaDisanayaka\\Downloads\\admin-web-app\\ui-tests\\tests\\users-page.test.ts",
+          "file": "\\tests\\users-page.test.ts",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Users Page UI Automation\"",
+              "fullTitle": "Users Page UI Automation \"before all\" hook in \"Users Page UI Automation\"",
+              "timedOut": false,
+              "duration": 1477,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new selenium_webdriver_1.Builder().forBrowser(\"chrome\").build();",
+              "err": {},
+              "uuid": "625e9c5d-241e-4ad0-96f2-3bca28188edf",
+              "parentUUID": "a32a50e3-8b7e-4a06-9415-34958bf067d4",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Users Page UI Automation\"",
+              "fullTitle": "Users Page UI Automation \"after all\" hook in \"Users Page UI Automation\"",
+              "timedOut": false,
+              "duration": 182,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "5bc38a3f-fb60-4285-be02-ee371a9b616f",
+              "parentUUID": "a32a50e3-8b7e-4a06-9415-34958bf067d4",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should login successfully via Cognito",
+              "fullTitle": "Users Page UI Automation should login successfully via Cognito",
+              "timedOut": false,
+              "duration": 21801,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get(\"http://localhost:3000/login\");\nconst loginButton = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Login with Cognito')]\")), 10000);\nawait loginButton.click();\nconsole.log(\"✅ Clicked Login with Cognito\");\n// Wait for Cognito login page\nawait driver.wait(selenium_webdriver_1.until.urlContains(\"amazoncognito.com\"), 15000);\n// Step 1: Email\nawait driver\n    .findElement(selenium_webdriver_1.By.id(\"formField:R6dpf55:\"))\n    .sendKeys(\"admin@eyepax.com\");\nawait driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\nconsole.log(\"✅ Entered email\");\n// Step 2: Password\nawait driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(\"formField:r1:\")), 10000);\nawait driver\n    .findElement(selenium_webdriver_1.By.id(\"formField:r1:\"))\n    .sendKeys(\"@uBzWXQL7BwPXmWW\");\nawait driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\nconsole.log(\"✅ Entered password\");\n// Step 3: Optional MFA\ntry {\n    await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.id(\"formField:rb:\")), 5000);\n    console.log(\"⏸ MFA detected — please enter manually...\");\n    await driver.sleep(15000);\n    await driver.findElement(selenium_webdriver_1.By.css(\"button[type='submit']\")).click();\n}\ncatch {\n    console.log(\"✅ No MFA step detected\");\n}\n// Wait for dashboard redirect\nawait driver.wait(selenium_webdriver_1.until.urlContains(\"dashboard\"), 20000);\nconsole.log(\"✅ Login successful, redirected to dashboard\");",
+              "err": {},
+              "uuid": "77a0e88b-750a-49b8-936e-2e20ab803569",
+              "parentUUID": "a32a50e3-8b7e-4a06-9415-34958bf067d4",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should verify Users Page content",
+              "fullTitle": "Users Page UI Automation should verify Users Page content",
+              "timedOut": false,
+              "duration": 2509,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// 1️⃣ Navigate to Users Page\nawait driver.get(\"http://localhost:3000/users\");\n// 2️⃣ Verify page heading\nconst heading = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.xpath(\"//h1[contains(text(), 'Users Management')]\")), 10000);\nassert_1.strict.ok(await heading.isDisplayed(), \"Users Management heading is visible\");\nconsole.log(\"✅ Found Users Management heading\");\n// 3️⃣ Verify search bar exists\nconst searchInput = await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.css(\"input[placeholder*='Search']\")), 10000);\nassert_1.strict.ok(await searchInput.isDisplayed(), \"Search input visible\");\nconsole.log(\"✅ Found search input\");\n// Type a search query\nawait searchInput.clear();\nawait searchInput.sendKeys(\"john\");\nconsole.log(\"✅ Entered search query: john\");\n// Wait for results (mock or real)\nawait driver.sleep(2000);\n// 4️⃣ Verify pagination buttons\nconst nextBtn = await driver.findElement(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Next')]\"));\nconst prevBtn = await driver.findElement(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Previous')]\"));\nassert_1.strict.ok(await nextBtn.isDisplayed(), \"Next button visible\");\nassert_1.strict.ok(await prevBtn.isDisplayed(), \"Previous button visible\");\nconsole.log(\"✅ Pagination buttons are visible\");\n// 5️⃣ Verify pagination info\nconst pageInfo = await driver.findElement(selenium_webdriver_1.By.xpath(\"//*[contains(text(), 'Page')]\"));\nassert_1.strict.ok(await pageInfo.isDisplayed(), \"Page info visible\");\nconsole.log(\"✅ Page info displayed\");\n// 6️⃣ Optional: Check user cards/list presence\nconst userCards = await driver.findElements(selenium_webdriver_1.By.css(\"[data-testid='user-row'], .user-row, .user-card\"));\nconsole.log(`✅ Found ${userCards.length} user entries (or placeholders)`);\n// 7️⃣ Optional: Open and close a user detail modal (if users exist)\nif (userCards.length > 0) {\n    await userCards[0].click();\n    console.log(\"✅ Clicked first user entry\");\n    await driver.wait(selenium_webdriver_1.until.elementLocated(selenium_webdriver_1.By.css(\".modal, [role='dialog']\")), 10000);\n    console.log(\"✅ User detail modal opened\");\n    const closeBtn = await driver.findElement(selenium_webdriver_1.By.xpath(\"//button[contains(text(), 'Close')]\"));\n    await closeBtn.click();\n    console.log(\"✅ Closed user detail modal\");\n}\nelse {\n    console.log(\"ℹ️ No user rows available to test modal interaction\");\n}",
+              "err": {},
+              "uuid": "bd6a9dd6-c7b1-4e87-b664-0c3dce46c0a2",
+              "parentUUID": "a32a50e3-8b7e-4a06-9415-34958bf067d4",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "77a0e88b-750a-49b8-936e-2e20ab803569",
+            "bd6a9dd6-c7b1-4e87-b664-0c3dce46c0a2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 24310,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 120000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.0"
+    }
+  }
+}
