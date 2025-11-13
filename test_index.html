@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Test Report</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .summary-card h3 {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .summary-card .value {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .summary-card.passed .value {
+            color: #28a745;
+        }
+
+        .summary-card.failed .value {
+            color: #dc3545;
+        }
+
+        .summary-card.total .value {
+            color: #667eea;
+        }
+
+        .summary-card.duration .value {
+            color: #17a2b8;
+            font-size: 28px;
+        }
+
+        .tests-container {
+            padding: 30px;
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .test-suite {
+            margin-bottom: 30px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .suite-header {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .suite-header:hover {
+            background: #e9ecef;
+        }
+
+        .suite-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .suite-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .stat-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .stat-badge.passed {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .stat-badge.failed {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .test-case {
+            padding: 20px;
+            border-bottom: 1px solid #e9ecef;
+            transition: background 0.2s;
+        }
+
+        .test-case:last-child {
+            border-bottom: none;
+        }
+
+        .test-case:hover {
+            background: #f8f9fa;
+        }
+
+        .test-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .status-icon.passed {
+            background: #28a745;
+            color: white;
+        }
+
+        .status-icon.failed {
+            background: #dc3545;
+            color: white;
+        }
+
+        .test-name {
+            flex: 1;
+            font-size: 16px;
+            font-weight: 500;
+            color: #212529;
+        }
+
+        .test-duration {
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #721c24;
+            overflow-x: auto;
+        }
+
+        .console-log {
+            background: #f8f9fa;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #495057;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .screenshot {
+            margin-top: 10px;
+            max-width: 100%;
+            border-radius: 4px;
+            border: 2px solid #e9ecef;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #28a745 0%, #20c997 100%);
+            transition: width 0.3s;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .summary {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .suite-stats {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Dashboard Test Report</h1>
+            <p>Test Execution Date: 2025-11-02 14:32:15</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%"></div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <div class="summary-card total">
+                <h3>Total Tests</h3>
+                <div class="value">10</div>
+            </div>
+            <div class="summary-card passed">
+                <h3>Passed</h3>
+                <div class="value">8</div>
+            </div>
+            <div class="summary-card failed">
+                <h3>Failed</h3>
+                <div class="value">2</div>
+            </div>
+            <div class="summary-card duration">
+                <h3>Duration</h3>
+                <div class="value">45.2s</div>
+            </div>
+        </div>
+
+        <div class="tests-container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterTests('all')">All Tests</button>
+                <button class="filter-btn" onclick="filterTests('passed')">Passed Only</button>
+                <button class="filter-btn" onclick="filterTests('failed')">Failed Only</button>
+            </div>
+
+            <div class="test-suite">
+                <div class="suite-header" onclick="toggleSuite(this)">
+                    <div class="suite-title">Dashboard Tests</div>
+                    <div class="suite-stats">
+                        <span class="stat-badge passed">8 passed</span>
+                        <span class="stat-badge failed">2 failed</span>
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="passed">
+                    <div class="test-header">
+                        <div class="status-icon passed">✓</div>
+                        <div class="test-name">should load dashboard page successfully</div>
+                        <div class="test-duration">2.3s</div>
+                    </div>
+                    <div class="console-log">
+                        [INFO] Navigating to http://localhost:3000<br>
+                        [INFO] Page loaded successfully<br>
+                        [INFO] Title verified: "My Dashboard"
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="passed">
+                    <div class="test-header">
+                        <div class="status-icon passed">✓</div>
+                        <div class="test-name">should display header</div>
+                        <div class="test-duration">1.8s</div>
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="passed">
+                    <div class="test-header">
+                        <div class="status-icon passed">✓</div>
+                        <div class="test-name">should display dashboard title</div>
+                        <div class="test-duration">1.5s</div>
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="passed">
+                    <div class="test-header">
+                        <div class="status-icon passed">✓</div>
+                        <div class="test-name">should display dashboard cards</div>
+                        <div class="test-duration">2.1s</div>
+                    </div>
+                    <div class="console-log">
+                        [INFO] Found 6 dashboard cards<br>
+                        [INFO] All cards are visible
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="failed">
+                    <div class="test-header">
+                        <div class="status-icon failed">✗</div>
+                        <div class="test-name">should navigate to settings page</div>
+                        <div class="test-duration">5.2s</div>
+                    </div>
+                    <div class="error-message">
+                        Error: Element not found: [data-testid="settings-button"]
+                        
+                        at DashboardPage.clickElement (tests/pages/DashboardPage.ts:54:11)
+                        at Object.&lt;anonymous&gt; (tests/specs/dashboard.test.ts:42:5)
+                        
+                        Expected: Settings page to load
+                        Received: Timeout waiting for element
+                    </div>
+                    <div class="console-log">
+                        [INFO] Attempting to click settings button<br>
+                        [ERROR] Element not found after 5000ms<br>
+                        [INFO] Screenshot captured: failure-settings.png
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="passed">
+                    <div class="test-header">
+                        <div class="status-icon passed">✓</div>
+                        <div class="test-name">should filter data by date range</div>
+                        <div class="test-duration">3.7s</div>
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="passed">
+                    <div class="test-header">
+                        <div class="status-icon passed">✓</div>
+                        <div class="test-name">should display charts correctly</div>
+                        <div class="test-duration">4.2s</div>
+                    </div>
+                    <div class="console-log">
+                        [INFO] Found 3 chart elements<br>
+                        [INFO] Chart data loaded successfully<br>
+                        [INFO] All charts rendered within viewport
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="passed">
+                    <div class="test-header">
+                        <div class="status-icon passed">✓</div>
+                        <div class="test-name">should handle responsive layout</div>
+                        <div class="test-duration">6.8s</div>
+                    </div>
+                    <div class="console-log">
+                        [INFO] Testing desktop viewport: 1920x1080<br>
+                        [INFO] Testing tablet viewport: 768x1024<br>
+                        [INFO] Testing mobile viewport: 375x667<br>
+                        [INFO] All viewports rendered correctly
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="failed">
+                    <div class="test-header">
+                        <div class="status-icon failed">✗</div>
+                        <div class="test-name">should validate form submission</div>
+                        <div class="test-duration">8.1s</div>
+                    </div>
+                    <div class="error-message">
+                        Error: Assertion Failed
+                        
+                        Expected success message to be displayed
+                        Received: Error message "Invalid input format"
+                        
+                        at Object.&lt;anonymous&gt; (tests/specs/dashboard.test.ts:78:5)
+                    </div>
+                    <div class="console-log">
+                        [INFO] Filling form fields<br>
+                        [INFO] Field 'name': John Doe<br>
+                        [INFO] Field 'email': john@example.com<br>
+                        [INFO] Clicking submit button<br>
+                        [ERROR] Validation error occurred<br>
+                        [INFO] Screenshot captured: failure-form.png
+                    </div>
+                </div>
+
+                <div class="test-case" data-status="passed">
+                    <div class="test-header">
+                        <div class="status-icon passed">✓</div>
+                        <div class="test-name">should handle user interactions</div>
+                        <div class="test-duration">9.5s</div>
+                    </div>
+                    <div class="console-log">
+                        [INFO] Testing button clicks<br>
+                        [INFO] Testing hover effects<br>
+                        [INFO] Testing keyboard navigation<br>
+                        [INFO] All interactions working correctly
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Generated by jest-html-reporter | Selenium WebDriver with TypeScript</p>
+            <p>Framework: Jest + React + Tailwind CSS</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleSuite(element) {
+            const suite = element.parentElement;
+            const testCases = suite.querySelectorAll('.test-case');
+            testCases.forEach(testCase => {
+                testCase.classList.toggle('hidden');
+            });
+        }
+
+        function filterTests(filter) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const testCases = document.querySelectorAll('.test-case');
+            testCases.forEach(testCase => {
+                const status = testCase.getAttribute('data-status');
+                if (filter === 'all' || status === filter) {
+                    testCase.classList.remove('hidden');
+                } else {
+                    testCase.classList.add('hidden');
+                }
+            });
+        }
+
+        // Add animation on load
+        window.addEventListener('load', () => {
+            const testCases = document.querySelectorAll('.test-case');
+            testCases.forEach((testCase, index) => {
+                testCase.style.opacity = '0';
+                testCase.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    testCase.style.transition = 'all 0.3s ease';
+                    testCase.style.opacity = '1';
+                    testCase.style.transform = 'translateY(0)';
+                }, index * 50);
+            });
+        });
+    </script>
+</body>
+</html>
