@@ -14,6 +14,7 @@ import { AdminRoute } from "./components/AdminRoute";
 import { LeavePoliciesPage } from "./pages/LeavePoliciesPage";
 import { ApprovalsPage } from "./pages/ApprovalsPage";
 import { ReportsPage } from "./pages/ReportsPage";
+import { AttendanceLogsPage } from "./pages/AttendanceLogsPage";
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
             element={
               <AdminRoute>
                 <UsersPage />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/attendance-logs"
+            element={
+              <AdminRoute>
+                <AttendanceLogsPage />
               </AdminRoute>
             }
           />

@@ -96,6 +96,24 @@ class ApiClient {
     return this.client.get(`/api/v1/admin/audit-log?${params}`);
   }
 
+  // In your apiClient
+async getAttendanceLogs(email: string) {
+  const params = new URLSearchParams({ id: email });
+  
+  // Get the Cognito token from your auth service/context
+  const token = localStorage.getItem("accessToken"); // or however you store it
+  // OR: const token = await Auth.currentSession().getIdToken().getJwtToken();
+  console.log(`===============>>>>${token}`);
+  return this.client.get(
+    `https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/attendance/employee-attendances?${params}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+}
+
   // ===== Error handler =====
   handleError(error: unknown): string {
     if (axios.isAxiosError(error)) {
