@@ -4,14 +4,16 @@ import { MainLayout } from "../components/layout/MainLayout";
 import { ProfileSettings } from "../components/settings/ProfileSettings";
 // import { RoleManagement } from "../components/settings/RoleManagement"
 import { useAuth } from "../context/AuthContext";
-import { User, Shield } from "lucide-react";
+import { User, Unplug } from "lucide-react";
+import LeaveTypesManager from "@/components/settings/LeaveTypes";
 
 export const SettingsPage: React.FC = () => {
   const { user } = useAuth();
-  const [activeTab, setActiveTab] = useState<"profile" | "roles">("profile");
+  const [activeTab, setActiveTab] = useState<"profile" | "leave-types">("profile");
 
   const tabs = [
     { id: "profile", label: "Profile Settings", icon: User },
+    { id: "leave-types", label: "Leave Types", icon: Unplug },
     // { id: "roles", label: "Role Management", icon: Shield },
   ];
 
@@ -36,7 +38,7 @@ export const SettingsPage: React.FC = () => {
                 return (
                   <button
                     key={tab.id}
-                    onClick={() => setActiveTab(tab.id as "profile" | "roles")}
+                    onClick={() => setActiveTab(tab.id as "profile" | "leave-types")}
                     className={`flex items-center gap-2 px-4 py-3 border-b-2 font-medium transition-all duration-200 ${
                       isActive
                         ? "border-indigo-500 text-indigo-400"
@@ -58,6 +60,7 @@ export const SettingsPage: React.FC = () => {
           <div className="bg-gray-900 rounded-xl shadow-inner border border-gray-700 p-6 text-center">
             {activeTab === "profile" && user && <ProfileSettings user={user} />}
             {/* {activeTab === "roles" && user && <RoleManagement user={user} />} */}
+            {activeTab === "leave-types" && <LeaveTypesManager/>}
           </div>
         </div>
       </div>

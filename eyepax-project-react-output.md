@@ -3,8 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `eyepax-project-react`
-- **Generated On**: 2025-11-13 10:41:07 (Asia/Colombo / GMT+06:30)
-- **Total Files Processed**: 44
+- **Generated On**: 2025-11-14 05:30:05 (Asia/Colombo / GMT+06:30)
+- **Total Files Processed**: 45
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -39,6 +39,7 @@
 │   │   ├── 📁 reports/
 │   │   │   └── 📄 PayrollReport.tsx (4.95 KB)
 │   │   ├── 📁 settings/
+│   │   │   ├── 📄 LeaveTypes.tsx (12.92 KB)
 │   │   │   ├── 📄 ProfileSettings.tsx (7.14 KB)
 │   │   │   └── 📄 RoleManagement.tsx (4.49 KB)
 │   │   ├── 📁 users/
@@ -56,10 +57,10 @@
 │   │   ├── 📄 LeavePoliciesPage.tsx (311 B)
 │   │   ├── 📄 LoginPage.tsx (1.1 KB)
 │   │   ├── 📄 ReportsPage.tsx (292 B)
-│   │   ├── 📄 SettingsPage.tsx (2.66 KB)
+│   │   ├── 📄 SettingsPage.tsx (2.86 KB)
 │   │   └── 📄 UsersPage.tsx (5.23 KB)
 │   ├── 📁 services/
-│   │   └── 📄 api.ts (5.97 KB)
+│   │   └── 📄 api.ts (6.67 KB)
 │   ├── 📁 types/
 │   │   └── 📄 index.ts (1.89 KB)
 │   ├── 📄 App.tsx (2.51 KB)
@@ -94,6 +95,7 @@
 - [📄 src/components/policies/LeavePoliciesList.tsx](#📄-src-components-policies-leavepolicieslist-tsx)
 - [📄 src/components/policies/LeavePolicyForm.tsx](#📄-src-components-policies-leavepolicyform-tsx)
 - [📄 src/components/reports/PayrollReport.tsx](#📄-src-components-reports-payrollreport-tsx)
+- [📄 src/components/settings/LeaveTypes.tsx](#📄-src-components-settings-leavetypes-tsx)
 - [📄 src/components/settings/ProfileSettings.tsx](#📄-src-components-settings-profilesettings-tsx)
 - [📄 src/components/settings/RoleManagement.tsx](#📄-src-components-settings-rolemanagement-tsx)
 - [📄 src/components/users/UserDetailModal.tsx](#📄-src-components-users-userdetailmodal-tsx)
@@ -135,17 +137,17 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Files | 44 |
+| Total Files | 45 |
 | Total Directories | 14 |
-| Text Files | 44 |
+| Text Files | 45 |
 | Binary Files | 0 |
-| Total Size | 604.83 KB |
+| Total Size | 618.66 KB |
 
 ### 📄 File Types Distribution
 
 | Extension | Count |
 |-----------|-------|
-| `.tsx` | 28 |
+| `.tsx` | 29 |
 | `.ts` | 4 |
 | `.json` | 4 |
 | `.js` | 3 |
@@ -1553,6 +1555,405 @@ export default function PayrollReport() {
   );
 }
 
+```
+
+---
+
+### <a id="📄-src-components-settings-leavetypes-tsx"></a>📄 `src/components/settings/LeaveTypes.tsx`
+
+**File Info:**
+- **Size**: 12.92 KB
+- **Extension**: `.tsx`
+- **Language**: `typescript`
+- **Location**: `src/components/settings/LeaveTypes.tsx`
+- **Relative Path**: `src/components/settings`
+- **Created**: 2025-11-14 03:59:42 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-14 05:27:17 (Asia/Colombo / GMT+06:30)
+- **MD5**: `788b482b8a244efdd84c27c9819e8ca3`
+- **SHA256**: `c7cba63bf87c820f9bbf84d4135d8c5e34205c6f4a6b1be8db8691a06d246ab2`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+"use client";
+
+import React, { useState, useEffect } from "react";
+import {
+  AlertCircle,
+  CheckCircle,
+  Calendar,
+  Edit2,
+  Save,
+  X,
+  Loader2,
+} from "lucide-react";
+
+interface LeaveType {
+  leave_type_id: number;
+  name: string;
+  description: string;
+  accrual_frequency: string;
+  accrual_amount: string;
+  no_pay_effect: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+interface ApiResponse {
+  userSync: string;
+  message: string;
+  user: {
+    employee_id: number;
+    email: string;
+    cognito_groups: string;
+  };
+  totalRecords: number;
+  leaveTypes: LeaveType[];
+  timestamp: string;
+}
+
+export default function LeaveTypesManager() {
+  const [leaveTypes, setLeaveTypes] = useState<LeaveType[]>([]);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [formData, setFormData] = useState<Partial<LeaveType>>({});
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const API_BASE_URL =
+    "https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/types";
+
+  // Fetch leave types on component mount
+  useEffect(() => {
+    fetchLeaveTypes();
+  }, []);
+
+  const fetchLeaveTypes = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const token = localStorage.getItem("accessToken");
+      
+      const response = await fetch(API_BASE_URL, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch leave types");
+      }
+
+      const data: ApiResponse = await response.json();
+      setLeaveTypes(data.leaveTypes);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleEdit = (leaveType: LeaveType) => {
+    setEditingId(leaveType.leave_type_id);
+    setFormData({
+      leave_type_id: leaveType.leave_type_id,
+      description: leaveType.description,
+      accrual_frequency: leaveType.accrual_frequency,
+      accrual_amount: leaveType.accrual_amount,
+      no_pay_effect: leaveType.no_pay_effect,
+    });
+    setError(null);
+    setSuccess(null);
+  };
+
+  const handleCancel = () => {
+    setEditingId(null);
+    setFormData({});
+    setError(null);
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSave = async () => {
+    if (!formData.leave_type_id) return;
+
+    setIsSaving(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      const token = localStorage.getItem("accessToken");
+
+      const updatePayload = {
+        leave_type_id: formData.leave_type_id,
+        description: formData.description,
+        accrual_frequency: formData.accrual_frequency,
+        accrual_amount: parseFloat(formData.accrual_amount || "0"),
+        no_pay_effect: formData.no_pay_effect,
+      };
+
+      const response = await fetch(API_BASE_URL, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatePayload),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update leave type");
+      }
+
+      setSuccess("Leave type updated successfully");
+      setEditingId(null);
+      setFormData({});
+      
+      // Refresh the data
+      await fetchLeaveTypes();
+      
+      setTimeout(() => setSuccess(null), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <Loader2 className="w-8 h-8 text-indigo-500 animate-spin" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-4xl mx-auto p-6">
+      {/* Error Message */}
+      {error && (
+        <div className="mb-6 flex items-start gap-3 p-4 bg-red-900/30 border border-red-700 rounded-lg">
+          <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-red-300">{error}</p>
+        </div>
+      )}
+
+      {/* Success Message */}
+      {success && (
+        <div className="mb-6 flex items-start gap-3 p-4 bg-green-900/30 border border-green-700 rounded-lg">
+          <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-green-300">{success}</p>
+        </div>
+      )}
+
+      {/* Header */}
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold text-gray-100 tracking-wide">
+          Leave Types Management
+        </h1>
+        <p className="text-gray-400 mt-2">
+          Manage and configure leave types for your organization
+        </p>
+      </div>
+
+      {/* Leave Types Grid */}
+      <div className="space-y-4">
+        {leaveTypes.map((leaveType) => {
+          const isEditing = editingId === leaveType.leave_type_id;
+
+          return (
+            <div
+              key={leaveType.leave_type_id}
+              className="bg-gray-900/80 backdrop-blur-lg rounded-xl border border-gray-800 shadow-lg p-6"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center text-white text-lg font-bold shadow-inner">
+                    {leaveType.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-100 capitalize">
+                      {leaveType.name}
+                    </h3>
+                    <p className="text-gray-400 text-sm">
+                      ID: {leaveType.leave_type_id}
+                    </p>
+                  </div>
+                </div>
+                {!isEditing && (
+                  <button
+                    onClick={() => handleEdit(leaveType)}
+                    className="p-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition"
+                  >
+                    <Edit2 size={18} />
+                  </button>
+                )}
+              </div>
+
+              {/* Form Fields */}
+              <div className="space-y-4">
+                {/* Description */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">
+                    Description
+                  </label>
+                  <textarea
+                    name="description"
+                    value={
+                      isEditing
+                        ? formData.description || ""
+                        : leaveType.description
+                    }
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                    rows={2}
+                    className="w-full px-4 py-2 bg-gray-800/70 border border-gray-700 rounded-lg text-gray-100 focus:ring-2 focus:ring-indigo-500 outline-none disabled:opacity-60 transition resize-none"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {/* Accrual Frequency */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                      Accrual Frequency
+                    </label>
+                    <select
+                      name="accrual_frequency"
+                      value={
+                        isEditing
+                          ? formData.accrual_frequency || ""
+                          : leaveType.accrual_frequency
+                      }
+                      onChange={handleInputChange}
+                      disabled={!isEditing}
+                      className="w-full px-4 py-2 bg-gray-800/70 border border-gray-700 rounded-lg text-gray-100 focus:ring-2 focus:ring-indigo-500 outline-none disabled:opacity-60 transition"
+                    >
+                      <option value="monthly">Monthly</option>
+                      <option value="yearly">Yearly</option>
+                      <option value="quarterly">Quarterly</option>
+                    </select>
+                  </div>
+
+                  {/* Accrual Amount */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                      Accrual Amount
+                    </label>
+                    <input
+                      type="number"
+                      name="accrual_amount"
+                      step="0.01"
+                      value={
+                        isEditing
+                          ? formData.accrual_amount || ""
+                          : leaveType.accrual_amount
+                      }
+                      onChange={handleInputChange}
+                      disabled={!isEditing}
+                      className="w-full px-4 py-2 bg-gray-800/70 border border-gray-700 rounded-lg text-gray-100 focus:ring-2 focus:ring-indigo-500 outline-none disabled:opacity-60 transition"
+                    />
+                  </div>
+
+                  {/* No Pay Effect */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-400 mb-2">
+                      No Pay Effect
+                    </label>
+                    <div className="flex items-center h-[42px]">
+                      <input
+                        type="checkbox"
+                        name="no_pay_effect"
+                        checked={
+                          isEditing
+                            ? formData.no_pay_effect || false
+                            : leaveType.no_pay_effect
+                        }
+                        onChange={handleInputChange}
+                        disabled={!isEditing}
+                        className="w-5 h-5 bg-gray-800 border border-gray-700 rounded text-indigo-600 focus:ring-2 focus:ring-indigo-500 disabled:opacity-60 transition"
+                      />
+                      <span className="ml-2 text-gray-300 text-sm">
+                        {isEditing
+                          ? formData.no_pay_effect
+                            ? "Yes"
+                            : "No"
+                          : leaveType.no_pay_effect
+                          ? "Yes"
+                          : "No"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Metadata */}
+                <div className="flex items-center gap-4 text-sm text-gray-500 pt-2">
+                  <div className="flex items-center gap-2">
+                    <Calendar size={14} />
+                    <span>
+                      Updated: {new Date(leaveType.updated_at).toLocaleString()}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              {isEditing && (
+                <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-800">
+                  <button
+                    onClick={handleCancel}
+                    className="px-5 py-2 border border-gray-700 rounded-lg text-gray-300 hover:bg-gray-800 transition flex items-center gap-2"
+                  >
+                    <X size={18} />
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleSave}
+                    disabled={isSaving}
+                    className="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg disabled:opacity-50 transition flex items-center gap-2"
+                  >
+                    {isSaving ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" />
+                        Saving...
+                      </>
+                    ) : (
+                      <>
+                        <Save size={18} />
+                        Save Changes
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {leaveTypes.length === 0 && !isLoading && (
+        <div className="text-center py-12 text-gray-400">
+          <p>No leave types found</p>
+        </div>
+      )}
+    </div>
+  );
+}
 ```
 
 ---
@@ -3225,15 +3626,15 @@ export function ReportsPage() {
 ### <a id="📄-src-pages-settingspage-tsx"></a>📄 `src/pages/SettingsPage.tsx`
 
 **File Info:**
-- **Size**: 2.66 KB
+- **Size**: 2.86 KB
 - **Extension**: `.tsx`
 - **Language**: `typescript`
 - **Location**: `src/pages/SettingsPage.tsx`
 - **Relative Path**: `src/pages`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-02 10:19:51 (Asia/Colombo / GMT+06:30)
-- **MD5**: `f9b985a838196ed3963d78b92e18a27f`
-- **SHA256**: `35047a7ff0773b0f152031a53f1d1410ba284cbf6c236e9c96e92cefcab7a930`
+- **Modified**: 2025-11-14 05:30:04 (Asia/Colombo / GMT+06:30)
+- **MD5**: `a205f0c9096caf5b2b6b6ed1e97df02d`
+- **SHA256**: `c211eb5a8b947e59439172de5e4034ff15da3e4a939ec1efdab476e14613ce64`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -3245,14 +3646,16 @@ import { MainLayout } from "../components/layout/MainLayout";
 import { ProfileSettings } from "../components/settings/ProfileSettings";
 // import { RoleManagement } from "../components/settings/RoleManagement"
 import { useAuth } from "../context/AuthContext";
-import { User, Shield } from "lucide-react";
+import { User, Unplug } from "lucide-react";
+import LeaveTypesManager from "@/components/settings/LeaveTypes";
 
 export const SettingsPage: React.FC = () => {
   const { user } = useAuth();
-  const [activeTab, setActiveTab] = useState<"profile" | "roles">("profile");
+  const [activeTab, setActiveTab] = useState<"profile" | "leave-types">("profile");
 
   const tabs = [
     { id: "profile", label: "Profile Settings", icon: User },
+    { id: "leave-types", label: "Leave Types", icon: Unplug },
     // { id: "roles", label: "Role Management", icon: Shield },
   ];
 
@@ -3277,7 +3680,7 @@ export const SettingsPage: React.FC = () => {
                 return (
                   <button
                     key={tab.id}
-                    onClick={() => setActiveTab(tab.id as "profile" | "roles")}
+                    onClick={() => setActiveTab(tab.id as "profile" | "leave-types")}
                     className={`flex items-center gap-2 px-4 py-3 border-b-2 font-medium transition-all duration-200 ${
                       isActive
                         ? "border-indigo-500 text-indigo-400"
@@ -3299,6 +3702,7 @@ export const SettingsPage: React.FC = () => {
           <div className="bg-gray-900 rounded-xl shadow-inner border border-gray-700 p-6 text-center">
             {activeTab === "profile" && user && <ProfileSettings user={user} />}
             {/* {activeTab === "roles" && user && <RoleManagement user={user} />} */}
+            {activeTab === "leave-types" && <LeaveTypesManager/>}
           </div>
         </div>
       </div>
@@ -3483,15 +3887,15 @@ export const UsersPage: React.FC = () => {
 ### <a id="📄-src-services-api-ts"></a>📄 `src/services/api.ts`
 
 **File Info:**
-- **Size**: 5.97 KB
+- **Size**: 6.67 KB
 - **Extension**: `.ts`
 - **Language**: `typescript`
 - **Location**: `src/services/api.ts`
 - **Relative Path**: `src/services`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-13 10:41:07 (Asia/Colombo / GMT+06:30)
-- **MD5**: `c77f7a4b99c6b30009656847b1337a0f`
-- **SHA256**: `e9c05134662760d8436ea4fa2b76f48f07853411d41498fcf061f052564e30a0`
+- **Modified**: 2025-11-14 05:28:32 (Asia/Colombo / GMT+06:30)
+- **MD5**: `315259ae9bc8ef190bc457e3ed274f7b`
+- **SHA256**: `22f9342cbea0d6e21f559adcf6fbf9f000c8fd5cfd9df2f39b6367e1daa6ffe8`
 - **Encoding**: UTF-8
 
 **File code content:**
@@ -3605,6 +4009,37 @@ async getAttendanceLogs(email: string) {
   console.log(`===============>>>>${token}`);
   return this.client.get(
     `https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/attendance/employee-attendances?${params}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+}
+
+async getLeaveTypes() {
+  const token = localStorage.getItem("accessToken");
+  return this.client.get(
+    "https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/types",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+}
+
+async updateLeaveType(data: {
+  leave_type_id: number;
+  description: string;
+  accrual_frequency: string;
+  accrual_amount: number;
+  no_pay_effect: boolean;
+}) {
+  const token = localStorage.getItem("accessToken");
+  return this.client.patch(
+    "https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/types",
+    data,
     {
       headers: {
         Authorization: `Bearer ${token}`

@@ -114,6 +114,37 @@ async getAttendanceLogs(email: string) {
   );
 }
 
+async getLeaveTypes() {
+  const token = localStorage.getItem("accessToken");
+  return this.client.get(
+    "https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/types",
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+}
+
+async updateLeaveType(data: {
+  leave_type_id: number;
+  description: string;
+  accrual_frequency: string;
+  accrual_amount: number;
+  no_pay_effect: boolean;
+}) {
+  const token = localStorage.getItem("accessToken");
+  return this.client.patch(
+    "https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/types",
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }
+  );
+}
+
   // ===== Error handler =====
   handleError(error: unknown): string {
     if (axios.isAxiosError(error)) {
