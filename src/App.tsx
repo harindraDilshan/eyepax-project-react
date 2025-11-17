@@ -15,6 +15,8 @@ import { LeavePoliciesPage } from "./pages/LeavePoliciesPage";
 import { ApprovalsPage } from "./pages/ApprovalsPage";
 import { ReportsPage } from "./pages/ReportsPage";
 import { AttendanceLogsPage } from "./pages/AttendanceLogsPage";
+import LeaveRequestsPage from "./pages/LeaveRequestsPage";
+
 
 function App() {
   return (
@@ -35,6 +37,22 @@ function App() {
             element={
               <AdminRoute>
                 <UsersPage />
+              </AdminRoute>
+            }
+          />
+                    <Route
+            path="/users"
+            element={
+              <AdminRoute>
+                <UsersPage />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/leave-management"
+            element={
+              <AdminRoute>
+                <LeaveRequestsPage />
               </AdminRoute>
             }
           />

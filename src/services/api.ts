@@ -114,6 +114,42 @@ async getAttendanceLogs(email: string) {
   );
 }
 
+// Add these methods to your apiClient service
+
+// GET Leave Requests
+async getLeaveRequests() {
+  const token = localStorage.getItem("accessToken");
+  
+  return this.client.get(
+    `https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/request`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+}
+
+// PATCH Update Leave Request Status
+async updateLeaveRequestStatus(requestId: number, status: "approved" | "rejected") {
+  const token = localStorage.getItem("accessToken");
+  
+  return this.client.patch(
+    `https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/request`,
+    {
+      request_id: requestId,
+      status: status
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+}
+
 async getLeaveTypes() {
   const token = localStorage.getItem("accessToken");
   return this.client.get(

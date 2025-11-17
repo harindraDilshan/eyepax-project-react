@@ -5,8 +5,8 @@ PROJECT EXPORT FOR LLMs
 PROJECT INFORMATION:
 --------------------------------------------------
 Project Name: eyepax-project-react
-Generated On: 2025-11-14 05:30:05 (Asia/Colombo / GMT+06:30)
-Total Files Processed: 45
+Generated On: 2025-11-17 11:47:22 (Asia/Colombo / GMT+06:30)
+Total Files Processed: 46
 Export Tool: Easy Whole Project to Single Text File for LLMs v1.1.0
 Tool Author: Jota / José Guilherme Pandolfi
 
@@ -30,11 +30,11 @@ PROJECT STRUCTURE
 │   │   │   ├── 📄 AuditFilters.tsx (4.04 KB)
 │   │   │   └── 📄 AuditLogsList.tsx (3.72 KB)
 │   │   ├── 📁 dashboard/
-│   │   │   └── 📄 DashboardContent.tsx (5.8 KB)
+│   │   │   └── 📄 DashboardContent.tsx (6.62 KB)
 │   │   ├── 📁 layout/
 │   │   │   ├── 📄 Header.tsx (2.42 KB)
 │   │   │   ├── 📄 MainLayout.tsx (1.17 KB)
-│   │   │   └── 📄 Sidebar.tsx (2.83 KB)
+│   │   │   └── 📄 Sidebar.tsx (2.92 KB)
 │   │   ├── 📁 policies/
 │   │   │   ├── 📄 LeavePoliciesList.tsx (4.61 KB)
 │   │   │   └── 📄 LeavePolicyForm.tsx (6.6 KB)
@@ -54,18 +54,19 @@ PROJECT STRUCTURE
 │   ├── 📁 pages/
 │   │   ├── 📄 ApprovalsPage.tsx (308 B)
 │   │   ├── 📄 AttendanceLogsPage.tsx (9.9 KB)
-│   │   ├── 📄 AuditLogsPage.tsx (4.87 KB)
+│   │   ├── 📄 AuditLogsPage.tsx (4.81 KB)
 │   │   ├── 📄 DashboardPage.tsx (839 B)
 │   │   ├── 📄 LeavePoliciesPage.tsx (311 B)
+│   │   ├── 📄 LeaveRequestsPage.tsx (15.94 KB)
 │   │   ├── 📄 LoginPage.tsx (1.1 KB)
 │   │   ├── 📄 ReportsPage.tsx (292 B)
 │   │   ├── 📄 SettingsPage.tsx (2.86 KB)
 │   │   └── 📄 UsersPage.tsx (5.23 KB)
 │   ├── 📁 services/
-│   │   └── 📄 api.ts (6.67 KB)
+│   │   └── 📄 api.ts (7.56 KB)
 │   ├── 📁 types/
 │   │   └── 📄 index.ts (1.89 KB)
-│   ├── 📄 App.tsx (2.51 KB)
+│   ├── 📄 App.tsx (2.96 KB)
 │   ├── 📄 index.css (429 B)
 │   └── 📄 main.tsx (246 B)
 ├── 📄 index.html (377 B)
@@ -85,15 +86,15 @@ PROJECT STRUCTURE
 ================================================================================
 PROJECT STATISTICS
 ================================================================================
-Total Files: 45
+Total Files: 46
 Total Directories: 14
-Text Files: 45
+Text Files: 46
 Binary Files: 0
-Total Size: 618.66 KB
+Total Size: 636.78 KB
 
 FILE TYPES DISTRIBUTION:
 ------------------------------
-.tsx            : 29
+.tsx            : 30
 .ts             : 4
 .json           : 4
 .js             : 3
@@ -547,15 +548,15 @@ FILE: src/components/dashboard/DashboardContent.tsx
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 5.8 KB
+Size: 6.62 KB
 Extension: .tsx
 Language: typescript
 Location: src/components/dashboard/DashboardContent.tsx
 Relative Path: src/components/dashboard
 Created: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-Modified: 2025-11-13 08:39:56 (Asia/Colombo / GMT+06:30)
-MD5: 3e602b6523dc370d0bdc47653d16a881
-SHA256: 68440fb20543c1805459793c1574c159dce6e9c42ff77d80ccb0430c3dc89a55
+Modified: 2025-11-17 08:49:52 (Asia/Colombo / GMT+06:30)
+MD5: c990c82289115c432ca38093fc28a965
+SHA256: bf63fbd05a8868b132ab1dfc11d3b4bb83cedcf30abcea80dafb99028557c0f8
 Encoding: ASCII
 
 FILE CONTENT:
@@ -671,6 +672,22 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
             </div>
           </Link>
 
+          <Link
+            to="/leave-management"
+            className="group bg-gray-800/70 border border-gray-700 hover:border-blue-500 rounded-2xl p-6 flex flex-col justify-between shadow-md transition-all duration-300"
+          >
+            <div>
+              <h3 className="text-xl font-semibold text-gray-100 group-hover:text-blue-400 transition">
+                Manage Leaves
+              </h3>
+              <p className="text-sm text-gray-400 mt-2">
+                Review, edit, and assign roles to users across your system.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
+              Go to Users <ArrowUpRight size={16} className="ml-1" />
+            </div>
+          </Link>
 
           <Link
             to="/attendance-logs"
@@ -872,15 +889,15 @@ FILE: src/components/layout/Sidebar.tsx
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 2.83 KB
+Size: 2.92 KB
 Extension: .tsx
 Language: typescript
 Location: src/components/layout/Sidebar.tsx
 Relative Path: src/components/layout
 Created: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-Modified: 2025-11-13 08:26:01 (Asia/Colombo / GMT+06:30)
-MD5: 5aa7881f586ad8c863201324c0893434
-SHA256: 165b4440669b53c03ff55ad04586718d62026145bb5f0f23185a1091a2211af8
+Modified: 2025-11-17 08:38:07 (Asia/Colombo / GMT+06:30)
+MD5: 4ba5a0c0848df3f24a783925828df0ad
+SHA256: aa2ca7f52b5636bf888a4c83e6246a9167a29b6c8dd33448c501c77c942da337
 Encoding: ASCII
 
 FILE CONTENT:
@@ -896,6 +913,7 @@ import {
   ChevronLeft,
   ChevronRight,
   LayoutDashboard,
+  BedSingle,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -909,6 +927,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const menuItems = [
     { path: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { path: "/users", label: "Manage Users", icon: Users },
+    { path: "/leave-management", label: "Manage Leaves", icon: BedSingle },
     { path: "/attendance-logs", label: "Attendance Logs", icon: FileText },
     { path: "/audit-logs", label: "Audit Logs", icon: FileText },
     { path: "/settings", label: "System Settings", icon: Settings },
@@ -3259,15 +3278,15 @@ FILE: src/pages/AuditLogsPage.tsx
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 4.87 KB
+Size: 4.81 KB
 Extension: .tsx
 Language: typescript
 Location: src/pages/AuditLogsPage.tsx
 Relative Path: src/pages
 Created: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-Modified: 2025-11-02 10:25:24 (Asia/Colombo / GMT+06:30)
-MD5: 852a4b9f4df0b374e19249fb1bec9b69
-SHA256: 5adeefb1176e28921b354b171aed33debf58e0d76d73459de6ae3f8ae3c368c0
+Modified: 2025-11-17 09:18:50 (Asia/Colombo / GMT+06:30)
+MD5: 92d306c312762b0d898cf3eb40e63bcf
+SHA256: 85e34d5c53496aaed9b69057966a7a47b424b2a266807f478db79c7ba80fd4e6
 Encoding: ASCII
 
 FILE CONTENT:
@@ -3276,7 +3295,6 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import { MainLayout } from "../components/layout/MainLayout";
 import { AuditLogsList } from "../components/audit/AuditLogsList";
-import { AuditFilters } from "../components/audit/AuditFilters";
 import { apiClient } from "../services/api";
 import type { AuditLog, PaginatedResponse } from "../types";
 import { AlertCircle } from "lucide-react";
@@ -3509,6 +3527,410 @@ export function LeavePoliciesPage() {
   );
 }
 
+================================================================================
+
+
+================================================================================
+FILE: src/pages/LeaveRequestsPage.tsx
+================================================================================
+
+FILE INFORMATION:
+----------------------------------------
+Size: 15.94 KB
+Extension: .tsx
+Language: typescript
+Location: src/pages/LeaveRequestsPage.tsx
+Relative Path: src/pages
+Created: 2025-11-17 08:52:46 (Asia/Colombo / GMT+06:30)
+Modified: 2025-11-17 11:47:22 (Asia/Colombo / GMT+06:30)
+MD5: e645d19826976920e15b9e2037bcd76c
+SHA256: 0a77d34c10dcadd5d4ec7409544ff85420281b9e53775cce6c4246c3fec919b2
+Encoding: ASCII
+
+FILE CONTENT:
+----------------------------------------
+import React, { useState, useEffect } from 'react';
+import { Calendar, Clock, User, Mail, CheckCircle, XCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { MainLayout } from '@/components/layout/MainLayout';
+
+// Types
+interface LeaveRequest {
+  request_id: number;
+  employee_id: number;
+  email: string;
+  reason: string;
+  start_date: string;
+  end_date: string;
+  status: 'pending' | 'approved' | 'not-approved';
+  approved_date: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+interface LeaveResponse {
+  userSync: string;
+  message: string;
+  user: {
+    employee_id: number;
+    email: string;
+    cognito_groups: string;
+  };
+  totalRecords: number;
+  leaveRequests: LeaveRequest[];
+  timestamp: string;
+}
+
+// API Service
+const apiService = {
+  async getLeaveRequests(): Promise<LeaveResponse> {
+    const token = localStorage.getItem('accessToken');
+    const response = await fetch(
+      'https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/request',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+    if (!response.ok) throw new Error('Failed to fetch leave requests');
+    return response.json();
+  },
+
+  async updateLeaveStatus(requestId: number, status: 'approved' | 'not-approved'): Promise<any> {
+    const token = localStorage.getItem('accessToken');
+    console.log(`--------------> ${status}`)
+    const response = await fetch(
+      'https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/request',
+      {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          request_id: requestId,
+          status: status
+        })
+      }
+    );
+    if (!response.ok) throw new Error('Failed to update leave status');
+    return response.json();
+  }
+};
+
+// Main Component
+const LeaveManagementPage: React.FC = () => {
+  const [leaveRequests, setLeaveRequests] = useState<LeaveRequest[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [updatingId, setUpdatingId] = useState<number | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageSize] = useState(10);
+  const [filterStatus, setFilterStatus] = useState<string>('all');
+
+  useEffect(() => {
+    fetchLeaveRequests();
+  }, []);
+
+  const fetchLeaveRequests = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await apiService.getLeaveRequests();
+      setLeaveRequests(response.leaveRequests || []);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch leave requests');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleUpdateStatus = async (requestId: number, newStatus: 'approved' | 'not-approved') => {
+    setUpdatingId(requestId);
+    setError(null);
+    try {
+      await apiService.updateLeaveStatus(requestId, newStatus);
+      // Update local state
+      setLeaveRequests(prev =>
+        prev.map(req =>
+          req.request_id === requestId
+            ? { ...req, status: newStatus, updated_at: new Date().toISOString() }
+            : req
+        )
+      );
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to update status');
+    } finally {
+      setUpdatingId(null);
+    }
+  };
+
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  };
+
+  const calculateDuration = (start: string, end: string) => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    const days = Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)) + 1;
+    return days;
+  };
+
+  // Filter and paginate
+  const filteredRequests = leaveRequests.filter(req => 
+    filterStatus === 'all' ? true : req.status === filterStatus
+  );
+  const totalPages = Math.ceil(filteredRequests.length / pageSize);
+  const paginatedRequests = filteredRequests.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize
+  );
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'approved': return 'text-green-400 bg-green-900/30 border-green-700';
+      case 'not-approved': return 'text-red-400 bg-red-900/30 border-red-700';
+      case 'pending': return 'text-yellow-400 bg-yellow-900/30 border-yellow-700';
+      default: return 'text-gray-400 bg-gray-900/30 border-gray-700';
+    }
+  };
+
+  return (
+    <MainLayout>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-white mb-2">Leave Management</h1>
+          <p className="text-gray-400">Review and manage employee leave requests</p>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+          <div className="bg-gray-800 border border-gray-700 rounded-xl p-4">
+            <p className="text-gray-400 text-sm mb-1">Total Requests</p>
+            <p className="text-2xl font-bold text-white">{leaveRequests.length}</p>
+          </div>
+          <div className="bg-gray-800 border border-green-700/30 rounded-xl p-4">
+            <p className="text-gray-400 text-sm mb-1">Approved</p>
+            <p className="text-2xl font-bold text-green-400">
+              {leaveRequests.filter(r => r.status === 'approved').length}
+            </p>
+          </div>
+          <div className="bg-gray-800 border border-yellow-700/30 rounded-xl p-4">
+            <p className="text-gray-400 text-sm mb-1">Pending</p>
+            <p className="text-2xl font-bold text-yellow-400">
+              {leaveRequests.filter(r => r.status === 'pending').length}
+            </p>
+          </div>
+          <div className="bg-gray-800 border border-red-700/30 rounded-xl p-4">
+            <p className="text-gray-400 text-sm mb-1">Rejected</p>
+            <p className="text-2xl font-bold text-red-400">
+              {leaveRequests.filter(r => r.status === 'not-approved').length}
+            </p>
+          </div>
+        </div>
+
+        {/* Filters */}
+        <div className="bg-gray-800 border border-gray-700 rounded-xl p-4 mb-6">
+          <div className="flex items-center gap-4">
+            <label className="text-gray-300 text-sm font-medium">Filter by Status:</label>
+            <div className="flex gap-2">
+              {['all', 'pending', 'approved', 'not-approved'].map(status => (
+                <button
+                  key={status}
+                  onClick={() => {
+                    setFilterStatus(status);
+                    setCurrentPage(1);
+                  }}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    filterStatus === status
+                      ? 'bg-indigo-600 text-white'
+                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                  }`}
+                >
+                  {status.charAt(0).toUpperCase() + status.slice(1)}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Error Message */}
+        {error && (
+          <div className="mb-6 p-4 bg-red-900/40 border border-red-700 rounded-xl flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <div>
+              <p className="text-sm font-medium text-red-300">Error</p>
+              <p className="text-sm text-red-400">{error}</p>
+            </div>
+          </div>
+        )}
+
+        {/* Leave Requests List */}
+        <div className="bg-gray-800 border border-gray-700 rounded-xl overflow-hidden">
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="w-8 h-8 text-indigo-500 animate-spin" />
+            </div>
+          ) : paginatedRequests.length === 0 ? (
+            <div className="text-center py-20">
+              <Calendar className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+              <p className="text-gray-400">No leave requests found</p>
+            </div>
+          ) : (
+            <div className="divide-y divide-gray-700">
+              {paginatedRequests.map(request => (
+                <div
+                  key={request.request_id}
+                  className="p-6 hover:bg-gray-750 transition-colors"
+                >
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    {/* Left Section - Employee Info */}
+                    <div className="flex-1">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-12 h-12 bg-indigo-600/20 rounded-full flex items-center justify-center">
+                          <User className="w-6 h-6 text-indigo-400" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-2">
+                            <h3 className="text-lg font-semibold text-white">
+                              Employee ID: {request.employee_id}
+                            </h3>
+                            <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(request.status)}`}>
+                              {request.status.toUpperCase()}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2 text-gray-400 text-sm mb-2">
+                            <Mail className="w-4 h-4" />
+                            <span>{request.email}</span>
+                          </div>
+                          <div className="bg-gray-900/50 rounded-lg p-3 mt-3">
+                            <p className="text-sm text-gray-300">
+                              <span className="font-medium text-gray-200">Reason: </span>
+                              {request.reason}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Middle Section - Dates */}
+                    <div className="lg:border-l lg:border-gray-700 lg:pl-6">
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-3">
+                          <Calendar className="w-5 h-5 text-indigo-400" />
+                          <div>
+                            <p className="text-xs text-gray-500">Start Date</p>
+                            <p className="text-sm font-medium text-white">
+                              {formatDate(request.start_date)}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <Calendar className="w-5 h-5 text-indigo-400" />
+                          <div>
+                            <p className="text-xs text-gray-500">End Date</p>
+                            <p className="text-sm font-medium text-white">
+                              {formatDate(request.end_date)}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <Clock className="w-5 h-5 text-indigo-400" />
+                          <div>
+                            <p className="text-xs text-gray-500">Duration</p>
+                            <p className="text-sm font-medium text-white">
+                              {calculateDuration(request.start_date, request.end_date)} days
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Right Section - Actions */}
+                    <div className="lg:border-l lg:border-gray-700 lg:pl-6">
+                      <div className="flex flex-col gap-2 min-w-[160px]">
+                        <button
+                          onClick={() => handleUpdateStatus(request.request_id, 'approved')}
+                          disabled={updatingId === request.request_id || request.status === 'approved'}
+                          className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all ${
+                            request.status === 'approved'
+                              ? 'bg-green-900/30 text-green-400 border border-green-700 cursor-not-allowed'
+                              : 'bg-green-600 text-white hover:bg-green-700 disabled:opacity-50'
+                          }`}
+                        >
+                          {updatingId === request.request_id ? (
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                          ) : (
+                            <CheckCircle className="w-4 h-4" />
+                          )}
+                          <span>Approve</span>
+                        </button>
+                        <button
+                          onClick={() => handleUpdateStatus(request.request_id, 'not-approved')}
+                          disabled={updatingId === request.request_id || request.status === 'not-approved'}
+                          className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-all ${
+                            request.status === 'not-approved'
+                              ? 'bg-red-900/30 text-red-400 border border-red-700 cursor-not-allowed'
+                              : 'bg-red-600 text-white hover:bg-red-700 disabled:opacity-50'
+                          }`}
+                        >
+                          {updatingId === request.request_id ? (
+                            <Loader2 className="w-4 h-4 animate-spin" />
+                          ) : (
+                            <XCircle className="w-4 h-4" />
+                          )}
+                          <span>Reject</span>
+                        </button>
+                      </div>
+                      <div className="mt-3 text-xs text-gray-500">
+                        <p>Updated: {formatDate(request.updated_at)}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Pagination */}
+        {!loading && paginatedRequests.length > 0 && (
+          <div className="mt-6 flex items-center justify-between text-gray-300">
+            <p className="text-sm">
+              Page {currentPage} of {totalPages} ({filteredRequests.length} requests)
+            </p>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="px-4 py-2 border border-gray-700 rounded-lg text-gray-300 bg-gray-800 hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                Previous
+              </button>
+              <button
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage >= totalPages}
+                className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+    </MainLayout>
+  );
+};
+
+export default LeaveManagementPage;
 ================================================================================
 
 
@@ -3866,15 +4288,15 @@ FILE: src/services/api.ts
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 6.67 KB
+Size: 7.56 KB
 Extension: .ts
 Language: typescript
 Location: src/services/api.ts
 Relative Path: src/services
 Created: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-Modified: 2025-11-14 05:28:32 (Asia/Colombo / GMT+06:30)
-MD5: 315259ae9bc8ef190bc457e3ed274f7b
-SHA256: 22f9342cbea0d6e21f559adcf6fbf9f000c8fd5cfd9df2f39b6367e1daa6ffe8
+Modified: 2025-11-17 10:30:50 (Asia/Colombo / GMT+06:30)
+MD5: a90dce2e8f54ec70f83c27d9c95cc50c
+SHA256: 1737a6580e0c2023253ba30de2d9a01b6532cb1103b0f88a5377c14564bd29f0
 Encoding: UTF-8
 
 FILE CONTENT:
@@ -3990,6 +4412,42 @@ async getAttendanceLogs(email: string) {
     {
       headers: {
         Authorization: `Bearer ${token}`
+      }
+    }
+  );
+}
+
+// Add these methods to your apiClient service
+
+// GET Leave Requests
+async getLeaveRequests() {
+  const token = localStorage.getItem("accessToken");
+  
+  return this.client.get(
+    `https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/request`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+}
+
+// PATCH Update Leave Request Status
+async updateLeaveRequestStatus(requestId: number, status: "approved" | "rejected") {
+  const token = localStorage.getItem("accessToken");
+  
+  return this.client.patch(
+    `https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/request`,
+    {
+      request_id: requestId,
+      status: status
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json'
       }
     }
   );
@@ -4249,15 +4707,15 @@ FILE: src/App.tsx
 
 FILE INFORMATION:
 ----------------------------------------
-Size: 2.51 KB
+Size: 2.96 KB
 Extension: .tsx
 Language: typescript
 Location: src/App.tsx
 Relative Path: src
 Created: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-Modified: 2025-11-13 08:44:30 (Asia/Colombo / GMT+06:30)
-MD5: 97c6a9faafa696935b2ec095a360d1a8
-SHA256: aefc79fb3dbd96580cc5564e0800a16302485bb9ba76ba764f2707f957d5c74c
+Modified: 2025-11-17 11:00:21 (Asia/Colombo / GMT+06:30)
+MD5: cc085cc25bee91f56779ef32e1ced957
+SHA256: b526fc2585b70269bd9fccf627c9c2394889a9cdcdd97cbfa02402c063d3c864
 Encoding: ASCII
 
 FILE CONTENT:
@@ -4279,6 +4737,8 @@ import { LeavePoliciesPage } from "./pages/LeavePoliciesPage";
 import { ApprovalsPage } from "./pages/ApprovalsPage";
 import { ReportsPage } from "./pages/ReportsPage";
 import { AttendanceLogsPage } from "./pages/AttendanceLogsPage";
+import LeaveRequestsPage from "./pages/LeaveRequestsPage";
+
 
 function App() {
   return (
@@ -4299,6 +4759,22 @@ function App() {
             element={
               <AdminRoute>
                 <UsersPage />
+              </AdminRoute>
+            }
+          />
+                    <Route
+            path="/users"
+            element={
+              <AdminRoute>
+                <UsersPage />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="/leave-management"
+            element={
+              <AdminRoute>
+                <LeaveRequestsPage />
               </AdminRoute>
             }
           />

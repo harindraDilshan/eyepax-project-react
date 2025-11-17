@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   LayoutDashboard,
+  BedSingle,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -22,6 +23,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
   const menuItems = [
     { path: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
     { path: "/users", label: "Manage Users", icon: Users },
+    { path: "/leave-management", label: "Manage Leaves", icon: BedSingle },
     { path: "/attendance-logs", label: "Attendance Logs", icon: FileText },
     { path: "/audit-logs", label: "Audit Logs", icon: FileText },
     { path: "/settings", label: "System Settings", icon: Settings },

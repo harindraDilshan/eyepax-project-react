@@ -2,7 +2,6 @@ import type React from "react";
 import { useState, useEffect } from "react";
 import { MainLayout } from "../components/layout/MainLayout";
 import { AuditLogsList } from "../components/audit/AuditLogsList";
-import { AuditFilters } from "../components/audit/AuditFilters";
 import { apiClient } from "../services/api";
 import type { AuditLog, PaginatedResponse } from "../types";
 import { AlertCircle } from "lucide-react";
