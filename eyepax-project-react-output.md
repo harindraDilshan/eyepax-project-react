@@ -3,8 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `eyepax-project-react`
-- **Generated On**: 2025-11-18 03:03:50 (Asia/Colombo / GMT+06:30)
-- **Total Files Processed**: 52
+- **Generated On**: 2025-11-18 05:03:42 (Asia/Colombo / GMT+06:30)
+- **Total Files Processed**: 57
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -30,7 +30,7 @@
 │   │   ├── 📁 calender/
 │   │   │   └── 📄 LeaveCalendar.tsx (14.75 KB)
 │   │   ├── 📁 dashboard/
-│   │   │   └── 📄 DashboardContent.tsx (7.45 KB)
+│   │   │   └── 📄 DashboardContent.tsx (7.42 KB)
 │   │   ├── 📁 layout/
 │   │   │   ├── 📄 Header.tsx (2.42 KB)
 │   │   │   ├── 📄 MainLayout.tsx (1.17 KB)
@@ -77,10 +77,16 @@
 │   ├── 📄 App.tsx (3.22 KB)
 │   ├── 📄 index.css (429 B)
 │   └── 📄 main.tsx (542 B)
+├── 📁 tests/
+│   ├── 📄 AttendanceLogsPage.test.tsx (3.88 KB)
+│   ├── 📄 LeavePoliciesPage.test.tsx (1.14 KB)
+│   └── 📄 LeaveRequestsPage.test.tsx (3.42 KB)
 ├── 📄 index.html (377 B)
+├── 📄 jest.config.cjs (293 B)
+├── 📄 jest.setup.ts (37 B)
 ├── 📄 next-env.d.ts (259 B)
-├── 📄 package-lock.json (482.5 KB)
-├── 📄 package.json (1.77 KB)
+├── 📄 package-lock.json (509.28 KB)
+├── 📄 package.json (2 KB)
 ├── 📄 postcss.config.js (86 B)
 ├── 📄 README.md (2.01 KB)
 ├── 📄 structure.txt (2.47 KB)
@@ -135,7 +141,11 @@
 - [📄 src/App.tsx](#📄-src-app-tsx)
 - [📄 src/index.css](#📄-src-index-css)
 - [📄 src/main.tsx](#📄-src-main-tsx)
+- [📄 tests/AttendanceLogsPage.test.tsx](#📄-tests-attendancelogspage-test-tsx)
+- [📄 tests/LeavePoliciesPage.test.tsx](#📄-tests-leavepoliciespage-test-tsx)
+- [📄 tests/LeaveRequestsPage.test.tsx](#📄-tests-leaverequestspage-test-tsx)
 - [📄 index.html](#📄-index-html)
+- [📄 jest.setup.ts](#📄-jest-setup-ts)
 - [📄 next-env.d.ts](#📄-next-env-d-ts)
 - [📄 package-lock.json](#📄-package-lock-json)
 - [📄 package.json](#📄-package-json)
@@ -155,22 +165,23 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Files | 52 |
-| Total Directories | 18 |
-| Text Files | 52 |
-| Binary Files | 0 |
-| Total Size | 671.19 KB |
+| Total Files | 57 |
+| Total Directories | 19 |
+| Text Files | 56 |
+| Binary Files | 1 |
+| Total Size | 706.93 KB |
 
 ### 📄 File Types Distribution
 
 | Extension | Count |
 |-----------|-------|
-| `.tsx` | 31 |
-| `.ts` | 8 |
+| `.tsx` | 34 |
+| `.ts` | 9 |
 | `.json` | 4 |
 | `.js` | 3 |
 | `.css` | 2 |
 | `.html` | 2 |
+| `.cjs` | 1 |
 | `.md` | 1 |
 | `.txt` | 1 |
 
@@ -1068,15 +1079,15 @@ export default LeaveCalendar;
 ### <a id="📄-src-components-dashboard-dashboardcontent-tsx"></a>📄 `src/components/dashboard/DashboardContent.tsx`
 
 **File Info:**
-- **Size**: 7.45 KB
+- **Size**: 7.42 KB
 - **Extension**: `.tsx`
 - **Language**: `typescript`
 - **Location**: `src/components/dashboard/DashboardContent.tsx`
 - **Relative Path**: `src/components/dashboard`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-17 12:36:10 (Asia/Colombo / GMT+06:30)
-- **MD5**: `cee2e9307f508c6f2cd7952fedd5089e`
-- **SHA256**: `4792ea54b4c4b537c717413e6ac7b2f97d55c9b00d0aea11de857e1cf68badf4`
+- **Modified**: 2025-11-18 03:44:40 (Asia/Colombo / GMT+06:30)
+- **MD5**: `bbc7e615a9acb8902f3d648c5b13aceb`
+- **SHA256**: `0e7eba868c58862390ef80d3edbc5e5decc5c2c91bf1338393587d519a3c0bef`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -1202,11 +1213,11 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
                 Manage Leaves
               </h3>
               <p className="text-sm text-gray-400 mt-2">
-                Review, edit, and assign roles to users across your system.
+                Review, edit, and manage leaves.
               </p>
             </div>
             <div className="mt-4 flex items-center text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
-              Go to Users <ArrowUpRight size={16} className="ml-1" />
+              Go to Leave Management <ArrowUpRight size={16} className="ml-1" />
             </div>
           </Link>
 
@@ -1219,7 +1230,7 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
                 Attendance Logs
               </h3>
               <p className="text-sm text-gray-400 mt-2">
-                Review, edit, and assign roles to users across your system.
+                Review, edit, and manage attendance logs.
               </p>
             </div>
             <div className="mt-4 flex items-center text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
@@ -1228,19 +1239,19 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
           </Link>
 
           <Link
-            to="/attendance-logs"
+            to="/audit-logs"
             className="group bg-gray-800/70 border border-gray-700 hover:border-blue-500 rounded-2xl p-6 flex flex-col justify-between shadow-md transition-all duration-300"
           >
             <div>
               <h3 className="text-xl font-semibold text-gray-100 group-hover:text-blue-400 transition">
-                Attendance Logs
+                Audit Activity
               </h3>
               <p className="text-sm text-gray-400 mt-2">
                 Review, edit, and assign roles to users across your system.
               </p>
             </div>
             <div className="mt-4 flex items-center text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
-              Go to Attendance Logs <ArrowUpRight size={16} className="ml-1" />
+              Go to Audit Activity <ArrowUpRight size={16} className="ml-1" />
             </div>
           </Link>
 
@@ -1251,14 +1262,14 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
           >
             <div>
               <h3 className="text-xl font-semibold text-gray-100 group-hover:text-purple-400 transition">
-                Audit Activity
+                Leave Calendar
               </h3>
               <p className="text-sm text-gray-400 mt-2">
                 Track login attempts, administrative actions, and user changes.
               </p>
             </div>
             <div className="mt-4 flex items-center text-purple-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
-              View Logs <ArrowUpRight size={16} className="ml-1" />
+              View Calendar <ArrowUpRight size={16} className="ml-1" />
             </div>
           </Link>
         </div>
@@ -4165,7 +4176,7 @@ export function LeavePoliciesPage() {
 - **Location**: `src/pages/LeaveRequestsPage.tsx`
 - **Relative Path**: `src/pages`
 - **Created**: 2025-11-17 08:52:46 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-18 03:03:49 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-18 05:01:52 (Asia/Colombo / GMT+06:30)
 - **MD5**: `2890c908962bc4fc7be47beed197659d`
 - **SHA256**: `82d3181830569515ac2cd653a415b5d69556f787cdad8f6aaac7c4d9fd70dbdd`
 - **Encoding**: ASCII
@@ -5829,6 +5840,321 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 ---
 
+### <a id="📄-tests-attendancelogspage-test-tsx"></a>📄 `tests/AttendanceLogsPage.test.tsx`
+
+**File Info:**
+- **Size**: 3.88 KB
+- **Extension**: `.tsx`
+- **Language**: `typescript`
+- **Location**: `tests/AttendanceLogsPage.test.tsx`
+- **Relative Path**: `tests`
+- **Created**: 2025-11-18 03:55:51 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-18 04:29:33 (Asia/Colombo / GMT+06:30)
+- **MD5**: `fe413bafe8779cf0931a4491fabb8dac`
+- **SHA256**: `3e5c300e9e99a945780202e7f947b897ef252178db897b062046bc49eec625e5`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+import React from "react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react"; // <-- added waitFor
+import { AttendanceLogsPage } from "../src/pages/AttendanceLogsPage";
+import { apiClient } from "../src/services/api";
+
+//  Mock MainLayout because it wraps children
+jest.mock("../src/components/layout/MainLayout", () => ({
+  MainLayout: ({ children }: any) => <div>{children}</div>,
+}));
+
+// Mock apiClient
+jest.mock("../src/services/api", () => ({
+  apiClient: {
+    getAttendanceLogs: jest.fn(),
+    handleError: jest.fn((err) => "API Error Occurred"),
+  },
+}));
+
+describe("AttendanceLogsPage", () => {
+  const mockResponse = {
+    userSync: "User synced",
+    message: "Fetched successfully",
+    requestedBy: {
+      employee_id: 1,
+      email: "admin@test.com",
+      cognito_groups: "Admin",
+    },
+    employee: {
+      employee_id: 4,
+      email: "testuser@test.com",
+      cognito_groups: "User",
+    },
+    totalRecords: 1,
+    attendances: [
+      {
+        attendance_id: 10,
+        employee_id: 4,
+        date: "2025-10-20",
+        clock_in_time: "2025-10-20T08:00:00Z",
+        clock_out_time: "2025-10-20T17:00:00Z",
+        status: "Present",
+        created_at: "2025-10-20T17:01:00Z",
+        updated_at: "2025-10-20T17:05:00Z",
+      },
+    ],
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test("renders page and search input", () => {
+    render(<AttendanceLogsPage />);
+    expect(screen.getByText("Attendance Logs")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Enter employee email/i)).toBeInTheDocument();
+  });
+
+  test("shows error when clicking search with empty email", async () => {
+    render(<AttendanceLogsPage />);
+    fireEvent.click(screen.getByText("Search"));
+    expect(await screen.findByText("Please enter an email address")).toBeInTheDocument();
+  });
+
+  test("calls API and displays employee info & attendance records", async () => {
+    (apiClient.getAttendanceLogs as jest.Mock).mockResolvedValue({ data: mockResponse });
+    render(<AttendanceLogsPage />);
+
+    fireEvent.change(screen.getByPlaceholderText(/Enter employee email/i), {
+      target: { value: "testuser@test.com" },
+    });
+
+    fireEvent.click(screen.getByText("Search"));
+
+    await waitFor(() => {
+      expect(apiClient.getAttendanceLogs).toHaveBeenCalledWith("testuser@test.com");
+    });
+
+    expect(screen.getByText("Employee Information")).toBeInTheDocument();
+    expect(screen.getByText("testuser@test.com")).toBeInTheDocument();
+    expect(screen.getByText("User")).toBeInTheDocument();
+    expect(screen.getByText("Attendance Records")).toBeInTheDocument();
+    expect(screen.getByText(/Attendance ID: #10/i)).toBeInTheDocument();
+    expect(screen.getByText(/Present/i)).toBeInTheDocument();
+  });
+
+  test("shows 'No data found' message when attendances array is empty", async () => {
+    (apiClient.getAttendanceLogs as jest.Mock).mockResolvedValue({
+      data: { ...mockResponse, totalRecords: 0, attendances: [] },
+    });
+    render(<AttendanceLogsPage />);
+
+    fireEvent.change(screen.getByPlaceholderText(/Enter employee email/i), {
+      target: { value: "empty@test.com" },
+    });
+
+    fireEvent.click(screen.getByText("Search"));
+
+    await waitFor(() => {
+      expect(screen.getByText("No attendance records found for this employee.")).toBeInTheDocument();
+    });
+  });
+
+  test("displays API error when request fails", async () => {
+    (apiClient.getAttendanceLogs as jest.Mock).mockRejectedValue(new Error("Bad request"));
+    render(<AttendanceLogsPage />);
+
+    fireEvent.change(screen.getByPlaceholderText(/Enter employee email/i), {
+      target: { value: "wrong@test.com" },
+    });
+
+    fireEvent.click(screen.getByText("Search"));
+
+    await waitFor(() => {
+      expect(screen.getByText("API Error Occurred")).toBeInTheDocument();
+    });
+  });
+});
+
+```
+
+---
+
+### <a id="📄-tests-leavepoliciespage-test-tsx"></a>📄 `tests/LeavePoliciesPage.test.tsx`
+
+**File Info:**
+- **Size**: 1.14 KB
+- **Extension**: `.tsx`
+- **Language**: `typescript`
+- **Location**: `tests/LeavePoliciesPage.test.tsx`
+- **Relative Path**: `tests`
+- **Created**: 2025-11-18 04:39:16 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-18 04:43:48 (Asia/Colombo / GMT+06:30)
+- **MD5**: `412a752c1c9f108a834f6c9de11f8c56`
+- **SHA256**: `67aa601dc5c2e0213e122c4258824512870d3af42626829cfdb10acd47dd0e3c`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import { LeavePoliciesPage } from "../src/pages/LeavePoliciesPage";
+import LeavePoliciesList from "../src/components/policies/LeavePoliciesList";
+
+// Mock LeavePoliciesList to simplify testing
+jest.mock("../src/components/policies/LeavePoliciesList", () => ({
+  __esModule: true,
+  default: () => <div data-testid="leave-policies-list">Leave Policies List</div>,
+}));
+
+// Mock MainLayout to render children only
+jest.mock("../src/components/layout/MainLayout", () => ({
+  __esModule: true,
+  MainLayout: ({ children }: any) => <div data-testid="main-layout">{children}</div>,
+}));
+
+describe("LeavePoliciesPage", () => {
+  test("renders MainLayout and LeavePoliciesList", () => {
+    render(<LeavePoliciesPage />);
+
+    // Check MainLayout renders
+    const layout = screen.getByTestId("main-layout");
+    expect(layout).toBeInTheDocument();
+
+    // Check LeavePoliciesList renders inside
+    const list = screen.getByTestId("leave-policies-list");
+    expect(list).toBeInTheDocument();
+    expect(list).toHaveTextContent("Leave Policies List");
+  });
+});
+
+```
+
+---
+
+### <a id="📄-tests-leaverequestspage-test-tsx"></a>📄 `tests/LeaveRequestsPage.test.tsx`
+
+**File Info:**
+- **Size**: 3.42 KB
+- **Extension**: `.tsx`
+- **Language**: `typescript`
+- **Location**: `tests/LeaveRequestsPage.test.tsx`
+- **Relative Path**: `tests`
+- **Created**: 2025-11-18 04:47:28 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-18 04:59:55 (Asia/Colombo / GMT+06:30)
+- **MD5**: `9cb7bc0fb821d1798519ae365503a490`
+- **SHA256**: `7dc88234256b850b512726f04f59df32e608f28d6f4f5b8daf365d95faa1af66`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+import React from "react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import LeaveManagementPage from "../src/pages/LeaveRequestsPage";
+import { apiClient } from "../src/services/api";
+// Mock MainLayout
+jest.mock("../src/components/layout/MainLayout", () => ({
+  MainLayout: ({ children }: any) => <div data-testid="main-layout">{children}</div>,
+}));
+
+// Mock lucide-react icons
+jest.mock("lucide-react", () => ({
+  Calendar: () => <div data-testid="calendar-icon" />,
+  Clock: () => <div data-testid="clock-icon" />,
+  User: () => <div data-testid="user-icon" />,
+  Mail: () => <div data-testid="mail-icon" />,
+  CheckCircle: () => <div data-testid="check-icon" />,
+  XCircle: () => <div data-testid="x-icon" />,
+  AlertCircle: () => <div data-testid="alert-icon" />,
+  Loader2: () => <div data-testid="loader-icon" />,
+}));
+
+describe("LeaveManagementPage", () => {
+  const mockApiResponse = {
+    userSync: "User already exists. No update required.",
+    message: "Leave requests retrieved successfully",
+    user: {
+      employee_id: 1,
+      email: "osah.dilshan@gmail.com",
+      cognito_groups: "Admin",
+    },
+    totalRecords: 1,
+    leaveRequests: [
+      {
+        request_id: 1,
+        employee_id: 2,
+        reason: "Family vacation",
+        approved_date: "2025-11-17T00:00:00.000Z",
+        status: "not-approved",
+        start_date: "2025-12-20T00:00:00.000Z",
+        end_date: "2025-12-27T00:00:00.000Z",
+        created_at: "2025-11-17T07:21:15.790Z",
+        updated_at: "2025-11-17T11:52:05.834Z",
+        email: "s19588@sci.pdn.ac.lk",
+      },
+    ],
+    timestamp: "2025-11-17T11:58:02.021Z",
+  };
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test("renders leave requests correctly", async () => {
+    (apiClient.getLeaveRequests as jest.Mock).mockResolvedValue(mockApiResponse);
+
+    render(<LeaveManagementPage />);
+
+    // Wait for API data to load
+    await waitFor(() => {
+      expect(apiClient.getLeaveRequests).toHaveBeenCalledTimes(1);
+    });
+
+    // Check main layout rendered
+    expect(screen.getByTestId("main-layout")).toBeInTheDocument();
+
+    // Check leave request details
+    expect(screen.getByText(/Employee ID: 2/i)).toBeInTheDocument();
+    expect(screen.getByText(/Family vacation/i)).toBeInTheDocument();
+    expect(screen.getByText(/s19588@sci.pdn.ac.lk/i)).toBeInTheDocument();
+    expect(screen.getByText(/NOT-APPROVED/i)).toBeInTheDocument();
+  });
+
+  test("updates leave status to approved", async () => {
+    (apiClient.getLeaveRequests as jest.Mock).mockResolvedValue(mockApiResponse);
+    (apiClient.updateLeaveRequestStatus as jest.Mock).mockResolvedValue({ success: true });
+
+    render(<LeaveManagementPage />);
+
+    await waitFor(() => screen.getByText(/Employee ID: 2/i));
+
+    const approveButton = screen.getByText(/Approve/i);
+    fireEvent.click(approveButton);
+
+    await waitFor(() => {
+      expect(apiClient.updateLeaveRequestStatus).toHaveBeenCalledWith(1, "approved");
+    });
+
+    // Status badge should now show APPROVED
+    expect(screen.getByText(/APPROVED/i)).toBeInTheDocument();
+  });
+
+  test("shows error when API fails", async () => {
+    (apiClient.getLeaveRequests as jest.Mock).mockRejectedValue(new Error("API Error"));
+
+    render(<LeaveManagementPage />);
+
+    await waitFor(() => {
+      expect(screen.getByText(/API Error/i)).toBeInTheDocument();
+    });
+  });
+});
+
+```
+
+---
+
 ### <a id="📄-index-html"></a>📄 `index.html`
 
 **File Info:**
@@ -5859,6 +6185,29 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
+```
+
+---
+
+### <a id="📄-jest-setup-ts"></a>📄 `jest.setup.ts`
+
+**File Info:**
+- **Size**: 37 B
+- **Extension**: `.ts`
+- **Language**: `typescript`
+- **Location**: `jest.setup.ts`
+- **Relative Path**: `root`
+- **Created**: 2025-11-18 04:08:11 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-18 04:24:49 (Asia/Colombo / GMT+06:30)
+- **MD5**: `39529208dfc584ff87969cf460d5f8e5`
+- **SHA256**: `380ea4fdb738a46711fd17c6fb504ef0fd21bfdcf9af1e646ea777b3b8a6720c`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+import '@testing-library/jest-dom';
 
 ```
 
@@ -5895,15 +6244,15 @@ import "./.next/dev/types/routes.d.ts";
 ### <a id="📄-package-lock-json"></a>📄 `package-lock.json`
 
 **File Info:**
-- **Size**: 482.5 KB
+- **Size**: 509.28 KB
 - **Extension**: `.json`
 - **Language**: `json`
 - **Location**: `package-lock.json`
 - **Relative Path**: `root`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-17 12:26:24 (Asia/Colombo / GMT+06:30)
-- **MD5**: `d608defcc2f5fb0ca3282f13578fe7d8`
-- **SHA256**: `1901636be7ec5144fcf40a8c3053edbe04fb92d8561662d7c0da1a005db2ed11`
+- **Modified**: 2025-11-18 04:25:15 (Asia/Colombo / GMT+06:30)
+- **MD5**: `86f6c6c62306dd94ed042808ea110bab`
+- **SHA256**: `8d30fb01c52a77e7a55d150c7f8828d8954e26981e89624f7b72ceccf8388e7c`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -5940,6 +6289,9 @@ import "./.next/dev/types/routes.d.ts";
         "tailwindcss-animate": "1.0.7"
       },
       "devDependencies": {
+        "@testing-library/jest-dom": "^6.9.1",
+        "@testing-library/react": "^16.3.0",
+        "@testing-library/user-event": "^14.6.1",
         "@types/chai": "^5.2.3",
         "@types/jest": "^30.0.0",
         "@types/mocha": "^10.0.10",
@@ -5953,7 +6305,9 @@ import "./.next/dev/types/routes.d.ts";
         "autoprefixer": "^10.4.16",
         "chai": "^4.5.0",
         "chromedriver": "^142.0.0",
+        "identity-obj-proxy": "^3.0.0",
         "jest": "^30.2.0",
+        "jest-environment-jsdom": "^30.2.0",
         "jest-html-reporter": "^4.3.0",
         "mocha": "^10.8.2",
         "postcss": "^8.4.32",
@@ -5965,6 +6319,13 @@ import "./.next/dev/types/routes.d.ts";
         "typescript": "^5.9.3",
         "vite": "^5.0.8"
       }
+    },
+    "node_modules/@adobe/css-tools": {
+      "version": "4.4.4",
+      "resolved": "https://registry.npmjs.org/@adobe/css-tools/-/css-tools-4.4.4.tgz",
+      "integrity": "sha512-Elp+iwUx5rN5+Y8xLt5/GRoG20WGoDCQ/1Fb+1LiGtvwbDavuSk0jhD/eZdckHAuzcDzccnkv+rEjyWfRx18gg==",
+      "dev": true,
+      "license": "MIT"
     },
     "node_modules/@alloc/quick-lru": {
       "version": "5.2.0",
@@ -5998,6 +6359,27 @@ import "./.next/dev/types/routes.d.ts";
         "nun": "bin/nun.mjs",
         "nup": "bin/nup.mjs"
       }
+    },
+    "node_modules/@asamuzakjp/css-color": {
+      "version": "3.2.0",
+      "resolved": "https://registry.npmjs.org/@asamuzakjp/css-color/-/css-color-3.2.0.tgz",
+      "integrity": "sha512-K1A6z8tS3XsmCMM86xoWdn7Fkdn9m6RSVtocUrJYIwZnFVkng/PvkEoWtOWmP+Scc6saYWHWZYbndEEXxl24jw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@csstools/css-calc": "^2.1.3",
+        "@csstools/css-color-parser": "^3.0.9",
+        "@csstools/css-parser-algorithms": "^3.0.4",
+        "@csstools/css-tokenizer": "^3.0.3",
+        "lru-cache": "^10.4.3"
+      }
+    },
+    "node_modules/@asamuzakjp/css-color/node_modules/lru-cache": {
+      "version": "10.4.3",
+      "resolved": "https://registry.npmjs.org/lru-cache/-/lru-cache-10.4.3.tgz",
+      "integrity": "sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==",
+      "dev": true,
+      "license": "ISC"
     },
     "node_modules/@azure/msal-browser": {
       "version": "4.26.1",
@@ -6724,6 +7106,123 @@ import "./.next/dev/types/routes.d.ts";
       "dependencies": {
         "@jridgewell/resolve-uri": "^3.0.3",
         "@jridgewell/sourcemap-codec": "^1.4.10"
+      }
+    },
+    "node_modules/@csstools/color-helpers": {
+      "version": "5.1.0",
+      "resolved": "https://registry.npmjs.org/@csstools/color-helpers/-/color-helpers-5.1.0.tgz",
+      "integrity": "sha512-S11EXWJyy0Mz5SYvRmY8nJYTFFd1LCNV+7cXyAgQtOOuzb4EsgfqDufL+9esx72/eLhsRdGZwaldu/h+E4t4BA==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/csstools"
+        },
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/csstools"
+        }
+      ],
+      "license": "MIT-0",
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@csstools/css-calc": {
+      "version": "2.1.4",
+      "resolved": "https://registry.npmjs.org/@csstools/css-calc/-/css-calc-2.1.4.tgz",
+      "integrity": "sha512-3N8oaj+0juUw/1H3YwmDDJXCgTB1gKU6Hc/bB502u9zR0q2vd786XJH9QfrKIEgFlZmhZiq6epXl4rHqhzsIgQ==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/csstools"
+        },
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/csstools"
+        }
+      ],
+      "license": "MIT",
+      "engines": {
+        "node": ">=18"
+      },
+      "peerDependencies": {
+        "@csstools/css-parser-algorithms": "^3.0.5",
+        "@csstools/css-tokenizer": "^3.0.4"
+      }
+    },
+    "node_modules/@csstools/css-color-parser": {
+      "version": "3.1.0",
+      "resolved": "https://registry.npmjs.org/@csstools/css-color-parser/-/css-color-parser-3.1.0.tgz",
+      "integrity": "sha512-nbtKwh3a6xNVIp/VRuXV64yTKnb1IjTAEEh3irzS+HkKjAOYLTGNb9pmVNntZ8iVBHcWDA2Dof0QtPgFI1BaTA==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/csstools"
+        },
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/csstools"
+        }
+      ],
+      "license": "MIT",
+      "dependencies": {
+        "@csstools/color-helpers": "^5.1.0",
+        "@csstools/css-calc": "^2.1.4"
+      },
+      "engines": {
+        "node": ">=18"
+      },
+      "peerDependencies": {
+        "@csstools/css-parser-algorithms": "^3.0.5",
+        "@csstools/css-tokenizer": "^3.0.4"
+      }
+    },
+    "node_modules/@csstools/css-parser-algorithms": {
+      "version": "3.0.5",
+      "resolved": "https://registry.npmjs.org/@csstools/css-parser-algorithms/-/css-parser-algorithms-3.0.5.tgz",
+      "integrity": "sha512-DaDeUkXZKjdGhgYaHNJTV9pV7Y9B3b644jCLs9Upc3VeNGg6LWARAT6O+Q+/COo+2gg/bM5rhpMAtf70WqfBdQ==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/csstools"
+        },
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/csstools"
+        }
+      ],
+      "license": "MIT",
+      "peer": true,
+      "engines": {
+        "node": ">=18"
+      },
+      "peerDependencies": {
+        "@csstools/css-tokenizer": "^3.0.4"
+      }
+    },
+    "node_modules/@csstools/css-tokenizer": {
+      "version": "3.0.4",
+      "resolved": "https://registry.npmjs.org/@csstools/css-tokenizer/-/css-tokenizer-3.0.4.tgz",
+      "integrity": "sha512-Vd/9EVDiu6PPJt9yAh6roZP6El1xHrdvIVGjyBsHR0RYwNHgL7FJPyIIW4fANJNG6FtyZfvlRPpFI4ZM/lubvw==",
+      "dev": true,
+      "funding": [
+        {
+          "type": "github",
+          "url": "https://github.com/sponsors/csstools"
+        },
+        {
+          "type": "opencollective",
+          "url": "https://opencollective.com/csstools"
+        }
+      ],
+      "license": "MIT",
+      "peer": true,
+      "engines": {
+        "node": ">=18"
       }
     },
     "node_modules/@dotenvx/dotenvx": {
@@ -8174,6 +8673,34 @@ import "./.next/dev/types/routes.d.ts";
         "node": "^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0"
       }
     },
+    "node_modules/@jest/environment-jsdom-abstract": {
+      "version": "30.2.0",
+      "resolved": "https://registry.npmjs.org/@jest/environment-jsdom-abstract/-/environment-jsdom-abstract-30.2.0.tgz",
+      "integrity": "sha512-kazxw2L9IPuZpQ0mEt9lu9Z98SqR74xcagANmMBU16X0lS23yPc0+S6hGLUz8kVRlomZEs/5S/Zlpqwf5yu6OQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@jest/environment": "30.2.0",
+        "@jest/fake-timers": "30.2.0",
+        "@jest/types": "30.2.0",
+        "@types/jsdom": "^21.1.7",
+        "@types/node": "*",
+        "jest-mock": "30.2.0",
+        "jest-util": "30.2.0"
+      },
+      "engines": {
+        "node": "^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0"
+      },
+      "peerDependencies": {
+        "canvas": "^3.0.0",
+        "jsdom": "*"
+      },
+      "peerDependenciesMeta": {
+        "canvas": {
+          "optional": true
+        }
+      }
+    },
     "node_modules/@jest/expect": {
       "version": "30.2.0",
       "resolved": "https://registry.npmjs.org/@jest/expect/-/expect-30.2.0.tgz",
@@ -9346,6 +9873,141 @@ import "./.next/dev/types/routes.d.ts";
       "dev": true,
       "license": "MIT"
     },
+    "node_modules/@testing-library/dom": {
+      "version": "10.4.1",
+      "resolved": "https://registry.npmjs.org/@testing-library/dom/-/dom-10.4.1.tgz",
+      "integrity": "sha512-o4PXJQidqJl82ckFaXUeoAW+XysPLauYI43Abki5hABd853iMhitooc6znOnczgbTYmEP6U6/y1ZyKAIsvMKGg==",
+      "dev": true,
+      "license": "MIT",
+      "peer": true,
+      "dependencies": {
+        "@babel/code-frame": "^7.10.4",
+        "@babel/runtime": "^7.12.5",
+        "@types/aria-query": "^5.0.1",
+        "aria-query": "5.3.0",
+        "dom-accessibility-api": "^0.5.9",
+        "lz-string": "^1.5.0",
+        "picocolors": "1.1.1",
+        "pretty-format": "^27.0.2"
+      },
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/@testing-library/dom/node_modules/ansi-regex": {
+      "version": "5.0.1",
+      "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz",
+      "integrity": "sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=8"
+      }
+    },
+    "node_modules/@testing-library/dom/node_modules/ansi-styles": {
+      "version": "5.2.0",
+      "resolved": "https://registry.npmjs.org/ansi-styles/-/ansi-styles-5.2.0.tgz",
+      "integrity": "sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=10"
+      },
+      "funding": {
+        "url": "https://github.com/chalk/ansi-styles?sponsor=1"
+      }
+    },
+    "node_modules/@testing-library/dom/node_modules/pretty-format": {
+      "version": "27.5.1",
+      "resolved": "https://registry.npmjs.org/pretty-format/-/pretty-format-27.5.1.tgz",
+      "integrity": "sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "ansi-regex": "^5.0.1",
+        "ansi-styles": "^5.0.0",
+        "react-is": "^17.0.1"
+      },
+      "engines": {
+        "node": "^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0"
+      }
+    },
+    "node_modules/@testing-library/dom/node_modules/react-is": {
+      "version": "17.0.2",
+      "resolved": "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz",
+      "integrity": "sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/@testing-library/jest-dom": {
+      "version": "6.9.1",
+      "resolved": "https://registry.npmjs.org/@testing-library/jest-dom/-/jest-dom-6.9.1.tgz",
+      "integrity": "sha512-zIcONa+hVtVSSep9UT3jZ5rizo2BsxgyDYU7WFD5eICBE7no3881HGeb/QkGfsJs6JTkY1aQhT7rIPC7e+0nnA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@adobe/css-tools": "^4.4.0",
+        "aria-query": "^5.0.0",
+        "css.escape": "^1.5.1",
+        "dom-accessibility-api": "^0.6.3",
+        "picocolors": "^1.1.1",
+        "redent": "^3.0.0"
+      },
+      "engines": {
+        "node": ">=14",
+        "npm": ">=6",
+        "yarn": ">=1"
+      }
+    },
+    "node_modules/@testing-library/jest-dom/node_modules/dom-accessibility-api": {
+      "version": "0.6.3",
+      "resolved": "https://registry.npmjs.org/dom-accessibility-api/-/dom-accessibility-api-0.6.3.tgz",
+      "integrity": "sha512-7ZgogeTnjuHbo+ct10G9Ffp0mif17idi0IyWNVA/wcwcm7NPOD/WEHVP3n7n3MhXqxoIYm8d6MuZohYWIZ4T3w==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/@testing-library/react": {
+      "version": "16.3.0",
+      "resolved": "https://registry.npmjs.org/@testing-library/react/-/react-16.3.0.tgz",
+      "integrity": "sha512-kFSyxiEDwv1WLl2fgsq6pPBbw5aWKrsY2/noi1Id0TK0UParSF62oFQFGHXIyaG4pp2tEub/Zlel+fjjZILDsw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@babel/runtime": "^7.12.5"
+      },
+      "engines": {
+        "node": ">=18"
+      },
+      "peerDependencies": {
+        "@testing-library/dom": "^10.0.0",
+        "@types/react": "^18.0.0 || ^19.0.0",
+        "@types/react-dom": "^18.0.0 || ^19.0.0",
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0"
+      },
+      "peerDependenciesMeta": {
+        "@types/react": {
+          "optional": true
+        },
+        "@types/react-dom": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/@testing-library/user-event": {
+      "version": "14.6.1",
+      "resolved": "https://registry.npmjs.org/@testing-library/user-event/-/user-event-14.6.1.tgz",
+      "integrity": "sha512-vq7fv0rnt+QTXgPxr5Hjc210p6YKq2kmdziLgnsZGgLJ9e6VAShx1pACLuRjd/AS/sr7phAR58OIIpf0LlmQNw==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=12",
+        "npm": ">=6"
+      },
+      "peerDependencies": {
+        "@testing-library/dom": ">=7.21.4"
+      }
+    },
     "node_modules/@tootallnate/quickjs-emscripten": {
       "version": "0.23.0",
       "resolved": "https://registry.npmjs.org/@tootallnate/quickjs-emscripten/-/quickjs-emscripten-0.23.0.tgz",
@@ -9417,6 +10079,13 @@ import "./.next/dev/types/routes.d.ts";
       "dependencies": {
         "tslib": "^2.4.0"
       }
+    },
+    "node_modules/@types/aria-query": {
+      "version": "5.0.4",
+      "resolved": "https://registry.npmjs.org/@types/aria-query/-/aria-query-5.0.4.tgz",
+      "integrity": "sha512-rfT93uj5s0PRL7EzccGMs3brplhcrghnDoV26NqKhCAS1hVo+WdNsPvE/yb6ilfr5hi2MEk6d5EWJTKdxg8jVw==",
+      "dev": true,
+      "license": "MIT"
     },
     "node_modules/@types/babel__core": {
       "version": "7.20.5",
@@ -9536,6 +10205,18 @@ import "./.next/dev/types/routes.d.ts";
         "pretty-format": "^30.0.0"
       }
     },
+    "node_modules/@types/jsdom": {
+      "version": "21.1.7",
+      "resolved": "https://registry.npmjs.org/@types/jsdom/-/jsdom-21.1.7.tgz",
+      "integrity": "sha512-yOriVnggzrnQ3a9OKOCxaVuSug3w3/SbOj5i7VwXWZEyUNl3bLF9V3MfxGbZKuwqJOQyRfqXyROBB1CoZLFWzA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@types/node": "*",
+        "@types/tough-cookie": "*",
+        "parse5": "^7.0.0"
+      }
+    },
     "node_modules/@types/mocha": {
       "version": "10.0.10",
       "resolved": "https://registry.npmjs.org/@types/mocha/-/mocha-10.0.10.tgz",
@@ -9577,6 +10258,7 @@ import "./.next/dev/types/routes.d.ts";
       "integrity": "sha512-MEe3UeoENYVFXzoXEWsvcpg6ZvlrFNlOQ7EOsvhI3CfAXwzPfO8Qwuxd40nepsYKqyyVQnTdEfv68q91yLcKrQ==",
       "dev": true,
       "license": "MIT",
+      "peer": true,
       "peerDependencies": {
         "@types/react": "^18.0.0"
       }
@@ -9603,6 +10285,13 @@ import "./.next/dev/types/routes.d.ts";
       "version": "2.0.6",
       "resolved": "https://registry.npmjs.org/@types/statuses/-/statuses-2.0.6.tgz",
       "integrity": "sha512-xMAgYwceFhRA2zY+XbEA7mxYbA093wdiW8Vu6gZPGWy9cmOyU9XesH1tNcEWsKFd5Vzrqx5T3D38PWx1FIIXkA==",
+      "license": "MIT"
+    },
+    "node_modules/@types/tough-cookie": {
+      "version": "4.0.5",
+      "resolved": "https://registry.npmjs.org/@types/tough-cookie/-/tough-cookie-4.0.5.tgz",
+      "integrity": "sha512-/Ad8+nIOV7Rl++6f1BdKxFSMgmoqEoYbHRpPcx3JEfv8VRsQe9Z4mCXeJBzxs7mbHY/XOZZuXlRNfhpVPbs6ZA==",
+      "dev": true,
       "license": "MIT"
     },
     "node_modules/@types/warning": {
@@ -10376,6 +11065,16 @@ import "./.next/dev/types/routes.d.ts";
       "resolved": "https://registry.npmjs.org/argparse/-/argparse-2.0.1.tgz",
       "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==",
       "license": "Python-2.0"
+    },
+    "node_modules/aria-query": {
+      "version": "5.3.0",
+      "resolved": "https://registry.npmjs.org/aria-query/-/aria-query-5.3.0.tgz",
+      "integrity": "sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "dependencies": {
+        "dequal": "^2.0.3"
+      }
     },
     "node_modules/assertion-error": {
       "version": "1.1.0",
@@ -11667,6 +12366,13 @@ import "./.next/dev/types/routes.d.ts";
         "node": "*"
       }
     },
+    "node_modules/css.escape": {
+      "version": "1.5.1",
+      "resolved": "https://registry.npmjs.org/css.escape/-/css.escape-1.5.1.tgz",
+      "integrity": "sha512-YUifsXXuknHlUsmlgyY0PKzgPOr7/FjCePfHNt0jxm83wHZi44VDMQ7/fGNkjY3/jV1MC+1CmZbaHzugyeRtpg==",
+      "dev": true,
+      "license": "MIT"
+    },
     "node_modules/cssesc": {
       "version": "3.0.0",
       "resolved": "https://registry.npmjs.org/cssesc/-/cssesc-3.0.0.tgz",
@@ -11677,6 +12383,20 @@ import "./.next/dev/types/routes.d.ts";
       },
       "engines": {
         "node": ">=4"
+      }
+    },
+    "node_modules/cssstyle": {
+      "version": "4.6.0",
+      "resolved": "https://registry.npmjs.org/cssstyle/-/cssstyle-4.6.0.tgz",
+      "integrity": "sha512-2z+rWdzbbSZv6/rhtvzvqeZQHrBaqgogqt85sqFNbabZOuFbCVFb8kPeEtZjiKkbrm395irpNKiYeFeLiQnFPg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@asamuzakjp/css-color": "^3.2.0",
+        "rrweb-cssom": "^0.8.0"
+      },
+      "engines": {
+        "node": ">=18"
       }
     },
     "node_modules/csstype": {
@@ -11699,6 +12419,20 @@ import "./.next/dev/types/routes.d.ts";
       "license": "MIT",
       "engines": {
         "node": ">= 12"
+      }
+    },
+    "node_modules/data-urls": {
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/data-urls/-/data-urls-5.0.0.tgz",
+      "integrity": "sha512-ZYP5VBHshaDAiVZxjbRVcFJpc+4xGgT0bK3vzy1HLN8jTO975HEbuYzZJcHoQEY5K1a0z8YayJkyVETa08eNTg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "whatwg-mimetype": "^4.0.0",
+        "whatwg-url": "^14.0.0"
+      },
+      "engines": {
+        "node": ">=18"
       }
     },
     "node_modules/date-arithmetic": {
@@ -11768,6 +12502,13 @@ import "./.next/dev/types/routes.d.ts";
       "funding": {
         "url": "https://github.com/sponsors/sindresorhus"
       }
+    },
+    "node_modules/decimal.js": {
+      "version": "10.6.0",
+      "resolved": "https://registry.npmjs.org/decimal.js/-/decimal.js-10.6.0.tgz",
+      "integrity": "sha512-YpgQiITW3JXGntzdUmyUR1V812Hn8T1YVXhCu+wO3OpS4eU9l4YdD3qjyiKdV6mvV29zapkMeD390UVEf2lkUg==",
+      "dev": true,
+      "license": "MIT"
     },
     "node_modules/dedent": {
       "version": "1.7.0",
@@ -11918,6 +12659,13 @@ import "./.next/dev/types/routes.d.ts";
       "integrity": "sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==",
       "license": "MIT"
     },
+    "node_modules/dom-accessibility-api": {
+      "version": "0.5.16",
+      "resolved": "https://registry.npmjs.org/dom-accessibility-api/-/dom-accessibility-api-0.5.16.tgz",
+      "integrity": "sha512-X7BJ2yElsnOJ30pZF4uIIDfBEVgF4XEBxL9Bxhy6dnrm5hkzqmsWHGTiHqRiITNhMyFLyAiWndIJP7Z1NTteDg==",
+      "dev": true,
+      "license": "MIT"
+    },
     "node_modules/dom-helpers": {
       "version": "5.2.1",
       "resolved": "https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.2.1.tgz",
@@ -12025,6 +12773,19 @@ import "./.next/dev/types/routes.d.ts";
       "license": "MIT",
       "dependencies": {
         "once": "^1.4.0"
+      }
+    },
+    "node_modules/entities": {
+      "version": "6.0.1",
+      "resolved": "https://registry.npmjs.org/entities/-/entities-6.0.1.tgz",
+      "integrity": "sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g==",
+      "dev": true,
+      "license": "BSD-2-Clause",
+      "engines": {
+        "node": ">=0.12"
+      },
+      "funding": {
+        "url": "https://github.com/fb55/entities?sponsor=1"
       }
     },
     "node_modules/env-paths": {
@@ -12957,6 +13718,13 @@ import "./.next/dev/types/routes.d.ts";
         "uglify-js": "^3.1.4"
       }
     },
+    "node_modules/harmony-reflect": {
+      "version": "1.6.2",
+      "resolved": "https://registry.npmjs.org/harmony-reflect/-/harmony-reflect-1.6.2.tgz",
+      "integrity": "sha512-HIp/n38R9kQjDEziXyDTuW3vvoxxyxjxFzXLrBr18uB47GnSt+G9D29fqrpM5ZkspMcPICud3XsBJQ4Y2URg8g==",
+      "dev": true,
+      "license": "(Apache-2.0 OR MPL-1.1)"
+    },
     "node_modules/has-flag": {
       "version": "4.0.0",
       "resolved": "https://registry.npmjs.org/has-flag/-/has-flag-4.0.0.tgz",
@@ -13021,6 +13789,19 @@ import "./.next/dev/types/routes.d.ts";
       "resolved": "https://registry.npmjs.org/headers-polyfill/-/headers-polyfill-4.0.3.tgz",
       "integrity": "sha512-IScLbePpkvO846sIwOtOTDjutRMWdXdJmXdMvk6gCBHxFO8d+QKOQedyZSxFTTFYRSmlgSTDtXqqq4pcenBXLQ==",
       "license": "MIT"
+    },
+    "node_modules/html-encoding-sniffer": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/html-encoding-sniffer/-/html-encoding-sniffer-4.0.0.tgz",
+      "integrity": "sha512-Y22oTqIU4uuPgEemfz7NDJz6OeKf12Lsu+QC+s3BVpda64lTiMYCyGwg5ki4vFxkMwQdeZDl2adZoqUgdFuTgQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "whatwg-encoding": "^3.1.1"
+      },
+      "engines": {
+        "node": ">=18"
+      }
     },
     "node_modules/html-entities": {
       "version": "2.6.0",
@@ -13119,6 +13900,19 @@ import "./.next/dev/types/routes.d.ts";
         "node": ">=0.10.0"
       }
     },
+    "node_modules/identity-obj-proxy": {
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/identity-obj-proxy/-/identity-obj-proxy-3.0.0.tgz",
+      "integrity": "sha512-00n6YnVHKrinT9t0d9+5yZC6UBNJANpYEQvL2LlX6Ab9lnmxzIRcEmTPuyGScvl1+jKuCICX1Z0Ab1pPKKdikA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "harmony-reflect": "^1.4.6"
+      },
+      "engines": {
+        "node": ">=4"
+      }
+    },
     "node_modules/ignore": {
       "version": "5.3.2",
       "resolved": "https://registry.npmjs.org/ignore/-/ignore-5.3.2.tgz",
@@ -13179,6 +13973,16 @@ import "./.next/dev/types/routes.d.ts";
       "license": "MIT",
       "engines": {
         "node": ">=0.8.19"
+      }
+    },
+    "node_modules/indent-string": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/indent-string/-/indent-string-4.0.0.tgz",
+      "integrity": "sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=8"
       }
     },
     "node_modules/inflight": {
@@ -13403,6 +14207,13 @@ import "./.next/dev/types/routes.d.ts";
       "funding": {
         "url": "https://github.com/sponsors/sindresorhus"
       }
+    },
+    "node_modules/is-potential-custom-element-name": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/is-potential-custom-element-name/-/is-potential-custom-element-name-1.0.1.tgz",
+      "integrity": "sha512-bCYeRA2rVibKZd+s2625gGnGF/t7DSqDs4dP7CrLA1m7jKWz6pps0LpYLJN8Q64HtmPKJ1hrN3nzPNKFEKOUiQ==",
+      "dev": true,
+      "license": "MIT"
     },
     "node_modules/is-promise": {
       "version": "4.0.0",
@@ -14069,6 +14880,31 @@ import "./.next/dev/types/routes.d.ts";
       },
       "engines": {
         "node": ">=8"
+      }
+    },
+    "node_modules/jest-environment-jsdom": {
+      "version": "30.2.0",
+      "resolved": "https://registry.npmjs.org/jest-environment-jsdom/-/jest-environment-jsdom-30.2.0.tgz",
+      "integrity": "sha512-zbBTiqr2Vl78pKp/laGBREYzbZx9ZtqPjOK4++lL4BNDhxRnahg51HtoDrk9/VjIy9IthNEWdKVd7H5bqBhiWQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "@jest/environment": "30.2.0",
+        "@jest/environment-jsdom-abstract": "30.2.0",
+        "@types/jsdom": "^21.1.7",
+        "@types/node": "*",
+        "jsdom": "^26.1.0"
+      },
+      "engines": {
+        "node": "^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0"
+      },
+      "peerDependencies": {
+        "canvas": "^3.0.0"
+      },
+      "peerDependenciesMeta": {
+        "canvas": {
+          "optional": true
+        }
       }
     },
     "node_modules/jest-environment-node": {
@@ -14784,6 +15620,80 @@ import "./.next/dev/types/routes.d.ts";
         "js-yaml": "bin/js-yaml.js"
       }
     },
+    "node_modules/jsdom": {
+      "version": "26.1.0",
+      "resolved": "https://registry.npmjs.org/jsdom/-/jsdom-26.1.0.tgz",
+      "integrity": "sha512-Cvc9WUhxSMEo4McES3P7oK3QaXldCfNWp7pl2NNeiIFlCoLr3kfq9kb1fxftiwk1FLV7CvpvDfonxtzUDeSOPg==",
+      "dev": true,
+      "license": "MIT",
+      "peer": true,
+      "dependencies": {
+        "cssstyle": "^4.2.1",
+        "data-urls": "^5.0.0",
+        "decimal.js": "^10.5.0",
+        "html-encoding-sniffer": "^4.0.0",
+        "http-proxy-agent": "^7.0.2",
+        "https-proxy-agent": "^7.0.6",
+        "is-potential-custom-element-name": "^1.0.1",
+        "nwsapi": "^2.2.16",
+        "parse5": "^7.2.1",
+        "rrweb-cssom": "^0.8.0",
+        "saxes": "^6.0.0",
+        "symbol-tree": "^3.2.4",
+        "tough-cookie": "^5.1.1",
+        "w3c-xmlserializer": "^5.0.0",
+        "webidl-conversions": "^7.0.0",
+        "whatwg-encoding": "^3.1.1",
+        "whatwg-mimetype": "^4.0.0",
+        "whatwg-url": "^14.1.1",
+        "ws": "^8.18.0",
+        "xml-name-validator": "^5.0.0"
+      },
+      "engines": {
+        "node": ">=18"
+      },
+      "peerDependencies": {
+        "canvas": "^3.0.0"
+      },
+      "peerDependenciesMeta": {
+        "canvas": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/jsdom/node_modules/tldts": {
+      "version": "6.1.86",
+      "resolved": "https://registry.npmjs.org/tldts/-/tldts-6.1.86.tgz",
+      "integrity": "sha512-WMi/OQ2axVTf/ykqCQgXiIct+mSQDFdH2fkwhPwgEwvJ1kSzZRiinb0zF2Xb8u4+OqPChmyI6MEu4EezNJz+FQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "tldts-core": "^6.1.86"
+      },
+      "bin": {
+        "tldts": "bin/cli.js"
+      }
+    },
+    "node_modules/jsdom/node_modules/tldts-core": {
+      "version": "6.1.86",
+      "resolved": "https://registry.npmjs.org/tldts-core/-/tldts-core-6.1.86.tgz",
+      "integrity": "sha512-Je6p7pkk+KMzMv2XXKmAE3McmolOQFdxkKw0R8EYNr7sELW46JqnNeTX8ybPiQgvg1ymCoF8LXs5fzFaZvJPTA==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/jsdom/node_modules/tough-cookie": {
+      "version": "5.1.2",
+      "resolved": "https://registry.npmjs.org/tough-cookie/-/tough-cookie-5.1.2.tgz",
+      "integrity": "sha512-FVDYdxtnj0G6Qm/DhNPSb8Ju59ULcup3tuJxkFb5K8Bv2pUXILbf0xZWU8PX8Ov19OXljbUyveOFwRMwkXzO+A==",
+      "dev": true,
+      "license": "BSD-3-Clause",
+      "dependencies": {
+        "tldts": "^6.1.32"
+      },
+      "engines": {
+        "node": ">=16"
+      }
+    },
     "node_modules/jsesc": {
       "version": "3.1.0",
       "resolved": "https://registry.npmjs.org/jsesc/-/jsesc-3.1.0.tgz",
@@ -15025,6 +15935,16 @@ import "./.next/dev/types/routes.d.ts";
         "node": ">=12"
       }
     },
+    "node_modules/lz-string": {
+      "version": "1.5.0",
+      "resolved": "https://registry.npmjs.org/lz-string/-/lz-string-1.5.0.tgz",
+      "integrity": "sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==",
+      "dev": true,
+      "license": "MIT",
+      "bin": {
+        "lz-string": "bin/bin.js"
+      }
+    },
     "node_modules/make-dir": {
       "version": "4.0.0",
       "resolved": "https://registry.npmjs.org/make-dir/-/make-dir-4.0.0.tgz",
@@ -15199,6 +16119,16 @@ import "./.next/dev/types/routes.d.ts";
       },
       "funding": {
         "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/min-indent": {
+      "version": "1.0.1",
+      "resolved": "https://registry.npmjs.org/min-indent/-/min-indent-1.0.1.tgz",
+      "integrity": "sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=4"
       }
     },
     "node_modules/minimatch": {
@@ -15836,6 +16766,13 @@ import "./.next/dev/types/routes.d.ts";
         "url": "https://github.com/sponsors/sindresorhus"
       }
     },
+    "node_modules/nwsapi": {
+      "version": "2.2.22",
+      "resolved": "https://registry.npmjs.org/nwsapi/-/nwsapi-2.2.22.tgz",
+      "integrity": "sha512-ujSMe1OWVn55euT1ihwCI1ZcAaAU3nxUiDwfDQldc51ZXaB9m2AyOn6/jh1BLe2t/G8xd6uKG1UBF2aZJeg2SQ==",
+      "dev": true,
+      "license": "MIT"
+    },
     "node_modules/object-assign": {
       "version": "4.1.1",
       "resolved": "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz",
@@ -16085,6 +17022,19 @@ import "./.next/dev/types/routes.d.ts";
       },
       "funding": {
         "url": "https://github.com/sponsors/sindresorhus"
+      }
+    },
+    "node_modules/parse5": {
+      "version": "7.3.0",
+      "resolved": "https://registry.npmjs.org/parse5/-/parse5-7.3.0.tgz",
+      "integrity": "sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "entities": "^6.0.0"
+      },
+      "funding": {
+        "url": "https://github.com/inikulin/parse5?sponsor=1"
       }
     },
     "node_modules/parseurl": {
@@ -16958,6 +17908,20 @@ import "./.next/dev/types/routes.d.ts";
         "node": ">= 4"
       }
     },
+    "node_modules/redent": {
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/redent/-/redent-3.0.0.tgz",
+      "integrity": "sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "indent-string": "^4.0.0",
+        "strip-indent": "^3.0.0"
+      },
+      "engines": {
+        "node": ">=8"
+      }
+    },
     "node_modules/registry-auth-token": {
       "version": "3.3.2",
       "resolved": "https://registry.npmjs.org/registry-auth-token/-/registry-auth-token-3.3.2.tgz",
@@ -17163,6 +18127,13 @@ import "./.next/dev/types/routes.d.ts";
         "url": "https://opencollective.com/express"
       }
     },
+    "node_modules/rrweb-cssom": {
+      "version": "0.8.0",
+      "resolved": "https://registry.npmjs.org/rrweb-cssom/-/rrweb-cssom-0.8.0.tgz",
+      "integrity": "sha512-guoltQEx+9aMf2gDZ0s62EcV8lsXR+0w8915TC3ITdn2YueuNjdAYh/levpU9nFaoChh9RUS5ZdQMrKfVEN9tw==",
+      "dev": true,
+      "license": "MIT"
+    },
     "node_modules/run-parallel": {
       "version": "1.2.0",
       "resolved": "https://registry.npmjs.org/run-parallel/-/run-parallel-1.2.0.tgz",
@@ -17231,6 +18202,19 @@ import "./.next/dev/types/routes.d.ts";
       "resolved": "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz",
       "integrity": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==",
       "license": "MIT"
+    },
+    "node_modules/saxes": {
+      "version": "6.0.0",
+      "resolved": "https://registry.npmjs.org/saxes/-/saxes-6.0.0.tgz",
+      "integrity": "sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==",
+      "dev": true,
+      "license": "ISC",
+      "dependencies": {
+        "xmlchars": "^2.2.0"
+      },
+      "engines": {
+        "node": ">=v12.22.7"
+      }
     },
     "node_modules/scheduler": {
       "version": "0.23.2",
@@ -18053,6 +19037,19 @@ import "./.next/dev/types/routes.d.ts";
         "url": "https://github.com/sponsors/sindresorhus"
       }
     },
+    "node_modules/strip-indent": {
+      "version": "3.0.0",
+      "resolved": "https://registry.npmjs.org/strip-indent/-/strip-indent-3.0.0.tgz",
+      "integrity": "sha512-laJTa3Jb+VQpaC6DseHhF7dXVqHTfJPCRDaEbid/drOhgitgYku/letMUqOXFoWV0zIIUbjpdH2t+tYj4bQMRQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "min-indent": "^1.0.0"
+      },
+      "engines": {
+        "node": ">=8"
+      }
+    },
     "node_modules/strip-json-comments": {
       "version": "3.1.1",
       "resolved": "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz",
@@ -18147,6 +19144,13 @@ import "./.next/dev/types/routes.d.ts";
       "funding": {
         "url": "https://github.com/sponsors/ljharb"
       }
+    },
+    "node_modules/symbol-tree": {
+      "version": "3.2.4",
+      "resolved": "https://registry.npmjs.org/symbol-tree/-/symbol-tree-3.2.4.tgz",
+      "integrity": "sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==",
+      "dev": true,
+      "license": "MIT"
     },
     "node_modules/synckit": {
       "version": "0.11.11",
@@ -18429,6 +19433,19 @@ import "./.next/dev/types/routes.d.ts";
       },
       "engines": {
         "node": ">=16"
+      }
+    },
+    "node_modules/tr46": {
+      "version": "5.1.1",
+      "resolved": "https://registry.npmjs.org/tr46/-/tr46-5.1.1.tgz",
+      "integrity": "sha512-hdF5ZgjTqgAntKkklYw0R03MG2x/bSzTtkxmIRw/sTNV8YXsCJ1tfLAX23lhxhHJlEf3CRCOCGGWw3vI3GaSPw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "punycode": "^2.3.1"
+      },
+      "engines": {
+        "node": ">=18"
       }
     },
     "node_modules/ts-interface-checker": {
@@ -18925,6 +19942,19 @@ import "./.next/dev/types/routes.d.ts";
         }
       }
     },
+    "node_modules/w3c-xmlserializer": {
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/w3c-xmlserializer/-/w3c-xmlserializer-5.0.0.tgz",
+      "integrity": "sha512-o8qghlI8NZHU1lLPrpi2+Uq7abh4GGPpYANlalzWxyWteJOCsr/P+oPBA49TOLu5FTZO4d3F9MnWJfiMo4BkmA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "xml-name-validator": "^5.0.0"
+      },
+      "engines": {
+        "node": ">=18"
+      }
+    },
     "node_modules/walker": {
       "version": "1.0.8",
       "resolved": "https://registry.npmjs.org/walker/-/walker-1.0.8.tgz",
@@ -18951,6 +19981,53 @@ import "./.next/dev/types/routes.d.ts";
       "license": "MIT",
       "engines": {
         "node": ">= 8"
+      }
+    },
+    "node_modules/webidl-conversions": {
+      "version": "7.0.0",
+      "resolved": "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-7.0.0.tgz",
+      "integrity": "sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==",
+      "dev": true,
+      "license": "BSD-2-Clause",
+      "engines": {
+        "node": ">=12"
+      }
+    },
+    "node_modules/whatwg-encoding": {
+      "version": "3.1.1",
+      "resolved": "https://registry.npmjs.org/whatwg-encoding/-/whatwg-encoding-3.1.1.tgz",
+      "integrity": "sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "iconv-lite": "0.6.3"
+      },
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/whatwg-mimetype": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/whatwg-mimetype/-/whatwg-mimetype-4.0.0.tgz",
+      "integrity": "sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==",
+      "dev": true,
+      "license": "MIT",
+      "engines": {
+        "node": ">=18"
+      }
+    },
+    "node_modules/whatwg-url": {
+      "version": "14.2.0",
+      "resolved": "https://registry.npmjs.org/whatwg-url/-/whatwg-url-14.2.0.tgz",
+      "integrity": "sha512-De72GdQZzNTUBBChsXueQUnPKDkg/5A5zp7pFDuQAj5UFoENpiACU0wlCvzpAGnTkj++ihpKwKyYewn/XNUbKw==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "tr46": "^5.1.0",
+        "webidl-conversions": "^7.0.0"
+      },
+      "engines": {
+        "node": ">=18"
       }
     },
     "node_modules/which": {
@@ -19179,6 +20256,16 @@ import "./.next/dev/types/routes.d.ts";
         }
       }
     },
+    "node_modules/xml-name-validator": {
+      "version": "5.0.0",
+      "resolved": "https://registry.npmjs.org/xml-name-validator/-/xml-name-validator-5.0.0.tgz",
+      "integrity": "sha512-EvGK8EJ3DhaHfbRlETOWAS5pO9MZITeauHKJyb8wyajUfQUenkIg2MvLDTZ4T/TgIcm3HU0TFBgWWboAZ30UHg==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=18"
+      }
+    },
     "node_modules/xmlbuilder": {
       "version": "15.0.0",
       "resolved": "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-15.0.0.tgz",
@@ -19188,6 +20275,13 @@ import "./.next/dev/types/routes.d.ts";
       "engines": {
         "node": ">=8.0"
       }
+    },
+    "node_modules/xmlchars": {
+      "version": "2.2.0",
+      "resolved": "https://registry.npmjs.org/xmlchars/-/xmlchars-2.2.0.tgz",
+      "integrity": "sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==",
+      "dev": true,
+      "license": "MIT"
     },
     "node_modules/y18n": {
       "version": "5.0.8",
@@ -19385,15 +20479,15 @@ import "./.next/dev/types/routes.d.ts";
 ### <a id="📄-package-json"></a>📄 `package.json`
 
 **File Info:**
-- **Size**: 1.77 KB
+- **Size**: 2 KB
 - **Extension**: `.json`
 - **Language**: `json`
 - **Location**: `package.json`
 - **Relative Path**: `root`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-17 12:26:14 (Asia/Colombo / GMT+06:30)
-- **MD5**: `ef35534b6bd0ac7424e04431fb4c3732`
-- **SHA256**: `e0d9133d3856ddf3377998249ef251af95ba118bc4fdda9238678dfed05ac135`
+- **Modified**: 2025-11-18 04:25:14 (Asia/Colombo / GMT+06:30)
+- **MD5**: `2fe838b9b6229c94fe66382b92511df0`
+- **SHA256**: `5a8a2dd5b7fb8bd0732776d6f748998f98a07ca14c781c601b2bcc4c1a1b3a89`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -19405,6 +20499,7 @@ import "./.next/dev/types/routes.d.ts";
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "test": "jest",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
@@ -19433,6 +20528,9 @@ import "./.next/dev/types/routes.d.ts";
     "tailwindcss-animate": "1.0.7"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/chai": "^5.2.3",
     "@types/jest": "^30.0.0",
     "@types/mocha": "^10.0.10",
@@ -19446,7 +20544,9 @@ import "./.next/dev/types/routes.d.ts";
     "autoprefixer": "^10.4.16",
     "chai": "^4.5.0",
     "chromedriver": "^142.0.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "jest-html-reporter": "^4.3.0",
     "mocha": "^10.8.2",
     "postcss": "^8.4.32",
@@ -20412,4 +21512,10 @@ export default defineConfig({
 ```
 
 ---
+
+## 🚫 Binary/Excluded Files
+
+The following files were not included in the text content:
+
+- `jest.config.cjs`
 

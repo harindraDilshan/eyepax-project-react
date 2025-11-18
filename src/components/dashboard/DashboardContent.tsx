@@ -118,11 +118,11 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
                 Manage Leaves
               </h3>
               <p className="text-sm text-gray-400 mt-2">
-                Review, edit, and assign roles to users across your system.
+                Review, edit, and manage leaves.
               </p>
             </div>
             <div className="mt-4 flex items-center text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
-              Go to Users <ArrowUpRight size={16} className="ml-1" />
+              Go to Leave Management <ArrowUpRight size={16} className="ml-1" />
             </div>
           </Link>
 
@@ -135,7 +135,7 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
                 Attendance Logs
               </h3>
               <p className="text-sm text-gray-400 mt-2">
-                Review, edit, and assign roles to users across your system.
+                Review, edit, and manage attendance logs.
               </p>
             </div>
             <div className="mt-4 flex items-center text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
@@ -144,19 +144,19 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
           </Link>
 
           <Link
-            to="/attendance-logs"
+            to="/audit-logs"
             className="group bg-gray-800/70 border border-gray-700 hover:border-blue-500 rounded-2xl p-6 flex flex-col justify-between shadow-md transition-all duration-300"
           >
             <div>
               <h3 className="text-xl font-semibold text-gray-100 group-hover:text-blue-400 transition">
-                Attendance Logs
+                Audit Activity
               </h3>
               <p className="text-sm text-gray-400 mt-2">
                 Review, edit, and assign roles to users across your system.
               </p>
             </div>
             <div className="mt-4 flex items-center text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
-              Go to Attendance Logs <ArrowUpRight size={16} className="ml-1" />
+              Go to Audit Activity <ArrowUpRight size={16} className="ml-1" />
             </div>
           </Link>
 
@@ -167,14 +167,14 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
           >
             <div>
               <h3 className="text-xl font-semibold text-gray-100 group-hover:text-purple-400 transition">
-                Audit Activity
+                Leave Calendar
               </h3>
               <p className="text-sm text-gray-400 mt-2">
                 Track login attempts, administrative actions, and user changes.
               </p>
             </div>
             <div className="mt-4 flex items-center text-purple-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
-              View Logs <ArrowUpRight size={16} className="ml-1" />
+              View Calendar <ArrowUpRight size={16} className="ml-1" />
             </div>
           </Link>
         </div>
