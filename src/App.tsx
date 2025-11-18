@@ -16,6 +16,7 @@ import { ApprovalsPage } from "./pages/ApprovalsPage";
 import { ReportsPage } from "./pages/ReportsPage";
 import { AttendanceLogsPage } from "./pages/AttendanceLogsPage";
 import LeaveRequestsPage from "./pages/LeaveRequestsPage";
+import LeaveCalendar from "./components/calender/LeaveCalendar";
 
 
 function App() {
@@ -72,6 +73,16 @@ function App() {
               </AdminRoute>
             }
           />
+
+          <Route
+            path="/leave-calendar"
+            element={
+              <AdminRoute>
+                <LeaveCalendar />
+              </AdminRoute>
+            }
+          />
+
           <Route
             path="/settings"
             element={

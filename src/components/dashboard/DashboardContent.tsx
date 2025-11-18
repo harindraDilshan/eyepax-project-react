@@ -143,9 +143,26 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
             </div>
           </Link>
 
+          <Link
+            to="/attendance-logs"
+            className="group bg-gray-800/70 border border-gray-700 hover:border-blue-500 rounded-2xl p-6 flex flex-col justify-between shadow-md transition-all duration-300"
+          >
+            <div>
+              <h3 className="text-xl font-semibold text-gray-100 group-hover:text-blue-400 transition">
+                Attendance Logs
+              </h3>
+              <p className="text-sm text-gray-400 mt-2">
+                Review, edit, and assign roles to users across your system.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
+              Go to Attendance Logs <ArrowUpRight size={16} className="ml-1" />
+            </div>
+          </Link>
+
 
           <Link
-            to="/audit-logs"
+            to="/leave-calendar"
             className="group bg-gray-800/70 border border-gray-700 hover:border-purple-500 rounded-2xl p-6 flex flex-col justify-between shadow-md transition-all duration-300"
           >
             <div>

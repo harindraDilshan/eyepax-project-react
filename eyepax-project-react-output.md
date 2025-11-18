@@ -3,8 +3,8 @@
 ## 📊 Project Information
 
 - **Project Name**: `eyepax-project-react`
-- **Generated On**: 2025-11-17 11:47:22 (Asia/Colombo / GMT+06:30)
-- **Total Files Processed**: 46
+- **Generated On**: 2025-11-18 03:03:50 (Asia/Colombo / GMT+06:30)
+- **Total Files Processed**: 52
 - **Export Tool**: Easy Whole Project to Single Text File for LLMs v1.1.0
 - **Tool Author**: Jota / José Guilherme Pandolfi
 
@@ -27,12 +27,14 @@
 │   │   ├── 📁 audit/
 │   │   │   ├── 📄 AuditFilters.tsx (4.04 KB)
 │   │   │   └── 📄 AuditLogsList.tsx (3.72 KB)
+│   │   ├── 📁 calender/
+│   │   │   └── 📄 LeaveCalendar.tsx (14.75 KB)
 │   │   ├── 📁 dashboard/
-│   │   │   └── 📄 DashboardContent.tsx (6.62 KB)
+│   │   │   └── 📄 DashboardContent.tsx (7.45 KB)
 │   │   ├── 📁 layout/
 │   │   │   ├── 📄 Header.tsx (2.42 KB)
 │   │   │   ├── 📄 MainLayout.tsx (1.17 KB)
-│   │   │   └── 📄 Sidebar.tsx (2.92 KB)
+│   │   │   └── 📄 Sidebar.tsx (3.01 KB)
 │   │   ├── 📁 policies/
 │   │   │   ├── 📄 LeavePoliciesList.tsx (4.61 KB)
 │   │   │   └── 📄 LeavePolicyForm.tsx (6.6 KB)
@@ -47,30 +49,38 @@
 │   │   │   └── 📄 UsersList.tsx (3.81 KB)
 │   │   ├── 📄 AdminRoute.tsx (1.41 KB)
 │   │   └── 📄 ProtectedRoute.tsx (772 B)
+│   ├── 📁 config/
+│   │   └── 📄 authConfig.ts (534 B)
 │   ├── 📁 context/
 │   │   └── 📄 AuthContext.tsx (3.03 KB)
+│   ├── 📁 hooks/
+│   │   └── 📄 useMicrosoftAuth.ts (1.07 KB)
 │   ├── 📁 pages/
 │   │   ├── 📄 ApprovalsPage.tsx (308 B)
 │   │   ├── 📄 AttendanceLogsPage.tsx (9.9 KB)
 │   │   ├── 📄 AuditLogsPage.tsx (4.81 KB)
 │   │   ├── 📄 DashboardPage.tsx (839 B)
 │   │   ├── 📄 LeavePoliciesPage.tsx (311 B)
-│   │   ├── 📄 LeaveRequestsPage.tsx (15.94 KB)
+│   │   ├── 📄 LeaveRequestsPage.tsx (15.95 KB)
 │   │   ├── 📄 LoginPage.tsx (1.1 KB)
 │   │   ├── 📄 ReportsPage.tsx (292 B)
 │   │   ├── 📄 SettingsPage.tsx (2.86 KB)
 │   │   └── 📄 UsersPage.tsx (5.23 KB)
 │   ├── 📁 services/
-│   │   └── 📄 api.ts (7.56 KB)
+│   │   ├── 📄 api.ts (7.56 KB)
+│   │   ├── 📄 graphService.ts (2 KB)
+│   │   └── 📄 microsoftCalendarService.ts (2.94 KB)
+│   ├── 📁 styles/
+│   │   └── 📄 calendar.css (716 B)
 │   ├── 📁 types/
 │   │   └── 📄 index.ts (1.89 KB)
-│   ├── 📄 App.tsx (2.96 KB)
+│   ├── 📄 App.tsx (3.22 KB)
 │   ├── 📄 index.css (429 B)
-│   └── 📄 main.tsx (246 B)
+│   └── 📄 main.tsx (542 B)
 ├── 📄 index.html (377 B)
 ├── 📄 next-env.d.ts (259 B)
-├── 📄 package-lock.json (471.79 KB)
-├── 📄 package.json (1.53 KB)
+├── 📄 package-lock.json (482.5 KB)
+├── 📄 package.json (1.77 KB)
 ├── 📄 postcss.config.js (86 B)
 ├── 📄 README.md (2.01 KB)
 ├── 📄 structure.txt (2.47 KB)
@@ -89,6 +99,7 @@
 - [📄 src/components/approvals/LeaveRequestsList.tsx](#📄-src-components-approvals-leaverequestslist-tsx)
 - [📄 src/components/audit/AuditFilters.tsx](#📄-src-components-audit-auditfilters-tsx)
 - [📄 src/components/audit/AuditLogsList.tsx](#📄-src-components-audit-auditlogslist-tsx)
+- [📄 src/components/calender/LeaveCalendar.tsx](#📄-src-components-calender-leavecalendar-tsx)
 - [📄 src/components/dashboard/DashboardContent.tsx](#📄-src-components-dashboard-dashboardcontent-tsx)
 - [📄 src/components/layout/Header.tsx](#📄-src-components-layout-header-tsx)
 - [📄 src/components/layout/MainLayout.tsx](#📄-src-components-layout-mainlayout-tsx)
@@ -103,7 +114,9 @@
 - [📄 src/components/users/UsersList.tsx](#📄-src-components-users-userslist-tsx)
 - [📄 src/components/AdminRoute.tsx](#📄-src-components-adminroute-tsx)
 - [📄 src/components/ProtectedRoute.tsx](#📄-src-components-protectedroute-tsx)
+- [📄 src/config/authConfig.ts](#📄-src-config-authconfig-ts)
 - [📄 src/context/AuthContext.tsx](#📄-src-context-authcontext-tsx)
+- [📄 src/hooks/useMicrosoftAuth.ts](#📄-src-hooks-usemicrosoftauth-ts)
 - [📄 src/pages/ApprovalsPage.tsx](#📄-src-pages-approvalspage-tsx)
 - [📄 src/pages/AttendanceLogsPage.tsx](#📄-src-pages-attendancelogspage-tsx)
 - [📄 src/pages/AuditLogsPage.tsx](#📄-src-pages-auditlogspage-tsx)
@@ -115,6 +128,9 @@
 - [📄 src/pages/SettingsPage.tsx](#📄-src-pages-settingspage-tsx)
 - [📄 src/pages/UsersPage.tsx](#📄-src-pages-userspage-tsx)
 - [📄 src/services/api.ts](#📄-src-services-api-ts)
+- [📄 src/services/graphService.ts](#📄-src-services-graphservice-ts)
+- [📄 src/services/microsoftCalendarService.ts](#📄-src-services-microsoftcalendarservice-ts)
+- [📄 src/styles/calendar.css](#📄-src-styles-calendar-css)
 - [📄 src/types/index.ts](#📄-src-types-index-ts)
 - [📄 src/App.tsx](#📄-src-app-tsx)
 - [📄 src/index.css](#📄-src-index-css)
@@ -139,22 +155,22 @@
 
 | Metric | Count |
 |--------|-------|
-| Total Files | 46 |
-| Total Directories | 14 |
-| Text Files | 46 |
+| Total Files | 52 |
+| Total Directories | 18 |
+| Text Files | 52 |
 | Binary Files | 0 |
-| Total Size | 636.78 KB |
+| Total Size | 671.19 KB |
 
 ### 📄 File Types Distribution
 
 | Extension | Count |
 |-----------|-------|
-| `.tsx` | 30 |
-| `.ts` | 4 |
+| `.tsx` | 31 |
+| `.ts` | 8 |
 | `.json` | 4 |
 | `.js` | 3 |
+| `.css` | 2 |
 | `.html` | 2 |
-| `.css` | 1 |
 | `.md` | 1 |
 | `.txt` | 1 |
 
@@ -591,18 +607,476 @@ export const AuditLogsList: React.FC<AuditLogsListProps> = ({ logs, loading }) =
 
 ---
 
+### <a id="📄-src-components-calender-leavecalendar-tsx"></a>📄 `src/components/calender/LeaveCalendar.tsx`
+
+**File Info:**
+- **Size**: 14.75 KB
+- **Extension**: `.tsx`
+- **Language**: `typescript`
+- **Location**: `src/components/calender/LeaveCalendar.tsx`
+- **Relative Path**: `src/components/calender`
+- **Created**: 2025-11-17 12:32:06 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-18 02:53:59 (Asia/Colombo / GMT+06:30)
+- **MD5**: `ebf026898017149853d2876270f9611d`
+- **SHA256**: `8b6d51d9f9ad59d3702cbe550c378f7b499920c614c78b6c7dbea8ff26cae0c4`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+import React, { useState, useEffect, useCallback } from 'react';
+import { Calendar, momentLocalizer, Event } from 'react-big-calendar';
+import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useMsal } from '@azure/msal-react';
+import { AlertCircle, Calendar as CalendarIcon, Check, X, Clock } from 'lucide-react';
+import { MainLayout } from '../layout/MainLayout';
+
+const localizer = momentLocalizer(moment);
+
+interface LeaveRequest {
+  request_id: number;
+  employee_id: number;
+  reason: string;
+  approved_date: string;
+  status: 'approved' | 'not-approved' | 'pending';
+  start_date: string;
+  end_date: string;
+  email: string;
+}
+
+interface CalendarEvent extends Event {
+  requestId: number;
+  status: 'approved' | 'not-approved' | 'pending';
+  reason: string;
+  email: string;
+  isOverlapping?: boolean;
+}
+
+const LeaveCalendar: React.FC = () => {
+  const { instance, accounts } = useMsal();
+  const [leaveRequests, setLeaveRequests] = useState<LeaveRequest[]>([]);
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
+  const [syncStatus, setSyncStatus] = useState<string>('');
+
+  // Fetch leave requests from your API
+  const fetchLeaveRequests = async () => {
+    setLoading(true);
+    setError(null);
+    
+    try {
+        const token = localStorage.getItem('accessToken');
+      const response = await fetch(
+        'https://8iv05x1jp7.execute-api.us-east-1.amazonaws.com/prod/leave/request',
+        {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+      const data = await response.json();
+      
+      if (data.leaveRequests) {
+        setLeaveRequests(data.leaveRequests);
+        convertToCalendarEvents(data.leaveRequests);
+      }
+    } catch (err) {
+      setError('Failed to fetch leave requests');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Detect overlapping leave requests
+  const detectOverlaps = (requests: LeaveRequest[]): Set<number> => {
+    const overlapping = new Set<number>();
+    
+    for (let i = 0; i < requests.length; i++) {
+      for (let j = i + 1; j < requests.length; j++) {
+        const start1 = new Date(requests[i].start_date);
+        const end1 = new Date(requests[i].end_date);
+        const start2 = new Date(requests[j].start_date);
+        const end2 = new Date(requests[j].end_date);
+        
+        // Check if dates overlap
+        if (start1 <= end2 && start2 <= end1) {
+          overlapping.add(requests[i].request_id);
+          overlapping.add(requests[j].request_id);
+        }
+      }
+    }
+    
+    return overlapping;
+  };
+
+  // Convert leave requests to calendar events
+  const convertToCalendarEvents = (requests: LeaveRequest[]) => {
+    const overlappingIds = detectOverlaps(requests);
+    
+    const calendarEvents: CalendarEvent[] = requests.map((request) => ({
+      requestId: request.request_id,
+      title: `${request.email.split('@')[0]} - ${request.reason}`,
+      start: new Date(request.start_date),
+      end: new Date(request.end_date),
+      status: request.status,
+      reason: request.reason,
+      email: request.email,
+      isOverlapping: overlappingIds.has(request.request_id),
+    }));
+    
+    setEvents(calendarEvents);
+  };
+
+  // Sync to Microsoft Graph Calendar
+  const syncToMicrosoftCalendar = async () => {
+    if (!accounts[0]) {
+      setError('Please sign in to Microsoft account first');
+      return;
+    }
+
+    setSyncStatus('Syncing to Microsoft Calendar...');
+    
+    try {
+      // Get access token
+      const response = await instance.acquireTokenSilent({
+        scopes: ['Calendars.ReadWrite'],
+        account: accounts[0],
+      });
+
+      // Sync approved leaves to calendar
+      const approvedLeaves = leaveRequests.filter(req => req.status === 'approved');
+      
+      for (const leave of approvedLeaves) {
+        const event = {
+          subject: `Leave: ${leave.reason}`,
+          body: {
+            contentType: 'HTML',
+            content: `Leave request approved for ${leave.email}`,
+          },
+          start: {
+            dateTime: new Date(leave.start_date).toISOString(),
+            timeZone: 'UTC',
+          },
+          end: {
+            dateTime: new Date(leave.end_date).toISOString(),
+            timeZone: 'UTC',
+          },
+          isAllDay: true,
+          categories: ['Leave - Approved'],
+        };
+
+        await fetch('https://graph.microsoft.com/v1.0/me/calendar/events', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${response.accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(event),
+        });
+      }
+
+      setSyncStatus('Successfully synced to Microsoft Calendar!');
+      setTimeout(() => setSyncStatus(''), 3000);
+    } catch (err) {
+      console.error('Sync error:', err);
+      setError('Failed to sync with Microsoft Calendar');
+    }
+  };
+
+  useEffect(() => {
+    fetchLeaveRequests();
+  }, []);
+
+  // Custom event styling based on status and overlap
+  const eventStyleGetter = (event: CalendarEvent) => {
+    let backgroundColor = '#6B7280'; // Default gray
+    let border = '2px solid transparent';
+    
+    if (event.status === 'approved') {
+      backgroundColor = '#10B981'; // Green
+    } else if (event.status === 'not-approved') {
+      backgroundColor = '#EF4444'; // Red
+    } else if (event.status === 'pending') {
+      backgroundColor = '#F59E0B'; // Orange
+    }
+    
+    // Add pattern for overlapping events
+    if (event.isOverlapping) {
+      border = '3px solid #FFD700';
+      backgroundColor = `${backgroundColor}CC`; // Add transparency
+    }
+    
+    return {
+      style: {
+        backgroundColor,
+        border,
+        borderRadius: '6px',
+        opacity: 0.9,
+        color: 'white',
+        fontWeight: event.isOverlapping ? 'bold' : 'normal',
+        boxShadow: event.isOverlapping ? '0 0 10px rgba(255, 215, 0, 0.5)' : 'none',
+      },
+    };
+  };
+
+  const handleSelectEvent = (event: CalendarEvent) => {
+    setSelectedEvent(event);
+  };
+
+  return (
+    <MainLayout>
+    <div className="min-h-screen bg-gray-900 p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-6 flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+              <CalendarIcon className="w-8 h-8" />
+              Leave Request Calendar
+            </h1>
+            <p className="text-gray-400 mt-2">
+              View and manage leave requests across your organization
+            </p>
+          </div>
+          
+          <button
+            onClick={syncToMicrosoftCalendar}
+            disabled={loading || !accounts[0]}
+            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+          >
+            Sync to Microsoft Calendar
+          </button>
+        </div>
+
+        {/* Status Messages */}
+        {syncStatus && (
+          <div className="mb-4 p-4 bg-green-900/40 border border-green-700 rounded-lg">
+            <p className="text-green-300">{syncStatus}</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="mb-4 p-4 bg-red-900/40 border border-red-700 rounded-lg flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" />
+            <p className="text-red-300">{error}</p>
+          </div>
+        )}
+
+        {/* Legend */}
+        <div className="mb-6 p-4 bg-gray-800 rounded-lg border border-gray-700">
+          <h3 className="text-white font-semibold mb-3">Legend</h3>
+          <div className="flex flex-wrap gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-green-500 rounded border-2 border-transparent"></div>
+              <span className="text-gray-300 text-sm">Approved</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-red-500 rounded border-2 border-transparent"></div>
+              <span className="text-gray-300 text-sm">Not Approved</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-orange-500 rounded border-2 border-transparent"></div>
+              <span className="text-gray-300 text-sm">Pending</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-green-500 rounded border-4 border-yellow-400"></div>
+              <span className="text-gray-300 text-sm">Overlapping Requests</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Calendar */}
+        <div className="bg-gray-800 rounded-xl p-6 shadow-xl border border-gray-700">
+          {loading ? (
+            <div className="flex items-center justify-center h-96">
+              <div className="text-gray-400">Loading calendar...</div>
+            </div>
+          ) : (
+            <Calendar
+              localizer={localizer}
+              events={events}
+              startAccessor="start"
+              endAccessor="end"
+              style={{ height: 700 }}
+              eventPropGetter={eventStyleGetter}
+              onSelectEvent={handleSelectEvent}
+              views={['month', 'week', 'day']}
+              popup
+              className="custom-calendar"
+            />
+          )}
+        </div>
+
+        {/* Event Detail Modal */}
+        {selectedEvent && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-gray-800 rounded-xl p-6 max-w-md w-full border border-gray-700">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-xl font-bold text-white">Leave Details</h3>
+                <button
+                  onClick={() => setSelectedEvent(null)}
+                  className="text-gray-400 hover:text-white"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              
+              <div className="space-y-3">
+                <div>
+                  <p className="text-gray-400 text-sm">Employee</p>
+                  <p className="text-white font-medium">{selectedEvent.email}</p>
+                </div>
+                
+                <div>
+                  <p className="text-gray-400 text-sm">Reason</p>
+                  <p className="text-white">{selectedEvent.reason}</p>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-gray-400 text-sm">Start Date</p>
+                    <p className="text-white">{moment(selectedEvent.start).format('MMM DD, YYYY')}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-400 text-sm">End Date</p>
+                    <p className="text-white">{moment(selectedEvent.end).format('MMM DD, YYYY')}</p>
+                  </div>
+                </div>
+                
+                <div>
+                  <p className="text-gray-400 text-sm">Status</p>
+                  <div className="flex items-center gap-2 mt-1">
+                    {selectedEvent.status === 'approved' && (
+                      <span className="flex items-center gap-1 text-green-400">
+                        <Check className="w-4 h-4" /> Approved
+                      </span>
+                    )}
+                    {selectedEvent.status === 'not-approved' && (
+                      <span className="flex items-center gap-1 text-red-400">
+                        <X className="w-4 h-4" /> Not Approved
+                      </span>
+                    )}
+                    {selectedEvent.status === 'pending' && (
+                      <span className="flex items-center gap-1 text-orange-400">
+                        <Clock className="w-4 h-4" /> Pending
+                      </span>
+                    )}
+                  </div>
+                </div>
+                
+                {selectedEvent.isOverlapping && (
+                  <div className="p-3 bg-yellow-900/20 border border-yellow-700 rounded-lg">
+                    <p className="text-yellow-400 text-sm font-medium">
+                      ⚠️ This leave overlaps with other requests
+                    </p>
+                  </div>
+                )}
+              </div>
+              
+              <button
+                onClick={() => setSelectedEvent(null)}
+                className="mt-6 w-full px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      <style>{`
+        .custom-calendar {
+          background: #1F2937;
+          border-radius: 8px;
+          padding: 16px;
+        }
+        
+        .rbc-header {
+          background: #374151;
+          color: #F9FAFB;
+          padding: 12px;
+          font-weight: 600;
+          border-bottom: 2px solid #4B5563;
+        }
+        
+        .rbc-today {
+          background-color: #1E3A5F !important;
+        }
+        
+        .rbc-off-range-bg {
+          background: #111827;
+        }
+        
+        .rbc-date-cell {
+          color: #D1D5DB;
+          padding: 8px;
+        }
+        
+        .rbc-month-view, .rbc-time-view {
+          border: 1px solid #4B5563;
+          border-radius: 8px;
+          background: #1F2937;
+        }
+        
+        .rbc-day-bg, .rbc-time-slot {
+          border-color: #374151;
+        }
+        
+        .rbc-event {
+          padding: 4px 8px;
+          font-size: 13px;
+        }
+        
+        .rbc-toolbar {
+          margin-bottom: 20px;
+          color: #F9FAFB;
+        }
+        
+        .rbc-toolbar button {
+          color: #F9FAFB;
+          background: #374151;
+          border: 1px solid #4B5563;
+          padding: 8px 16px;
+          border-radius: 6px;
+          margin: 0 4px;
+        }
+        
+        .rbc-toolbar button:hover {
+          background: #4B5563;
+        }
+        
+        .rbc-toolbar button.rbc-active {
+          background: #4F46E5;
+          border-color: #4F46E5;
+        }
+      `}</style>
+    </div>
+    </MainLayout>
+  );
+};
+
+export default LeaveCalendar;
+```
+
+---
+
 ### <a id="📄-src-components-dashboard-dashboardcontent-tsx"></a>📄 `src/components/dashboard/DashboardContent.tsx`
 
 **File Info:**
-- **Size**: 6.62 KB
+- **Size**: 7.45 KB
 - **Extension**: `.tsx`
 - **Language**: `typescript`
 - **Location**: `src/components/dashboard/DashboardContent.tsx`
 - **Relative Path**: `src/components/dashboard`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-17 08:49:52 (Asia/Colombo / GMT+06:30)
-- **MD5**: `c990c82289115c432ca38093fc28a965`
-- **SHA256**: `bf63fbd05a8868b132ab1dfc11d3b4bb83cedcf30abcea80dafb99028557c0f8`
+- **Modified**: 2025-11-17 12:36:10 (Asia/Colombo / GMT+06:30)
+- **MD5**: `cee2e9307f508c6f2cd7952fedd5089e`
+- **SHA256**: `4792ea54b4c4b537c717413e6ac7b2f97d55c9b00d0aea11de857e1cf68badf4`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -753,9 +1227,26 @@ export const DashboardContent: React.FC<DashboardContentProps> = ({ user }) => {
             </div>
           </Link>
 
+          <Link
+            to="/attendance-logs"
+            className="group bg-gray-800/70 border border-gray-700 hover:border-blue-500 rounded-2xl p-6 flex flex-col justify-between shadow-md transition-all duration-300"
+          >
+            <div>
+              <h3 className="text-xl font-semibold text-gray-100 group-hover:text-blue-400 transition">
+                Attendance Logs
+              </h3>
+              <p className="text-sm text-gray-400 mt-2">
+                Review, edit, and assign roles to users across your system.
+              </p>
+            </div>
+            <div className="mt-4 flex items-center text-blue-400 text-sm font-medium group-hover:translate-x-1 transition-transform">
+              Go to Attendance Logs <ArrowUpRight size={16} className="ml-1" />
+            </div>
+          </Link>
+
 
           <Link
-            to="/audit-logs"
+            to="/leave-calendar"
             className="group bg-gray-800/70 border border-gray-700 hover:border-purple-500 rounded-2xl p-6 flex flex-col justify-between shadow-md transition-all duration-300"
           >
             <div>
@@ -932,15 +1423,15 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
 ### <a id="📄-src-components-layout-sidebar-tsx"></a>📄 `src/components/layout/Sidebar.tsx`
 
 **File Info:**
-- **Size**: 2.92 KB
+- **Size**: 3.01 KB
 - **Extension**: `.tsx`
 - **Language**: `typescript`
 - **Location**: `src/components/layout/Sidebar.tsx`
 - **Relative Path**: `src/components/layout`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-17 08:38:07 (Asia/Colombo / GMT+06:30)
-- **MD5**: `4ba5a0c0848df3f24a783925828df0ad`
-- **SHA256**: `aa2ca7f52b5636bf888a4c83e6246a9167a29b6c8dd33448c501c77c942da337`
+- **Modified**: 2025-11-18 02:50:18 (Asia/Colombo / GMT+06:30)
+- **MD5**: `5ec42de9856945c59c265cfe28df4ca0`
+- **SHA256**: `02c917cd3b0f4b1bcb856580920d8448860b004c18a9c91a6b538f4060cdcba4`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -958,6 +1449,7 @@ import {
   ChevronRight,
   LayoutDashboard,
   BedSingle,
+  CalendarDays
 } from "lucide-react";
 
 interface SidebarProps {
@@ -974,6 +1466,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onToggle }) => {
     { path: "/leave-management", label: "Manage Leaves", icon: BedSingle },
     { path: "/attendance-logs", label: "Attendance Logs", icon: FileText },
     { path: "/audit-logs", label: "Audit Logs", icon: FileText },
+    { path: "/leave-calendar", label: "Leave Calendar", icon: CalendarDays },
     { path: "/settings", label: "System Settings", icon: Settings },
   ];
 
@@ -2860,6 +3353,44 @@ export const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 
 ---
 
+### <a id="📄-src-config-authconfig-ts"></a>📄 `src/config/authConfig.ts`
+
+**File Info:**
+- **Size**: 534 B
+- **Extension**: `.ts`
+- **Language**: `typescript`
+- **Location**: `src/config/authConfig.ts`
+- **Relative Path**: `src/config`
+- **Created**: 2025-11-17 12:26:43 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-17 12:27:21 (Asia/Colombo / GMT+06:30)
+- **MD5**: `b5e8014ab5fa8c4410d7eec277682904`
+- **SHA256**: `8febf3ee4c6399b071feb1c5e71615b345ea6b41610650d3f14d87437a0409c6`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+import { Configuration, PopupRequest } from "@azure/msal-browser";
+
+export const msalConfig: Configuration = {
+  auth: {
+    clientId: "c98378f2-3f81-45e6-a9a9-dd9925e5d69f", // From Azure portal
+    authority: "https://login.microsoftonline.com/c7886144-869f-423d-a018-9158602dc467",
+    redirectUri: "http://localhost:3000",
+  },
+  cache: {
+    cacheLocation: "sessionStorage",
+    storeAuthStateInCookie: false,
+  },
+};
+
+export const loginRequest: PopupRequest = {
+  scopes: ["User.Read", "Calendars.ReadWrite"],
+};
+```
+
+---
+
 ### <a id="📄-src-context-authcontext-tsx"></a>📄 `src/context/AuthContext.tsx`
 
 **File Info:**
@@ -2989,6 +3520,72 @@ export const useAuth = (): AuthContextType => {
   return ctx;
 };
 
+```
+
+---
+
+### <a id="📄-src-hooks-usemicrosoftauth-ts"></a>📄 `src/hooks/useMicrosoftAuth.ts`
+
+**File Info:**
+- **Size**: 1.07 KB
+- **Extension**: `.ts`
+- **Language**: `typescript`
+- **Location**: `src/hooks/useMicrosoftAuth.ts`
+- **Relative Path**: `src/hooks`
+- **Created**: 2025-11-17 12:33:19 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-17 12:33:24 (Asia/Colombo / GMT+06:30)
+- **MD5**: `21bf2f98f575753fccc10c1d97456cef`
+- **SHA256**: `45eda03abd76918abb1eb393544ecf57054f4d6e4ee150308d0e7b929b1f6cf7`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+import { useMsal } from '@azure/msal-react';
+import { loginRequest } from '../config/authConfig';
+
+export const useMicrosoftAuth = () => {
+  const { instance, accounts, inProgress } = useMsal();
+
+  const login = async () => {
+    try {
+      await instance.loginPopup(loginRequest);
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  };
+
+  const logout = () => {
+    instance.logoutPopup();
+  };
+
+  const getAccessToken = async () => {
+    if (accounts.length === 0) {
+      throw new Error('No accounts found');
+    }
+
+    try {
+      const response = await instance.acquireTokenSilent({
+        ...loginRequest,
+        account: accounts[0],
+      });
+      return response.accessToken;
+    } catch (error) {
+      // If silent token acquisition fails, try popup
+      const response = await instance.acquireTokenPopup(loginRequest);
+      return response.accessToken;
+    }
+  };
+
+  return {
+    login,
+    logout,
+    getAccessToken,
+    isAuthenticated: accounts.length > 0,
+    account: accounts[0],
+    inProgress,
+  };
+};
 ```
 
 ---
@@ -3562,15 +4159,15 @@ export function LeavePoliciesPage() {
 ### <a id="📄-src-pages-leaverequestspage-tsx"></a>📄 `src/pages/LeaveRequestsPage.tsx`
 
 **File Info:**
-- **Size**: 15.94 KB
+- **Size**: 15.95 KB
 - **Extension**: `.tsx`
 - **Language**: `typescript`
 - **Location**: `src/pages/LeaveRequestsPage.tsx`
 - **Relative Path**: `src/pages`
 - **Created**: 2025-11-17 08:52:46 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-17 11:47:22 (Asia/Colombo / GMT+06:30)
-- **MD5**: `e645d19826976920e15b9e2037bcd76c`
-- **SHA256**: `0a77d34c10dcadd5d4ec7409544ff85420281b9e53775cce6c4246c3fec919b2`
+- **Modified**: 2025-11-18 03:03:49 (Asia/Colombo / GMT+06:30)
+- **MD5**: `2890c908962bc4fc7be47beed197659d`
+- **SHA256**: `82d3181830569515ac2cd653a415b5d69556f787cdad8f6aaac7c4d9fd70dbdd`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -3756,7 +4353,7 @@ const LeaveManagementPage: React.FC = () => {
             </p>
           </div>
           <div className="bg-gray-800 border border-red-700/30 rounded-xl p-4">
-            <p className="text-gray-400 text-sm mb-1">Rejected</p>
+            <p className="text-gray-400 text-sm mb-1">Not Approved</p>
             <p className="text-2xl font-bold text-red-400">
               {leaveRequests.filter(r => r.status === 'not-approved').length}
             </p>
@@ -3913,7 +4510,7 @@ const LeaveManagementPage: React.FC = () => {
                           ) : (
                             <XCircle className="w-4 h-4" />
                           )}
-                          <span>Reject</span>
+                          <span>Not Approve</span>
                         </button>
                       </div>
                       <div className="mt-3 text-xs text-gray-500">
@@ -4600,6 +5197,286 @@ export default api;
 
 ---
 
+### <a id="📄-src-services-graphservice-ts"></a>📄 `src/services/graphService.ts`
+
+**File Info:**
+- **Size**: 2 KB
+- **Extension**: `.ts`
+- **Language**: `typescript`
+- **Location**: `src/services/graphService.ts`
+- **Relative Path**: `src/services`
+- **Created**: 2025-11-17 12:30:52 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-17 12:31:04 (Asia/Colombo / GMT+06:30)
+- **MD5**: `e690615d4393cc8cf62665b78fc54a65`
+- **SHA256**: `3bb91e672188e1535600647bbea7df3381cd3b0c662fc55b07018bf74d1b65f4`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+import { Client } from "@microsoft/microsoft-graph-client";
+import { AuthCodeMSALBrowserAuthenticationProvider } from "@microsoft/microsoft-graph-client/authProviders/authCodeMsalBrowser";
+import { InteractionType, PublicClientApplication } from "@azure/msal-browser";
+import { loginRequest } from "../config/authConfig";
+
+export class GraphService {
+  private client: Client | null = null;
+
+  constructor(private msalInstance: PublicClientApplication) {}
+
+  async initializeClient() {
+    const authProvider = new AuthCodeMSALBrowserAuthenticationProvider(
+      this.msalInstance,
+      {
+        account: this.msalInstance.getActiveAccount()!,
+        scopes: loginRequest.scopes,
+        interactionType: InteractionType.Popup,
+      }
+    );
+
+    this.client = Client.initWithMiddleware({ authProvider });
+  }
+
+  async createCalendarEvent(
+    subject: string,
+    startDate: string,
+    endDate: string,
+    body: string,
+    isAllDay: boolean = true,
+    category?: string
+  ) {
+    if (!this.client) await this.initializeClient();
+
+    const event = {
+      subject,
+      body: {
+        contentType: "HTML",
+        content: body,
+      },
+      start: {
+        dateTime: startDate,
+        timeZone: "UTC",
+      },
+      end: {
+        dateTime: endDate,
+        timeZone: "UTC",
+      },
+      isAllDay,
+      categories: category ? [category] : [],
+    };
+
+    return await this.client!.api("/me/calendar/events").post(event);
+  }
+
+  async getCalendarEvents(startDate: string, endDate: string) {
+    if (!this.client) await this.initializeClient();
+
+    return await this.client!
+      .api("/me/calendar/calendarView")
+      .query({
+        startDateTime: startDate,
+        endDateTime: endDate,
+      })
+      .select("subject,start,end,categories,body")
+      .get();
+  }
+
+  async deleteCalendarEvent(eventId: string) {
+    if (!this.client) await this.initializeClient();
+    return await this.client!.api(`/me/calendar/events/${eventId}`).delete();
+  }
+}
+```
+
+---
+
+### <a id="📄-src-services-microsoftcalendarservice-ts"></a>📄 `src/services/microsoftCalendarService.ts`
+
+**File Info:**
+- **Size**: 2.94 KB
+- **Extension**: `.ts`
+- **Language**: `typescript`
+- **Location**: `src/services/microsoftCalendarService.ts`
+- **Relative Path**: `src/services`
+- **Created**: 2025-11-17 12:33:43 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-17 12:33:48 (Asia/Colombo / GMT+06:30)
+- **MD5**: `d098cbeb73215d133d88f016e4b84a24`
+- **SHA256**: `bb131e32441931a3f15543c09665fcefa1cd2507b5c0924fdf1cc2624f84c41d`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```typescript
+interface LeaveRequest {
+  request_id: number;
+  email: string;
+  reason: string;
+  start_date: string;
+  end_date: string;
+  status: string;
+}
+
+export class MicrosoftCalendarService {
+  constructor(private getAccessToken: () => Promise<string>) {}
+
+  async syncLeaveToCalendar(leave: LeaveRequest) {
+    const accessToken = await this.getAccessToken();
+    
+    const event = {
+      subject: `Leave: ${leave.reason}`,
+      body: {
+        contentType: 'HTML',
+        content: `
+          <p><strong>Employee:</strong> ${leave.email}</p>
+          <p><strong>Reason:</strong> ${leave.reason}</p>
+          <p><strong>Status:</strong> ${leave.status}</p>
+          <p><strong>Request ID:</strong> ${leave.request_id}</p>
+        `,
+      },
+      start: {
+        dateTime: new Date(leave.start_date).toISOString(),
+        timeZone: 'UTC',
+      },
+      end: {
+        dateTime: new Date(leave.end_date).toISOString(),
+        timeZone: 'UTC',
+      },
+      isAllDay: true,
+      categories: [
+        leave.status === 'approved' ? 'Leave - Approved' : 
+        leave.status === 'pending' ? 'Leave - Pending' : 
+        'Leave - Not Approved'
+      ],
+      // Store request_id in extensions for future reference
+      extensions: [
+        {
+          '@odata.type': 'microsoft.graph.openTypeExtension',
+          extensionName: 'com.yourcompany.leaverequest',
+          leaveRequestId: leave.request_id.toString(),
+        }
+      ],
+    };
+
+    const response = await fetch('https://graph.microsoft.com/v1.0/me/calendar/events', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(event),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to create calendar event: ${response.statusText}`);
+    }
+
+    return await response.json();
+  }
+
+  async syncAllApprovedLeaves(leaves: LeaveRequest[]) {
+    const approvedLeaves = leaves.filter(leave => leave.status === 'approved');
+    const results = [];
+
+    for (const leave of approvedLeaves) {
+      try {
+        const result = await this.syncLeaveToCalendar(leave);
+        results.push({ success: true, leave, result });
+      } catch (error) {
+        results.push({ success: false, leave, error });
+      }
+    }
+
+    return results;
+  }
+
+  async getCalendarEvents(startDate: string, endDate: string) {
+    const accessToken = await this.getAccessToken();
+    
+    const url = new URL('https://graph.microsoft.com/v1.0/me/calendar/calendarView');
+    url.searchParams.append('startDateTime', startDate);
+    url.searchParams.append('endDateTime', endDate);
+
+    const response = await fetch(url.toString(), {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch calendar events');
+    }
+
+    return await response.json();
+  }
+}
+```
+
+---
+
+### <a id="📄-src-styles-calendar-css"></a>📄 `src/styles/calendar.css`
+
+**File Info:**
+- **Size**: 716 B
+- **Extension**: `.css`
+- **Language**: `css`
+- **Location**: `src/styles/calendar.css`
+- **Relative Path**: `src/styles`
+- **Created**: 2025-11-17 12:34:38 (Asia/Colombo / GMT+06:30)
+- **Modified**: 2025-11-17 12:34:42 (Asia/Colombo / GMT+06:30)
+- **MD5**: `dcb86deb8d8ae5e2e0586cc50ea84da3`
+- **SHA256**: `ab166baf9a2ba3106755bc46f3f996d37e9cec61180b79279ff3f8cece11c3ec`
+- **Encoding**: ASCII
+
+**File code content:**
+
+```css
+/* Custom calendar styling */
+.calendar-container {
+  background: #1F2937;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.calendar-day {
+  transition: all 0.2s ease;
+}
+
+.calendar-day:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.leave-badge {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.overlapping-badge {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 215, 0, 0);
+  }
+}
+```
+
+---
+
 ### <a id="📄-src-types-index-ts"></a>📄 `src/types/index.ts`
 
 **File Info:**
@@ -4726,15 +5603,15 @@ export interface UserProfile {
 ### <a id="📄-src-app-tsx"></a>📄 `src/App.tsx`
 
 **File Info:**
-- **Size**: 2.96 KB
+- **Size**: 3.22 KB
 - **Extension**: `.tsx`
 - **Language**: `typescript`
 - **Location**: `src/App.tsx`
 - **Relative Path**: `src`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-17 11:00:21 (Asia/Colombo / GMT+06:30)
-- **MD5**: `cc085cc25bee91f56779ef32e1ced957`
-- **SHA256**: `b526fc2585b70269bd9fccf627c9c2394889a9cdcdd97cbfa02402c063d3c864`
+- **Modified**: 2025-11-17 12:37:21 (Asia/Colombo / GMT+06:30)
+- **MD5**: `62333010d6257ab1a009cbba547afa8d`
+- **SHA256**: `a2fe9bf4c4fe35edff308e50667f7b39fa439a3a71974f3318d5e2de1d5aa4ee`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -4758,6 +5635,7 @@ import { ApprovalsPage } from "./pages/ApprovalsPage";
 import { ReportsPage } from "./pages/ReportsPage";
 import { AttendanceLogsPage } from "./pages/AttendanceLogsPage";
 import LeaveRequestsPage from "./pages/LeaveRequestsPage";
+import LeaveCalendar from "./components/calender/LeaveCalendar";
 
 
 function App() {
@@ -4814,6 +5692,16 @@ function App() {
               </AdminRoute>
             }
           />
+
+          <Route
+            path="/leave-calendar"
+            element={
+              <AdminRoute>
+                <LeaveCalendar />
+              </AdminRoute>
+            }
+          />
+
           <Route
             path="/settings"
             element={
@@ -4905,15 +5793,15 @@ html {
 ### <a id="📄-src-main-tsx"></a>📄 `src/main.tsx`
 
 **File Info:**
-- **Size**: 246 B
+- **Size**: 542 B
 - **Extension**: `.tsx`
 - **Language**: `typescript`
 - **Location**: `src/main.tsx`
 - **Relative Path**: `src`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **MD5**: `ba2d3174d9e6b27981cfb8e94e87decf`
-- **SHA256**: `0744ceac967579ab96b0c452208b865cb3f5f6efb5ec5b0f229f8dde04aafb77`
+- **Modified**: 2025-11-17 12:39:23 (Asia/Colombo / GMT+06:30)
+- **MD5**: `4d5109718dcead064c593ddc0dfda3ed`
+- **SHA256**: `73ceb527258e3922926a63f2298175d4852dd39a8df76c9496f3758a8bd8a39e`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -4923,10 +5811,17 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import App from "./App.tsx"
 import "./index.css"
+import { MsalProvider } from "@azure/msal-react";
+import { PublicClientApplication } from "@azure/msal-browser";
+import { msalConfig } from "./config/authConfig";
+
+const msalInstance = new PublicClientApplication(msalConfig);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <MsalProvider instance={msalInstance}>
     <App />
+    </MsalProvider>
   </React.StrictMode>,
 )
 
@@ -5000,15 +5895,15 @@ import "./.next/dev/types/routes.d.ts";
 ### <a id="📄-package-lock-json"></a>📄 `package-lock.json`
 
 **File Info:**
-- **Size**: 471.79 KB
+- **Size**: 482.5 KB
 - **Extension**: `.json`
 - **Language**: `json`
 - **Location**: `package-lock.json`
 - **Relative Path**: `root`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-03 09:10:01 (Asia/Colombo / GMT+06:30)
-- **MD5**: `15f44320a7a5da9a797fd29b2aaa43e0`
-- **SHA256**: `4609a7a09196e855d279e1b92d09c953e4642512857f643075111fe8c8568c70`
+- **Modified**: 2025-11-17 12:26:24 (Asia/Colombo / GMT+06:30)
+- **MD5**: `d608defcc2f5fb0ca3282f13578fe7d8`
+- **SHA256**: `1901636be7ec5144fcf40a8c3053edbe04fb92d8561662d7c0da1a005db2ed11`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -5024,14 +5919,20 @@ import "./.next/dev/types/routes.d.ts";
       "name": "admin-web-app",
       "version": "0.1.0",
       "dependencies": {
+        "@azure/msal-browser": "^4.26.1",
+        "@azure/msal-react": "^3.0.21",
+        "@microsoft/microsoft-graph-client": "^3.0.7",
+        "@microsoft/microsoft-graph-types": "^2.43.1",
         "axios": "^1.6.2",
         "class-variance-authority": "0.7.1",
         "clsx": "2.1.1",
         "date-fns": "^2.30.0",
         "dotenv": "^17.2.3",
         "lucide-react": "^0.294.0",
+        "moment": "^2.30.1",
         "next": "16.0.0",
         "react": "^18.3.1",
+        "react-big-calendar": "^1.19.4",
         "react-dom": "^18.3.1",
         "react-router-dom": "^6.20.0",
         "shadcn": "3.4.2",
@@ -5052,7 +5953,6 @@ import "./.next/dev/types/routes.d.ts";
         "autoprefixer": "^10.4.16",
         "chai": "^4.5.0",
         "chromedriver": "^142.0.0",
-        "cross-env": "^10.1.0",
         "jest": "^30.2.0",
         "jest-html-reporter": "^4.3.0",
         "mocha": "^10.8.2",
@@ -5097,6 +5997,41 @@ import "./.next/dev/types/routes.d.ts";
         "nr": "bin/nr.mjs",
         "nun": "bin/nun.mjs",
         "nup": "bin/nup.mjs"
+      }
+    },
+    "node_modules/@azure/msal-browser": {
+      "version": "4.26.1",
+      "resolved": "https://registry.npmjs.org/@azure/msal-browser/-/msal-browser-4.26.1.tgz",
+      "integrity": "sha512-GGCIsZXxyNm5QcQZ4maA9q+9UWmM+/87G+ybvPkrE32el1URSa9WYt0t67ks3/P0gspZX9RoEqyLqJ/X/JDnBQ==",
+      "license": "MIT",
+      "peer": true,
+      "dependencies": {
+        "@azure/msal-common": "15.13.1"
+      },
+      "engines": {
+        "node": ">=0.8.0"
+      }
+    },
+    "node_modules/@azure/msal-common": {
+      "version": "15.13.1",
+      "resolved": "https://registry.npmjs.org/@azure/msal-common/-/msal-common-15.13.1.tgz",
+      "integrity": "sha512-vQYQcG4J43UWgo1lj7LcmdsGUKWYo28RfEvDQAEMmQIMjSFufvb+pS0FJ3KXmrPmnWlt1vHDl3oip6mIDUQ4uA==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.8.0"
+      }
+    },
+    "node_modules/@azure/msal-react": {
+      "version": "3.0.21",
+      "resolved": "https://registry.npmjs.org/@azure/msal-react/-/msal-react-3.0.21.tgz",
+      "integrity": "sha512-V2YUyEgLM2GLXN1mDYVEk/GA4cZEfjmS0xEGx29AGy6paEgZN62pZiYoBr8mVOExft6uT/ZonpOREvFiy8quZQ==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=10"
+      },
+      "peerDependencies": {
+        "@azure/msal-browser": "^4.26.0",
+        "react": "^16.8.0 || ^17 || ^18 || ^19"
       }
     },
     "node_modules/@babel/code-frame": {
@@ -5967,13 +6902,6 @@ import "./.next/dev/types/routes.d.ts";
       "dependencies": {
         "tslib": "^2.4.0"
       }
-    },
-    "node_modules/@epic-web/invariant": {
-      "version": "1.0.0",
-      "resolved": "https://registry.npmjs.org/@epic-web/invariant/-/invariant-1.0.0.tgz",
-      "integrity": "sha512-lrTPqgvfFQtR/eY/qkIzp98OGdNJu0m5ji3q/nJI8v3SXkRKEnWiOxMmbvcSoAIzv/cGiuvRy57k4suKQSAdwA==",
-      "dev": true,
-      "license": "MIT"
     },
     "node_modules/@esbuild/aix-ppc64": {
       "version": "0.21.5",
@@ -7661,6 +8589,39 @@ import "./.next/dev/types/routes.d.ts";
         "@jridgewell/sourcemap-codec": "^1.4.14"
       }
     },
+    "node_modules/@microsoft/microsoft-graph-client": {
+      "version": "3.0.7",
+      "resolved": "https://registry.npmjs.org/@microsoft/microsoft-graph-client/-/microsoft-graph-client-3.0.7.tgz",
+      "integrity": "sha512-/AazAV/F+HK4LIywF9C+NYHcJo038zEnWkteilcxC1FM/uK/4NVGDKGrxx7nNq1ybspAroRKT4I1FHfxQzxkUw==",
+      "license": "MIT",
+      "dependencies": {
+        "@babel/runtime": "^7.12.5",
+        "tslib": "^2.2.0"
+      },
+      "engines": {
+        "node": ">=12.0.0"
+      },
+      "peerDependenciesMeta": {
+        "@azure/identity": {
+          "optional": true
+        },
+        "@azure/msal-browser": {
+          "optional": true
+        },
+        "buffer": {
+          "optional": true
+        },
+        "stream-browserify": {
+          "optional": true
+        }
+      }
+    },
+    "node_modules/@microsoft/microsoft-graph-types": {
+      "version": "2.43.1",
+      "resolved": "https://registry.npmjs.org/@microsoft/microsoft-graph-types/-/microsoft-graph-types-2.43.1.tgz",
+      "integrity": "sha512-7r3FiJYW2qTWnl+Li8GV5MzJqPiJp27hvY98kH5V/ZMzGuIOkcJqOfIpusoIQrskLDfYk5kFT8AjpeW713qcIg==",
+      "license": "MIT"
+    },
     "node_modules/@modelcontextprotocol/sdk": {
       "version": "1.20.1",
       "resolved": "https://registry.npmjs.org/@modelcontextprotocol/sdk/-/sdk-1.20.1.tgz",
@@ -7968,6 +8929,16 @@ import "./.next/dev/types/routes.d.ts";
         "url": "https://opencollective.com/pkgr"
       }
     },
+    "node_modules/@popperjs/core": {
+      "version": "2.11.8",
+      "resolved": "https://registry.npmjs.org/@popperjs/core/-/core-2.11.8.tgz",
+      "integrity": "sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==",
+      "license": "MIT",
+      "funding": {
+        "type": "opencollective",
+        "url": "https://opencollective.com/popperjs"
+      }
+    },
     "node_modules/@remix-run/router": {
       "version": "1.23.0",
       "resolved": "https://registry.npmjs.org/@remix-run/router/-/router-1.23.0.tgz",
@@ -7975,6 +8946,18 @@ import "./.next/dev/types/routes.d.ts";
       "license": "MIT",
       "engines": {
         "node": ">=14.0.0"
+      }
+    },
+    "node_modules/@restart/hooks": {
+      "version": "0.4.16",
+      "resolved": "https://registry.npmjs.org/@restart/hooks/-/hooks-0.4.16.tgz",
+      "integrity": "sha512-f7aCv7c+nU/3mF7NWLtVVr0Ra80RqsO89hO72r+Y/nvQr5+q0UFGkocElTH6MJApvReVh6JHUFYn2cw1WdHF3w==",
+      "license": "MIT",
+      "dependencies": {
+        "dequal": "^2.0.3"
+      },
+      "peerDependencies": {
+        "react": ">=16.8.0"
       }
     },
     "node_modules/@rolldown/pluginutils": {
@@ -8575,14 +9558,12 @@ import "./.next/dev/types/routes.d.ts";
       "version": "15.7.15",
       "resolved": "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.15.tgz",
       "integrity": "sha512-F6bEyamV9jKGAFBEmlQnesRPGOQqS2+Uwi0Em15xenOxHaf2hv6L8YCVn3rPdPJOiJfPiCnLIRyvwVaqMY3MIw==",
-      "dev": true,
       "license": "MIT"
     },
     "node_modules/@types/react": {
       "version": "18.3.26",
       "resolved": "https://registry.npmjs.org/@types/react/-/react-18.3.26.tgz",
       "integrity": "sha512-RFA/bURkcKzx/X9oumPG9Vp3D3JUgus/d0b67KB0t5S/raciymilkOa66olh78MUI92QLbEJevO7rvqU/kjwKA==",
-      "dev": true,
       "license": "MIT",
       "peer": true,
       "dependencies": {
@@ -8622,6 +9603,12 @@ import "./.next/dev/types/routes.d.ts";
       "version": "2.0.6",
       "resolved": "https://registry.npmjs.org/@types/statuses/-/statuses-2.0.6.tgz",
       "integrity": "sha512-xMAgYwceFhRA2zY+XbEA7mxYbA093wdiW8Vu6gZPGWy9cmOyU9XesH1tNcEWsKFd5Vzrqx5T3D38PWx1FIIXkA==",
+      "license": "MIT"
+    },
+    "node_modules/@types/warning": {
+      "version": "3.0.3",
+      "resolved": "https://registry.npmjs.org/@types/warning/-/warning-3.0.3.tgz",
+      "integrity": "sha512-D1XC7WK8K+zZEveUPY+cf4+kgauk8N4eHr/XIHXGlGYkHLud6hK9lYfZk1ry1TNh798cZUCgb6MqGEG8DkJt6Q==",
       "license": "MIT"
     },
     "node_modules/@types/ws": {
@@ -10635,24 +11622,6 @@ import "./.next/dev/types/routes.d.ts";
       "dev": true,
       "license": "MIT"
     },
-    "node_modules/cross-env": {
-      "version": "10.1.0",
-      "resolved": "https://registry.npmjs.org/cross-env/-/cross-env-10.1.0.tgz",
-      "integrity": "sha512-GsYosgnACZTADcmEyJctkJIoqAhHjttw7RsFrVoJNXbsWWqaq6Ym+7kZjq6mS45O0jij6vtiReppKQEtqWy6Dw==",
-      "dev": true,
-      "license": "MIT",
-      "dependencies": {
-        "@epic-web/invariant": "^1.0.0",
-        "cross-spawn": "^7.0.6"
-      },
-      "bin": {
-        "cross-env": "dist/bin/cross-env.js",
-        "cross-env-shell": "dist/bin/cross-env-shell.js"
-      },
-      "engines": {
-        "node": ">=20"
-      }
-    },
     "node_modules/cross-spawn": {
       "version": "7.0.6",
       "resolved": "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.6.tgz",
@@ -10714,7 +11683,6 @@ import "./.next/dev/types/routes.d.ts";
       "version": "3.1.3",
       "resolved": "https://registry.npmjs.org/csstype/-/csstype-3.1.3.tgz",
       "integrity": "sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==",
-      "dev": true,
       "license": "MIT"
     },
     "node_modules/csv-stringify": {
@@ -10732,6 +11700,12 @@ import "./.next/dev/types/routes.d.ts";
       "engines": {
         "node": ">= 12"
       }
+    },
+    "node_modules/date-arithmetic": {
+      "version": "4.1.0",
+      "resolved": "https://registry.npmjs.org/date-arithmetic/-/date-arithmetic-4.1.0.tgz",
+      "integrity": "sha512-QWxYLR5P/6GStZcdem+V1xoto6DMadYWpMXU82ES3/RfR3Wdwr3D0+be7mgOJ+Ov0G9D5Dmb9T17sNLQYj9XOg==",
+      "license": "MIT"
     },
     "node_modules/date-fns": {
       "version": "2.30.0",
@@ -10758,6 +11732,12 @@ import "./.next/dev/types/routes.d.ts";
       "engines": {
         "node": "*"
       }
+    },
+    "node_modules/dayjs": {
+      "version": "1.11.19",
+      "resolved": "https://registry.npmjs.org/dayjs/-/dayjs-1.11.19.tgz",
+      "integrity": "sha512-t5EcLVS6QPBNqM2z8fakk/NKel+Xzshgt8FFKAn+qwlD1pzZWxh0nVCrvFK7ZDb6XucZeF9z8C7CBWTRIVApAw==",
+      "license": "MIT"
     },
     "node_modules/debug": {
       "version": "4.4.3",
@@ -10888,6 +11868,15 @@ import "./.next/dev/types/routes.d.ts";
         "node": ">= 0.8"
       }
     },
+    "node_modules/dequal": {
+      "version": "2.0.3",
+      "resolved": "https://registry.npmjs.org/dequal/-/dequal-2.0.3.tgz",
+      "integrity": "sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=6"
+      }
+    },
     "node_modules/detect-libc": {
       "version": "2.1.2",
       "resolved": "https://registry.npmjs.org/detect-libc/-/detect-libc-2.1.2.tgz",
@@ -10928,6 +11917,16 @@ import "./.next/dev/types/routes.d.ts";
       "resolved": "https://registry.npmjs.org/dlv/-/dlv-1.1.3.tgz",
       "integrity": "sha512-+HlytyjlPKnIG8XuRG8WvmBP8xs8P71y+SKKS6ZXWoEgLuePxtDoUEiH7WkdePWrQ5JBpE6aoVqfZfJUQkjXwA==",
       "license": "MIT"
+    },
+    "node_modules/dom-helpers": {
+      "version": "5.2.1",
+      "resolved": "https://registry.npmjs.org/dom-helpers/-/dom-helpers-5.2.1.tgz",
+      "integrity": "sha512-nRCa7CK3VTrM2NmGkIy4cbK7IZlgBE/PYMn55rrXefr5xXDP0LdtfPnblFDoVdcAfslJ7or6iqAUnx0CCGIWQA==",
+      "license": "MIT",
+      "dependencies": {
+        "@babel/runtime": "^7.8.7",
+        "csstype": "^3.0.2"
+      }
     },
     "node_modules/dotenv": {
       "version": "17.2.3",
@@ -11904,6 +12903,11 @@ import "./.next/dev/types/routes.d.ts";
         "node": ">= 6"
       }
     },
+    "node_modules/globalize": {
+      "version": "0.1.1",
+      "resolved": "https://registry.npmjs.org/globalize/-/globalize-0.1.1.tgz",
+      "integrity": "sha512-5e01v8eLGfuQSOvx2MsDMOWS0GFtCx1wPzQSmcHw4hkxFzrQDBO3Xwg/m8Hr/7qXMrHeOIE29qWVzyv06u1TZA=="
+    },
     "node_modules/gopd": {
       "version": "1.2.0",
       "resolved": "https://registry.npmjs.org/gopd/-/gopd-1.2.0.tgz",
@@ -12201,6 +13205,15 @@ import "./.next/dev/types/routes.d.ts";
       "integrity": "sha512-JV/yugV2uzW5iMRSiZAyDtQd+nxtUnjeLt0acNdw98kKLrvuRVyB80tsREOE7yvGVgalhZ6RNXCmEHkUKBKxew==",
       "dev": true,
       "license": "ISC"
+    },
+    "node_modules/invariant": {
+      "version": "2.2.4",
+      "resolved": "https://registry.npmjs.org/invariant/-/invariant-2.2.4.tgz",
+      "integrity": "sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==",
+      "license": "MIT",
+      "dependencies": {
+        "loose-envify": "^1.0.0"
+      }
     },
     "node_modules/ip-address": {
       "version": "10.0.1",
@@ -13895,6 +14908,18 @@ import "./.next/dev/types/routes.d.ts";
         "url": "https://github.com/sponsors/sindresorhus"
       }
     },
+    "node_modules/lodash": {
+      "version": "4.17.21",
+      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
+      "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+      "license": "MIT"
+    },
+    "node_modules/lodash-es": {
+      "version": "4.17.21",
+      "resolved": "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz",
+      "integrity": "sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==",
+      "license": "MIT"
+    },
     "node_modules/lodash.memoize": {
       "version": "4.1.2",
       "resolved": "https://registry.npmjs.org/lodash.memoize/-/lodash.memoize-4.1.2.tgz",
@@ -13991,6 +15016,15 @@ import "./.next/dev/types/routes.d.ts";
         "react": "^16.5.1 || ^17.0.0 || ^18.0.0"
       }
     },
+    "node_modules/luxon": {
+      "version": "3.7.2",
+      "resolved": "https://registry.npmjs.org/luxon/-/luxon-3.7.2.tgz",
+      "integrity": "sha512-vtEhXh/gNjI9Yg1u4jX/0YVPMvxzHuGgCm6tC5kZyb08yjGWGnqAjGJvcXbqQR2P3MyMEFnRbpcdFS6PBcLqew==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=12"
+      }
+    },
     "node_modules/make-dir": {
       "version": "4.0.0",
       "resolved": "https://registry.npmjs.org/make-dir/-/make-dir-4.0.0.tgz",
@@ -14066,6 +15100,12 @@ import "./.next/dev/types/routes.d.ts";
       "engines": {
         "node": ">= 0.8"
       }
+    },
+    "node_modules/memoize-one": {
+      "version": "6.0.0",
+      "resolved": "https://registry.npmjs.org/memoize-one/-/memoize-one-6.0.0.tgz",
+      "integrity": "sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==",
+      "license": "MIT"
     },
     "node_modules/merge-descriptors": {
       "version": "2.0.0",
@@ -14449,6 +15489,27 @@ import "./.next/dev/types/routes.d.ts";
       "license": "ISC",
       "engines": {
         "node": ">=10"
+      }
+    },
+    "node_modules/moment": {
+      "version": "2.30.1",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.30.1.tgz",
+      "integrity": "sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==",
+      "license": "MIT",
+      "engines": {
+        "node": "*"
+      }
+    },
+    "node_modules/moment-timezone": {
+      "version": "0.5.48",
+      "resolved": "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.48.tgz",
+      "integrity": "sha512-f22b8LV1gbTO2ms2j2z13MuPogNoh5UzxL3nzNAYKGraILnbGc9NEE6dyiiiLv46DGRb8A4kg8UKWLjPthxBHw==",
+      "license": "MIT",
+      "dependencies": {
+        "moment": "^2.29.4"
+      },
+      "engines": {
+        "node": "*"
       }
     },
     "node_modules/ms": {
@@ -15472,6 +16533,23 @@ import "./.next/dev/types/routes.d.ts";
         "node": ">=6"
       }
     },
+    "node_modules/prop-types": {
+      "version": "15.8.1",
+      "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz",
+      "integrity": "sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==",
+      "license": "MIT",
+      "dependencies": {
+        "loose-envify": "^1.4.0",
+        "object-assign": "^4.1.1",
+        "react-is": "^16.13.1"
+      }
+    },
+    "node_modules/prop-types/node_modules/react-is": {
+      "version": "16.13.1",
+      "resolved": "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz",
+      "integrity": "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==",
+      "license": "MIT"
+    },
     "node_modules/proxy-addr": {
       "version": "2.0.7",
       "resolved": "https://registry.npmjs.org/proxy-addr/-/proxy-addr-2.0.7.tgz",
@@ -15682,6 +16760,43 @@ import "./.next/dev/types/routes.d.ts";
         "node": ">=0.10.0"
       }
     },
+    "node_modules/react-big-calendar": {
+      "version": "1.19.4",
+      "resolved": "https://registry.npmjs.org/react-big-calendar/-/react-big-calendar-1.19.4.tgz",
+      "integrity": "sha512-FrvbDx2LF6JAWFD96LU1jjloppC5OgIvMYUYIPzAw5Aq+ArYFPxAjLqXc4DyxfsQDN0TJTMuS/BIbcSB7Pg0YA==",
+      "license": "MIT",
+      "dependencies": {
+        "@babel/runtime": "^7.20.7",
+        "clsx": "^1.2.1",
+        "date-arithmetic": "^4.1.0",
+        "dayjs": "^1.11.7",
+        "dom-helpers": "^5.2.1",
+        "globalize": "^0.1.1",
+        "invariant": "^2.2.4",
+        "lodash": "^4.17.21",
+        "lodash-es": "^4.17.21",
+        "luxon": "^3.2.1",
+        "memoize-one": "^6.0.0",
+        "moment": "^2.29.4",
+        "moment-timezone": "^0.5.40",
+        "prop-types": "^15.8.1",
+        "react-overlays": "^5.2.1",
+        "uncontrollable": "^7.2.1"
+      },
+      "peerDependencies": {
+        "react": "^16.14.0 || ^17 || ^18 || ^19",
+        "react-dom": "^16.14.0 || ^17 || ^18 || ^19"
+      }
+    },
+    "node_modules/react-big-calendar/node_modules/clsx": {
+      "version": "1.2.1",
+      "resolved": "https://registry.npmjs.org/clsx/-/clsx-1.2.1.tgz",
+      "integrity": "sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==",
+      "license": "MIT",
+      "engines": {
+        "node": ">=6"
+      }
+    },
     "node_modules/react-dom": {
       "version": "18.3.1",
       "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz",
@@ -15702,6 +16817,32 @@ import "./.next/dev/types/routes.d.ts";
       "integrity": "sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==",
       "dev": true,
       "license": "MIT"
+    },
+    "node_modules/react-lifecycles-compat": {
+      "version": "3.0.4",
+      "resolved": "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz",
+      "integrity": "sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==",
+      "license": "MIT"
+    },
+    "node_modules/react-overlays": {
+      "version": "5.2.1",
+      "resolved": "https://registry.npmjs.org/react-overlays/-/react-overlays-5.2.1.tgz",
+      "integrity": "sha512-GLLSOLWr21CqtJn8geSwQfoJufdt3mfdsnIiQswouuQ2MMPns+ihZklxvsTDKD3cR2tF8ELbi5xUsvqVhR6WvA==",
+      "license": "MIT",
+      "dependencies": {
+        "@babel/runtime": "^7.13.8",
+        "@popperjs/core": "^2.11.6",
+        "@restart/hooks": "^0.4.7",
+        "@types/warning": "^3.0.0",
+        "dom-helpers": "^5.2.0",
+        "prop-types": "^15.7.2",
+        "uncontrollable": "^7.2.1",
+        "warning": "^4.0.3"
+      },
+      "peerDependencies": {
+        "react": ">=16.3.0",
+        "react-dom": ">=16.3.0"
+      }
     },
     "node_modules/react-refresh": {
       "version": "0.17.0",
@@ -17540,6 +18681,21 @@ import "./.next/dev/types/routes.d.ts";
         "node": ">=0.8.0"
       }
     },
+    "node_modules/uncontrollable": {
+      "version": "7.2.1",
+      "resolved": "https://registry.npmjs.org/uncontrollable/-/uncontrollable-7.2.1.tgz",
+      "integrity": "sha512-svtcfoTADIB0nT9nltgjujTi7BzVmwjZClOmskKu/E8FW9BXzg9os8OLr4f8Dlnk0rYWJIWr4wv9eKUXiQvQwQ==",
+      "license": "MIT",
+      "dependencies": {
+        "@babel/runtime": "^7.6.3",
+        "@types/react": ">=16.9.11",
+        "invariant": "^2.2.4",
+        "react-lifecycles-compat": "^3.0.4"
+      },
+      "peerDependencies": {
+        "react": ">=15.0.0"
+      }
+    },
     "node_modules/undici-types": {
       "version": "7.16.0",
       "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-7.16.0.tgz",
@@ -17777,6 +18933,15 @@ import "./.next/dev/types/routes.d.ts";
       "license": "Apache-2.0",
       "dependencies": {
         "makeerror": "1.0.12"
+      }
+    },
+    "node_modules/warning": {
+      "version": "4.0.3",
+      "resolved": "https://registry.npmjs.org/warning/-/warning-4.0.3.tgz",
+      "integrity": "sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==",
+      "license": "MIT",
+      "dependencies": {
+        "loose-envify": "^1.0.0"
       }
     },
     "node_modules/web-streams-polyfill": {
@@ -18220,15 +19385,15 @@ import "./.next/dev/types/routes.d.ts";
 ### <a id="📄-package-json"></a>📄 `package.json`
 
 **File Info:**
-- **Size**: 1.53 KB
+- **Size**: 1.77 KB
 - **Extension**: `.json`
 - **Language**: `json`
 - **Location**: `package.json`
 - **Relative Path**: `root`
 - **Created**: 2025-11-02 09:32:59 (Asia/Colombo / GMT+06:30)
-- **Modified**: 2025-11-03 09:24:15 (Asia/Colombo / GMT+06:30)
-- **MD5**: `807e32b6cd4a761addfb115614523740`
-- **SHA256**: `e1e36572a19d45d525f3f84bf4af3b39b635586bc52989140ecdbfbcfac1df67`
+- **Modified**: 2025-11-17 12:26:14 (Asia/Colombo / GMT+06:30)
+- **MD5**: `ef35534b6bd0ac7424e04431fb4c3732`
+- **SHA256**: `e0d9133d3856ddf3377998249ef251af95ba118bc4fdda9238678dfed05ac135`
 - **Encoding**: ASCII
 
 **File code content:**
@@ -18247,14 +19412,20 @@ import "./.next/dev/types/routes.d.ts";
     "test:selenium": "mocha tests/selenium/**/*.test.js --timeout 60000"
   },
   "dependencies": {
+    "@azure/msal-browser": "^4.26.1",
+    "@azure/msal-react": "^3.0.21",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "@microsoft/microsoft-graph-types": "^2.43.1",
     "axios": "^1.6.2",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "date-fns": "^2.30.0",
     "dotenv": "^17.2.3",
     "lucide-react": "^0.294.0",
+    "moment": "^2.30.1",
     "next": "16.0.0",
     "react": "^18.3.1",
+    "react-big-calendar": "^1.19.4",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.20.0",
     "shadcn": "3.4.2",
@@ -18288,7 +19459,6 @@ import "./.next/dev/types/routes.d.ts";
     "vite": "^5.0.8"
   }
 }
-
 
 ```
 

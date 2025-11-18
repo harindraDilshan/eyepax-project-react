@@ -178,7 +178,7 @@ const LeaveManagementPage: React.FC = () => {
             </p>
           </div>
           <div className="bg-gray-800 border border-red-700/30 rounded-xl p-4">
-            <p className="text-gray-400 text-sm mb-1">Rejected</p>
+            <p className="text-gray-400 text-sm mb-1">Not Approved</p>
             <p className="text-2xl font-bold text-red-400">
               {leaveRequests.filter(r => r.status === 'not-approved').length}
             </p>
@@ -335,7 +335,7 @@ const LeaveManagementPage: React.FC = () => {
                           ) : (
                             <XCircle className="w-4 h-4" />
                           )}
-                          <span>Reject</span>
+                          <span>Not Approve</span>
                         </button>
                       </div>
                       <div className="mt-3 text-xs text-gray-500">
